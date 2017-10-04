@@ -1,0 +1,146 @@
+@font-face {
+    font-family: urdu;
+    src: url(../fonts/Jameel%20Noori%20Nastaleeq.ttf);
+}
+@font-face {
+    font-family: english;
+    src: url(../fonts/OpenSans-Regular.ttf);
+}
+h1,h2,h3,h4,h5,h6,p{
+    font-family:english !important;
+}
+header{
+    background: #299a0b; /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover, #299a0b 21%, #299a0b 67%); /* FF3.6-15 */
+    background: -webkit-radial-gradient(center, ellipse cover, #299a0b 21%,#299a0b 67%); /* Chrome10-25,Safari5.1-6 */
+    background: radial-gradient(ellipse at center, #299a0b 21%,#299a0b 67%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#299a0b', endColorstr='#299a0b',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+.heading-1{
+    color:#03ab31;
+    text-align:center;
+    padding:10px;
+    font-size:40px;
+    font-weight:bold;
+}
+.user-name{
+    color:#FFF;
+    text-align:center !important;
+    margin-left:12px;
+}
+.inside{
+    width:50px;
+    font-size:36px;
+    background-color:#03ab31;
+    height:50px;
+}
+.name{
+    width:100%;
+    height:100%;
+    outline:none !important;
+    padding:10px;
+    font-family:english;
+    font-size:20px;
+}
+.log-in{
+    height:50px;
+    width:100%;
+    background-color:#03ab31;
+    border:none;
+    font-family:english;
+    font-size:20px;
+    color:#FFF;
+    font-weight:bold;
+    margin-top:30px;
+}
+.gray{
+    background-color:#CCC;
+
+}
+.white{
+    border-bottom:1px solid #666;
+    /*padding-bottom:5px;*/
+
+}
+.status{
+    color: #000;
+    margin-bottom: 0;
+    padding-bottom:12px;
+    padding-top: 12px;
+    font-size:18px;
+    font-weight:bold;
+
+}
+.driver-name
+{
+    font-size:18px;
+    margin-bottom: 0;
+    padding-bottom:12px;
+    padding-top: 12px;
+}
+.status-1
+{
+    font-size:16px;
+}
+a:hover{
+    text-decoration:none;
+}
+.green{
+    color:#0C0 !important;
+}
+.orange{
+    color:#F60 !important;
+}
+.red{
+    color:#F00 !important;
+}
+.next{
+    color:#28bb4e;
+    font-size:16px;
+    padding:12px;
+    text-align:center;
+}
+.time{
+    font-size:12px;
+    margin-top:20px;
+}
+.btn-1{
+    border:1px solid #FFF;
+}
+.text-area{
+    height:150px;
+    width:100%;
+    padding:10px;
+    font-family:english;
+    border-radius:5px;
+}
+.submit{
+    width:100%;
+    height:50px;
+    background-color:#02aa31;
+    color:#FFF;
+    font-size:20px;
+    font-family:english;
+    border:none;
+}
+
+/*
+**  ****************************
+**  Overwriting bootstrap styles
+**  ****************************
+*/
+
+/*  Bootstrap tabs  */
+.nav-item {
+    padding-left: 0;
+    padding-right: 0;
+}
+.nav-item .nav-link {
+    border-radius: 0;
+}
+.nav-item .nav-link.active {
+    background-color: #390;
+    color: #ffffff;
+}
+
+
