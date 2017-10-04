@@ -12,7 +12,6 @@ class DriverController extends Controller
     //get drivers list for menu
     public function getDrivers(){
         $drivers = Driver::select('_id', 'full_name', 'driver_status')->get()->toArray();
-        dd($drivers);
         return view('menu.drivers_list', ['drivers'=>$drivers]);
     }
 
@@ -63,6 +62,12 @@ class DriverController extends Controller
         }
 
         return view('menu.options.bookings', ['bookings'=>$bookings, 'misseds'=>$misseds, 'driver_id'=>$id]);
+    }
+
+    //get driver profile
+    public function getDriverProfile($id){
+        $driver = Driver::where('_id', $id)->first()->toArray();
+        return view('menu.options.profile_page', ['driver'=>$driver]);
     }
 
 }
