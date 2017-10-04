@@ -18,8 +18,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::prefix('profile')->group(function () {
-    Route::get('/menu', 'DriverController@getDrivers');
+Route::prefix('investor')->group(function () {
+    Route::get('/menu', 'DriverController@getDrivers')->name('menu');
     Route::get('/{id}', 'DriverController@getDriverMenu')->name('personal_menu');
     Route::get('/booking/{id}', 'DriverController@getBooking')->name('menu_booking');
+    Route::get('/settings/{id}', 'DriverController@getDriverProfile')->name('get_driver_profile');
 });
