@@ -1,8 +1,8 @@
 @extends('layouts.base')
 
 @section('password_link')
-<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><br>
-    <a href="change-password.php" style="color:#FFF">Change Password</a>
+<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 hgt-54 d-flex align-items-center">
+    <a class="text-white" href="change-password.php">Change Password</a>
 </div>
 @endsection
 
