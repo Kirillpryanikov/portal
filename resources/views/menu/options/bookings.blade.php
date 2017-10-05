@@ -23,19 +23,19 @@
 
         <!-- Tab panes -->
         <div class="tab-content">
-            <?php  $rs_driver = count($bookings); /*dd($rs_driver)*/?>
+            <?php  $rs_driver = count($bookings); ?>
             <div class="tab-pane active" data-count="{{count($bookings)}}" id="bookingsSection" role="tabpanel">
                 @foreach($bookings as $booking)
-                    <a href="booking-details.php" class="collapse">
+                    <a href="{{route('get_booking_detail', $booking['_id'])}}" class="collapse">
                         <div class="row white">
                             <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
                                 <p class="time">{{$booking['created_at']}}</p>
-                                <h3 class="status status-line green">{{$booking['trip_no']}}</h3>
+                                <h3 class="status status-bookings status-line green">{{$booking['trip_no']}}</h3>
                             </div>
                             <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
 
-                                <h3 class="status">Rs. {{$rs_driver}}</h3>
-                                <p class="time green">{{$booking['status']}}</p>
+                                <h3 class="status rs">Rs. {{$rs_driver}}</h3>
+                                <p class="time rs-compl green">{{$booking['status']}}</p>
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"> <i class="fa fa-arrow-right pull-right next mt-14"></i> </div>
                         </div>
@@ -47,11 +47,11 @@
             </div>
             <div class="tab-pane" data-count="{{count($misseds)}}" id="cancelledSection" role="tabpanel">
                 @foreach($misseds as $missed)
-                <a href="booking-details.php" class="collapse" data-row="{{$loop->index+1}}">
+                <a href="{{route('get_missed_detail', $missed['_id'])}}" class="collapse" data-row="{{$loop->index+1}}">
                     <div class="row white">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                             <p class="time">{{$missed['created_at']}}</p>
-                            <h3 class="status status-line green">{{$missed['trip_no']}}</h3>
+                            <h3 class="status status-bookings status-line green">{{$missed['trip_no']}}</h3>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                             <h3 class="status status-line red pull-right mt-4">{{$missed['status']}}</h3>

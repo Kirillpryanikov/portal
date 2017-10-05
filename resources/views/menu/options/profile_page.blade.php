@@ -12,8 +12,8 @@
     <div class="container">
         <!----------------------------------------->
         <div class="row white">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 btn-1" style="background-color:#FFF;">
-                <h1 class="status" style="text-align:center">Settings</h1>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 btn-1 bg-white">
+                <h1 class="status text-center">Settings</h1>
             </div>
         </div>
         <!----------------------------------------->
@@ -21,10 +21,24 @@
         <a href="settings-change.php">
             <div class="row white">
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                    <h3 class="driver-name">GPS</h3>
+                    <h3 class="driver-name font-thin">GPS</h3>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <h3 class="driver-name">{{$driver['last_lat']}}&nbsp;{{$driver['last_lng']}}</h3>
+                    <h3 class="driver-name font-thin">{{$driver['last_lat']}}&nbsp;{{$driver['last_lng']}}</h3>
+                </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"><i class="fa fa-arrow-right pull-right next"></i>
+                </div>
+            </div>
+        </a>
+        <!----------------------------------------->
+        <!----------------------------------------->
+        <a href="settings-change.php">
+            <div class="row white">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <h3 class="driver-name font-thin">Address</h3>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <h3 class="driver-name font-thin">{{$driver['address']}}</h3>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"><i class="fa fa-arrow-right pull-right next"></i>
                 </div>
@@ -35,10 +49,10 @@
         <a href="settings-change.php">
             <div class="row white">
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                    <h3 class="driver-name">Address</h3>
+                    <h3 class="driver-name font-thin">City</h3>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <h3 class="driver-name">{{$driver['address']}}</h3>
+                    <h3 class="driver-name font-thin">{{$driver['address']}}</h3>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"><i class="fa fa-arrow-right pull-right next"></i>
                 </div>
@@ -49,10 +63,10 @@
         <a href="settings-change.php">
             <div class="row white">
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                    <h3 class="driver-name">City</h3>
+                    <h3 class="driver-name font-thin">License #</h3>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <h3 class="driver-name">{{$driver['address']}}</h3>
+                    <h3 class="driver-name font-thin">{{$driver['driver_license_number']}}</h3>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"><i class="fa fa-arrow-right pull-right next"></i>
                 </div>
@@ -63,37 +77,10 @@
         <a href="settings-change.php">
             <div class="row white">
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                    <h3 class="driver-name">License #</h3>
+                    <h3 class="driver-name font-thin">Mobile (Company Provided)</h3>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <h3 class="driver-name">{{$driver['driver_license_number']}}</h3>
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"><i class="fa fa-arrow-right pull-right next"></i>
-                </div>
-            </div>
-        </a>
-        <!----------------------------------------->
-        <!----------------------------------------->
-        <a href="settings-change.php">
-            <div class="row white">
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                    <h3 class="driver-name">Mobile (Company Provided)</h3>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <h3 class="driver-name">{{$driver['phone']}}</h3>
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"><i class="fa fa-arrow-right pull-right next"></i>
-                </div>
-            </div>
-        </a>
-        <!-----------------------------------------> <!----------------------------------------->
-        <a href="settings-change.php">
-            <div class="row white">
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                    <h3 class="driver-name">Mobile (Personal 1)</h3>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <h3 class="driver-name">{{$driver['mobile_1']}}</h3>
+                    <h3 class="driver-name font-thin">{{$driver['phone']}}</h3>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"><i class="fa fa-arrow-right pull-right next"></i>
                 </div>
@@ -103,10 +90,23 @@
         <a href="settings-change.php">
             <div class="row white">
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                    <h3 class="driver-name">Mobile (Personal 2)</h3>
+                    <h3 class="driver-name font-thin">Mobile (Personal 1)</h3>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <h3 class="driver-name">{{$driver['mobile_2']}}</h3>
+                    <h3 class="driver-name font-thin">{{$driver['mobile_1']}}</h3>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"><i class="fa fa-arrow-right pull-right next"></i>
+                </div>
+            </div>
+        </a>
+        <!-----------------------------------------> <!----------------------------------------->
+        <a href="settings-change.php">
+            <div class="row white">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <h3 class="driver-name font-thin">Mobile (Personal 2)</h3>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <h3 class="driver-name font-thin">{{$driver['mobile_2']}}</h3>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"><i class="fa fa-arrow-right pull-right next"></i>
                 </div>
@@ -117,10 +117,10 @@
         <a href="settings-change.php">
             <div class="row white">
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                    <h3 class="driver-name">Email</h3>
+                    <h3 class="driver-name font-thin">Email</h3>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <h3 class="driver-name">{{$driver['email']}}</h3>
+                    <h3 class="driver-name font-thin">{{$driver['email']}}</h3>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"><i class="fa fa-arrow-right pull-right next"></i>
                 </div>
@@ -131,10 +131,10 @@
         <a href="settings-change.php">
             <div class="row white">
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                    <h3 class="driver-name">Activation</h3>
+                    <h3 class="driver-name font-thin">Activation</h3>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                    <h3 class="driver-name">{{$driver['updated_at']}}</h3>
+                    <h3 class="driver-name font-thin">{{$driver['updated_at']}}</h3>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     <input type="checkbox" data-id="{{$driver['_id']}}" class="pull-right">
