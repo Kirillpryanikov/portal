@@ -17,7 +17,7 @@ class DriverController extends Controller
 
     //get drivers data for personal menu
     public function getDriverMenu($id){
-        $driver = Driver::select('_id', 'full_name')->where('_id', $id)->first()->toArray();
+        $driver = Driver::select('_id', 'full_name', 'address')->where('_id', $id)->first()->toArray();
         return view('menu.personal_menu', ['driver'=>$driver]);
     }
 
@@ -71,4 +71,83 @@ class DriverController extends Controller
         return view('menu.options.profile_page', ['driver'=>$driver]);
     }
 
+    //get booking detail
+    public function getBookingDetail($id){
+        $details = Trip::where('_id', $id)->first()->toArray();
+
+        return view('menu.options.booking_detail',['details' => $details]);
+    }
+
+    //get missed detail
+    public function getMissedDetail($id){
+        $details = TripCall::where('_id', $id)->first()->toArray();
+
+        return view('menu.options.booking_detail',['details' => $details]);
+    }
+
+    // get wallet data
+    public function getWallets($id){
+        $wallets_all = Trip::all()->toArray();
+        $driver = Driver::select('_id', 'full_name')->where('_id', $id)->first()->toArray();
+
+        $wallets_out = [];
+
+        foreach ($wallets_all as $wallet) {
+            if (isset($wallet['driver_id']) && $wallet['driver_id'] == $id) {
+                $wallets_out[] = [
+                    '_id' => isset($wallet['_id']) ? $wallet['_id'] : '',
+                    'driver_id' => isset($wallet['driver_id']) ? $wallet['driver_id'] : '',
+                    'trip_no' => isset($wallet['trip_no']) ? $wallet['trip_no'] : '',
+                    'created_at' => isset($wallet['created_at']) ? $wallet['created_at'] : '',
+                    'status' => isset($wallet['status']) ? $wallet['status'] : '',
+                ];
+            }
+        }
+
+        return view('menu.options.wallets',['wallets' => $wallets_out]);
+    }
+
+    //get Complaints Filed data
+    public function getComplaintsFiled($id){
+        $complaints_filed_all = Trip::all()->toArray();
+        $driver = Driver::select('_id', 'full_name')->where('_id', $id)->first()->toArray();
+
+        $complaints_fileds = [];
+
+        foreach ($complaints_filed_all as $complaints) {
+            if (isset($complaints['driver_id']) && $complaints['driver_id'] == $id) {
+                $complaints_filed[] = [
+                    '_id' => isset($complaints['_id']) ? $complaints['_id'] : '',
+                    'driver_id' => isset($complaints['driver_id']) ? $complaints['driver_id'] : '',
+                    'trip_no' => isset($complaints['trip_no']) ? $complaints['trip_no'] : '',
+                    'created_at' => isset($complaints['created_at']) ? $complaints['created_at'] : '',
+                    'status' => isset($complaints['status']) ? $complaints['status'] : '',
+                ];
+            }
+        }
+
+        return view('menu.options.complaints_filed',['complaints_fileds' => $complaints_fileds]);
+    }
+
+    // get Statements data
+    public function getStatements($id){
+        $statements_all = Trip::all()->toArray();
+        $driver = Driver::select('_id', 'full_name')->where('_id', $id)->first()->toArray();
+
+        $statements = [];
+
+        foreach ($statements_all as $statement) {
+            if (isset($statement['driver_id']) && $statement['driver_id'] == $id) {
+                $statements[] = [
+                    '_id' => isset($statement['_id']) ? $statement['_id'] : '',
+                    'driver_id' => isset($statement['driver_id']) ? $statement['driver_id'] : '',
+                    'trip_no' => isset($statement['trip_no']) ? $statement['trip_no'] : '',
+                    'created_at' => isset($statement['created_at']) ? $statement['created_at'] : '',
+                    'status' => isset($statement['status']) ? $statement['status'] : '',
+                ];
+            }
+        }
+
+        return view('menu.options.statements',['statements' => $statements]);
+    }
 }
