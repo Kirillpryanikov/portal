@@ -26,6 +26,6 @@ Route::prefix('investor')->group(function () {
     Route::get('/booking/detail/{id}', 'DriverController@getBookingDetail')->name('get_booking_detail');
     Route::get('/missed/detail/{id}', 'DriverController@getMissedDetail')->name('get_missed_detail');
     Route::get('/wallets/{id}', 'DriverController@getWallets')->name('get_wallets');
-    Route::get('/complaints_filed/{id}', 'DriverController@getWallets')->name('get_complaints_filed');
+    Route::get('/complaints_filed/{id}', 'DriverController@ComplaintsFiled')->name('get_complaints_filed');
     Route::get('/statements/{id}', 'DriverController@getStatements')->name('get_statements');
 });
