@@ -15,27 +15,28 @@
     <a href="{{route('menu_booking', $driver['_id'])}}">
         <div class="row white">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                <h3 class="driver-name">Bookings</h3>
+                <h3 class="driver-name font-thin">Bookings</h3>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"> <i class="fa fa-arrow-right pull-right next"></i> </div>
         </div>
     </a>
     <!----------------------------------------->
     <!----------------------------------------->
-    <a href="https://www.google.com/maps/place/Karachi,+Pakistan/@25.0115052,66.7845092,10z/data=!3m1!4b1!4m5!3m4!1s0x3eb33e06651d4bbf:0x9cf92f44555a0c23!8m2!3d24.8614622!4d67.0099388">
+    <?php $linkedAddress = str_replace ( " " , "+" , $driver['address'] )?>
+    <a href="https://www.google.com/maps/place/<?php echo $linkedAddress?>">
         <div class="row white">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                <h3 class="driver-name">Location</h3>
+                <h3 class="driver-name font-thin">Location</h3>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"> <i class="fa fa-arrow-right pull-right next"></i> </div>
         </div>
     </a>
     <!----------------------------------------->
     <!----------------------------------------->
-    <a href="wallet.php">
+    <a href="{{route('get_wallets', $driver['_id'])}}">
         <div class="row white">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                <h3 class="driver-name">Wallet</h3>
+                <h3 class="driver-name font-thin">Wallet</h3>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"> <i class="fa fa-arrow-right pull-right next"></i> </div>
         </div>
@@ -45,27 +46,27 @@
     <a href="{{route('get_driver_profile', $driver['_id'])}}">
         <div class="row white">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                <h3 class="driver-name">Profile</h3>
+                <h3 class="driver-name font-thin">Profile</h3>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"> <i class="fa fa-arrow-right pull-right next"></i> </div>
         </div>
     </a>
     <!----------------------------------------->
     <!----------------------------------------->
-    <a href="complaints-filed.php">
+    <a href="{{route('get_complaints_filed', $driver['_id'])}}">
         <div class="row white">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                <h3 class="driver-name">Complaints filed</h3>
+                <h3 class="driver-name font-thin">Complaints filed</h3>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"> <i class="fa fa-arrow-right pull-right next"></i> </div>
         </div>
     </a>
     <!----------------------------------------->
     <!----------------------------------------->
-    <a href="statements.php">
+    <a href="{{route('get_statements', $driver['_id'])}}">
         <div class="row white">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                <h3 class="driver-name">Statements</h3>
+                <h3 class="driver-name font-thin">Statements</h3>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"> <i class="fa fa-arrow-right pull-right next"></i> </div>
         </div>
@@ -73,4 +74,14 @@
     <!----------------------------------------->
 
 </div>
+@endsection
+
+@section('options_scripts')
+
+    <script>
+        $(document).ready(function () {
+            console.log($('#linkToMap').data('address'));
+
+        })
+    </script>
 @endsection

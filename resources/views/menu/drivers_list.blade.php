@@ -39,10 +39,10 @@
         <a href="{{route('personal_menu',$driver['_id'])}}">
         <div class="row white">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                <h3 class="status">{{$driver['full_name']}}</h3>
+                <h3 class="status font-thin">{{$driver['full_name']}}</h3>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                <h3 class="status {{$class_var}}">{{$driver['driver_status']}}</h3>
+                <h3 class="status font-thin {{$class_var}}">{{$driver['driver_status']}}</h3>
             </div>
         </div>
         </a>

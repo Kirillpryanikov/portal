@@ -64,12 +64,13 @@ header{
 
 }
 .status{
-    color: #000;
     margin-bottom: 0;
     padding-bottom:12px;
     padding-top: 12px;
     font-size:18px;
     font-weight:bold;
+}
+.status-bookings {
     height: 20px;
 }
 .status-line {
@@ -123,7 +124,7 @@ a:hover{
 .rs-compl {
     font-size:12px;
     font-weight: bold;
-    margin-bottom: 0;
+    margin: 3px 0 0 0;
 }
 .btn-1{
     border:1px solid #FFF;
@@ -144,6 +145,7 @@ a:hover{
     /*font-family:english;*/
     border:none;
 }
+
 
 /*
 **  ****************************
@@ -169,8 +171,47 @@ a:hover{
     margin-bottom: 0;
     background-color: #ffffff;
 }
+.mt-10 {
+    margin-top: 10px;
+}
 .mt-14 {
     margin-top: 14px;
+}
+.mt-20 {
+    margin-top: 20px;
+}
+.mt-45 {
+    margin-top: 45px;
+}
+.mb-10{
+    margin-bottom: 10px;
+}
+.bg-green {
+    background-color:#02aa31;
+}
+.bg-white {
+    background-color: #ffffff;
+}
+.text-white {
+    color: #ffffff;
+}
+.text-black {
+    color: #000000;
+}
+.fz-16 {
+    font-size: 16px;
+}
+.fz-24 {
+    font-size: 24px;
+}
+.fz-10 {
+    font-size: 10px;
+}
+.font-bold {
+    font-weight: bold;
+}
+.font-thin {
+    font-weight: 100;
 }
 input[type="checkbox"] {
     width: 20px;
