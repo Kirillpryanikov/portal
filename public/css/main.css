@@ -1,20 +1,21 @@
-@font-face {
+/*@font-face {
     font-family: urdu;
     src: url(../fonts/Jameel%20Noori%20Nastaleeq.ttf);
 }
 @font-face {
     font-family: english;
     src: url(../fonts/OpenSans-Regular.ttf);
-}
+}*/
 h1,h2,h3,h4,h5,h6,p{
-    font-family:english !important;
+    /*font-family:english !important;*/
 }
 header{
-    background: #299a0b; /* Old browsers */
-    background: -moz-radial-gradient(center, ellipse cover, #299a0b 21%, #299a0b 67%); /* FF3.6-15 */
-    background: -webkit-radial-gradient(center, ellipse cover, #299a0b 21%,#299a0b 67%); /* Chrome10-25,Safari5.1-6 */
-    background: radial-gradient(ellipse at center, #299a0b 21%,#299a0b 67%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#299a0b', endColorstr='#299a0b',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#00af29+0,299a0b+35,00bc2c+67,009304+100 */
+    background: #00af29; /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover, #00af29 0%, #299a0b 35%, #00bc2c 67%, #009304 100%); /* FF3.6-15 */
+    background: -webkit-radial-gradient(center, ellipse cover, #00af29 0%,#299a0b 35%,#00bc2c 67%,#009304 100%); /* Chrome10-25,Safari5.1-6 */
+    background: radial-gradient(ellipse at center, #00af29 0%,#299a0b 35%,#00bc2c 67%,#009304 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00af29', endColorstr='#009304',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 .heading-1{
     color:#03ab31;
@@ -39,7 +40,7 @@ header{
     height:100%;
     outline:none !important;
     padding:10px;
-    font-family:english;
+    /*font-family:english;*/
     font-size:20px;
 }
 .log-in{
@@ -47,7 +48,7 @@ header{
     width:100%;
     background-color:#03ab31;
     border:none;
-    font-family:english;
+    /*font-family:english;*/
     font-size:20px;
     color:#FFF;
     font-weight:bold;
@@ -69,7 +70,12 @@ header{
     padding-top: 12px;
     font-size:18px;
     font-weight:bold;
-
+    height: 20px;
+}
+.status-line {
+    padding-bottom: 0;
+    padding-top: 0;
+    font-size: 1.17rem;
 }
 .driver-name
 {
@@ -102,7 +108,22 @@ a:hover{
 }
 .time{
     font-size:12px;
-    margin-top:20px;
+    margin-top: 18px; /*changed*/
+    margin-bottom: 12px; /*added*/
+}
+.rs {
+    color: #000;
+    margin-bottom: 0;
+    padding-top: 16px;
+    font-weight:bold;
+    padding-bottom: 0;
+    /*padding-top: 0;*/
+    font-size: 1.17rem;
+}
+.rs-compl {
+    font-size:12px;
+    font-weight: bold;
+    margin-bottom: 0;
 }
 .btn-1{
     border:1px solid #FFF;
@@ -111,7 +132,7 @@ a:hover{
     height:150px;
     width:100%;
     padding:10px;
-    font-family:english;
+    /*font-family:english;*/
     border-radius:5px;
 }
 .submit{
@@ -120,7 +141,7 @@ a:hover{
     background-color:#02aa31;
     color:#FFF;
     font-size:20px;
-    font-family:english;
+    /*font-family:english;*/
     border:none;
 }
 
@@ -137,10 +158,24 @@ a:hover{
 }
 .nav-item .nav-link {
     border-radius: 0;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 .nav-item .nav-link.active {
     background-color: #390;
     color: #ffffff;
+}
+.breadcrumb {
+    margin-bottom: 0;
+    background-color: #ffffff;
+}
+.mt-14 {
+    margin-top: 14px;
+}
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin: 12px 12px 0 12px;
 }
 
 
