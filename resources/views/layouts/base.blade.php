@@ -16,9 +16,8 @@
 <header>
     <div class="container">
         <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><br>
-                <img src="images/logo.gif" width="60" height="32" alt="" class="img-responsive" style="width:80px;"/>
-                <br>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 hgt-54 d-flex align-items-center">
+                <img src="{{asset('images/logo.gif')}}" width="80" height="25" alt="logo"/>
             </div>
             @yield('password_link')
         </div>

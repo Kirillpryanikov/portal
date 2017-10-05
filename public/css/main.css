@@ -10,6 +10,7 @@ h1,h2,h3,h4,h5,h6,p{
     /*font-family:english !important;*/
 }
 header{
+    height: 54px;
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#00af29+0,299a0b+35,00bc2c+67,009304+100 */
     background: #00af29; /* Old browsers */
     background: -moz-radial-gradient(center, ellipse cover, #00af29 0%, #299a0b 35%, #00bc2c 67%, #009304 100%); /* FF3.6-15 */
@@ -171,6 +172,9 @@ a:hover{
     margin-bottom: 0;
     background-color: #ffffff;
 }
+.hgt-54 {
+    height: 54px;
+}
 .mt-10 {
     margin-top: 10px;
 }
@@ -186,14 +190,17 @@ a:hover{
 .mb-10{
     margin-bottom: 10px;
 }
+.pt-15 {
+    padding-top: 15px;
+}
+.pb-15 {
+    padding-bottom: 15px;
+}
 .bg-green {
     background-color:#02aa31;
 }
 .bg-white {
     background-color: #ffffff;
-}
-.text-white {
-    color: #ffffff;
 }
 .text-black {
     color: #000000;
@@ -206,6 +213,9 @@ a:hover{
 }
 .fz-10 {
     font-size: 10px;
+}
+.fz-14 {
+    font-size: 14px;
 }
 .font-bold {
     font-weight: bold;
