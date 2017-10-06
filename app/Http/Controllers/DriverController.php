@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Driver;
+use App\Invoice;
 use App\Trip;
 use App\TripCall;
 use App\Wallet;
@@ -73,17 +74,11 @@ class DriverController extends Controller
     }
 
     //get booking detail
-    public function getBookingDetail($id){
-        $details = Trip::where('_id', $id)->first()->toArray();
+    public function getBookingDetail($trip_no, $id){
+        $details = Invoice::where('trip_no', $trip_no)->first()->toArray();
+        $driver = Driver::select('_id', 'full_name')->where('_id', $id)->first()->toArray();
 
-        return view('menu.options.booking_detail',['details' => $details]);
-    }
-
-    //get missed detail
-    public function getMissedDetail($id){
-        $details = TripCall::where('_id', $id)->first()->toArray();
-
-        return view('menu.options.booking_detail',['details' => $details]);
+        return view('menu.options.booking_detail',['details' => $details, 'driver'=>$driver]);
     }
 
     // get wallet data
