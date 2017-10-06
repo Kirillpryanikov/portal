@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\City;
 use App\Driver;
 use App\Invoice;
 use App\Trip;
@@ -70,6 +71,8 @@ class DriverController extends Controller
     //get driver profile
     public function getDriverProfile($id){
         $driver = Driver::where('_id', $id)->first()->toArray();
+        $city = City::where('_id', $driver['city'])->first()->toArray();
+        $driver['city_data'] = $city;
         return view('menu.options.profile_page', ['driver'=>$driver]);
     }
 
