@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Driver;
 use App\Trip;
 use App\TripCall;
+use App\Wallet;
 use Illuminate\Http\Request;
 
 class DriverController extends Controller
@@ -87,7 +88,7 @@ class DriverController extends Controller
 
     // get wallet data
     public function getWallets($id){
-        $wallets_all = Trip::all()->toArray();
+        $wallets_all = Wallet::all()->toArray();
         $driver = Driver::select('_id', 'full_name')->where('_id', $id)->first()->toArray();
 
         $wallets_out = [];
@@ -99,12 +100,18 @@ class DriverController extends Controller
                     'driver_id' => isset($wallet['driver_id']) ? $wallet['driver_id'] : '',
                     'trip_no' => isset($wallet['trip_no']) ? $wallet['trip_no'] : '',
                     'created_at' => isset($wallet['created_at']) ? $wallet['created_at'] : '',
-                    'status' => isset($wallet['status']) ? $wallet['status'] : '',
+                    'title' => isset($wallet['title']) ? $wallet['title'] : '',
+                    'comments' => isset($wallet['comments']) ? $wallet['comments'] : '',
+                    'balance' => isset($wallet['balance']) ? $wallet['balance'] : '',
+                    'total' => isset($wallet['total']) ? $wallet['total'] : '',
+                    'trip_status' => isset($wallet['trip_status']) ? $wallet['trip_status'] : '',
+                    'transfer' => isset($wallet['transfer']) ? $wallet['transfer'] : '',
+                    'last_received_via' => isset($wallet['last_received_via']) ? $wallet['last_received_via'] : '',
                 ];
             }
         }
 
-        return view('menu.options.wallets',['wallets' => $wallets_out]);
+        return view('menu.options.wallets',['wallets' => $wallets_out, 'driver'=>$driver]);
     }
 
     //get Complaints Filed data
@@ -150,4 +157,5 @@ class DriverController extends Controller
 
         return view('menu.options.statements',['statements' => $statements]);
     }
+
 }
