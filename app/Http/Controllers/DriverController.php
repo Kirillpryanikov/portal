@@ -19,18 +19,47 @@ class DriverController extends Controller
     private function getDriver($id){
         $this->data['driver'] = Driver::select('_id', 'full_name')->where('_id', $id)->first()->toArray();
     }
+
+    /**
+     * @api {get} /investor/menu Get drivers list
+     * @apiName Drivers List
+     * @apiGroup Drivers
+     * @apiDescription Returns a page with a list of drivers
+     * @apiSuccess {page} page Drivers list.
+     */
     //get drivers list for menu
     public function getDrivers(){
         $drivers = Driver::select('_id', 'full_name', 'driver_status')->get()->toArray();
+
         return view('menu.drivers_list', ['drivers'=>$drivers]);
     }
 
+    /**
+     * @api {get} /investor/{id} Get drivers menu
+     * @apiName Driver Menu
+     * @apiGroup Drivers
+     * @apiDescription Returns a page with a menu of driver
+     * @apiParam {string} id The drivers id
+     * @apiSuccess {page} page Drivers menu.
+     * @apiError {page} page 404.
+     */
     //get drivers data for personal menu
     public function getDriverMenu($id){
         $driver = Driver::select('_id', 'full_name', 'address')->where('_id', $id)->first()->toArray();
+        if (count($driver) == 0){
+            return view('errors.404',$this->data);
+        }
         return view('menu.personal_menu', ['driver'=>$driver]);
     }
 
+    /**
+     * @api {get} /investor/booking/{id} Get drivers Booking and Missed
+     * @apiName Booking and Missed
+     * @apiGroup Drivers
+     * @apiDescription Returns a page with a booking and missed of driver
+     * @apiParam {string} id The drivers id
+     * @apiSuccess {page} page Booking and Missed.
+     */
     //get data for booking and missed pages
     public function getBooking($id){
         $trips = Trip::all()->toArray();
@@ -75,17 +104,42 @@ class DriverController extends Controller
         $this->data['bookings'] = $bookings;
         $this->data['misseds']  = $misseds;
 
+
         return view('menu.options.bookings', $this->data);
     }
 
+    /**
+     * @api {get} /investor/settings/{id} Get drivers profile detail list
+     * @apiName Drivers Profile
+     * @apiGroup Drivers
+     * @apiDescription Returns a page with a profile of driver
+     * @apiParam {string} id The drivers id
+     * @apiSuccess {page} page Profile
+     * @apiError {page} page 404.
+     */
     //get driver profile
     public function getDriverProfile($id){
         $driver = Driver::where('_id', $id)->first()->toArray();
         $city = City::where('_id', $driver['city'])->first()->toArray();
         $driver['city_data'] = $city;
+
+        if (count($driver) == 0){
+            return view('errors.404',$this->data);
+        }
+
         return view('menu.options.profile_page', ['driver'=>$driver]);
     }
 
+    /**
+     * @api {get} /investor/booking/detail/{trip_no}/{driver_id} Get details of booking
+     * @apiName Booking Detail
+     * @apiGroup Drivers
+     * @apiDescription Returns a page with a details of booking
+     * @apiParam {string} driver_id The drivers id
+     * @apiParam {string} trip_no The trip number
+     * @apiSuccess {page} page details of booking
+     * @apiError {page} page 404.
+     */
     //get booking detail
     public function getBookingDetail($trip_no, $id){
         $this->getDriver($id);
@@ -100,9 +154,21 @@ class DriverController extends Controller
             $this->data['trip'] = $this->data['trip']->toArray();
         }
 
+        if (count($this->data['details']) == 0 && count($this->data['trip']) == 0){
+            return view('errors.404',$this->data);
+        }
+
         return view('menu.options.booking_detail',$this->data);
     }
 
+    /**
+     * @api {get} /investor/wallets/{id} Get drivers Wallets
+     * @apiName Wallets
+     * @apiGroup Drivers
+     * @apiDescription Returns a page with a wallets of driver
+     * @apiParam {string} id The drivers id
+     * @apiSuccess {page} page Wallets.
+     */
     // get wallet data
     public function getWallets($id){
         $wallets_all = Wallet::all()->toArray();
@@ -133,6 +199,14 @@ class DriverController extends Controller
         return view('menu.options.wallets', $this->data);
     }
 
+    /**
+     * @api {get} /investor/complaints_filed/{id} Get drivers Complaints Filed
+     * @apiName Complaints Filed
+     * @apiGroup Drivers
+     * @apiDescription Returns a page with a complaints filed of driver
+     * @apiParam {string} id The drivers id
+     * @apiSuccess {page} page Complaints Filed.
+     */
     //get Complaints Filed data
     public function getComplaintsFiled($id){
         $complaints_filed_all = Trip::all()->toArray();
@@ -157,6 +231,14 @@ class DriverController extends Controller
         return view('menu.options.complaints_filed',$this->data);
     }
 
+    /**
+     * @api {get} /investor/statements/{id} Get drivers Statements
+     * @apiName Statements
+     * @apiGroup Drivers
+     * @apiDescription Returns a page with a statements of driver
+     * @apiParam {string} id The drivers id
+     * @apiSuccess {page} page Statements.
+     */
     // get Statements data
     public function getStatements($id){
         $statements_all = Trip::all()->toArray();
@@ -181,10 +263,12 @@ class DriverController extends Controller
         return view('menu.options.statements', $this->data);
     }
 
+
     public function getMessage($id){
         $driver = Driver::where('_id', $id)->first()->toArray();
         return view('menu.options.send_message', ['driver'=>$driver]);
     }
+
 
     public function sendMessage(Request $request){
         $data = $request->all();
