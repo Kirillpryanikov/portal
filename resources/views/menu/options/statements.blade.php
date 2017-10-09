@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row white">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                {{--<p style="" class="breadcrumb"><a href="{{route('menu')}}">Drivers Names</a> &gt; <a href="{{route('personal_menu',$driver['_id'])}}">{{$driver['full_name']}}</a> &gt; Statements</p>--}}
+                <p class="breadcrumb"><a href="{{route('menu')}}">Drivers Names</a> &gt; <a href="{{route('personal_menu',$driver['_id'])}}">{{$driver['full_name']}}</a> &gt; Statements</p>
             </div>
         </div>
     </div>
@@ -24,13 +24,13 @@
         <!----------------------------------------->
 
         <div class="row gray">
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+            <div class="col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4">
                 <h3 class="status fz-16">Date</h3>
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+            <div class="col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4">
                 <h3 class="status fz-16">Details</h3>
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+            <div class="col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4">
                 <h3 class="status fz-16">Payouts</h3>
             </div>
 
@@ -45,13 +45,13 @@
                 $dateStr = date('j M', $dateTime);
                 ?>
         <div class="row white collapse">
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <div class="col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4">
                 <h3 class="status fz-16"><?php echo $dateStr ?></h3>
             </div>
-            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+            <div class="col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4">
                 <p class="time fz-14">{{$statement['status']}}</p>
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+            <div class="col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4">
                 <a href="{{asset('images/Test.pdf')}}">
                     <i class="fa fa-download next fz-24 text-center"></i>
                 </a>

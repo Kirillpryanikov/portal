@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row white">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                {{--<p style="" class="breadcrumb"><a href="{{route('menu')}}">Drivers Names</a> &gt; <a href="{{route('personal_menu',$driver['_id'])}}">{{$driver['full_name']}}</a> &gt; Complaints Filed</p>--}}
+                <p class="breadcrumb"><a href="{{route('menu')}}">Drivers Names</a> &gt; <a href="{{route('personal_menu',$driver['_id'])}}">{{$driver['full_name']}}</a> &gt; Complaints Filed</p>
             </div>
         </div>
     </div>

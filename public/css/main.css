@@ -130,14 +130,29 @@ a:hover{
 .btn-1{
     border:1px solid #FFF;
 }
-.text-area{
+.modal-container {
+    width: 80%;
+    display: none;
+    padding: 15px;
+    background-color: #e8e8e8;
+    border-radius: 5px;
+    position: absolute;
+    top: 15%;
+    left: 10%;
+}
+.modal-container.active {
+    display: block;
+}
+.modal-text-area {
+    margin-top: 15px;
     height:150px;
     width:100%;
     padding:10px;
     /*font-family:english;*/
     border-radius:5px;
+    color: #888;
 }
-.submit{
+.modal-submit {
     width:100%;
     height:50px;
     background-color:#02aa31;
@@ -228,5 +243,11 @@ input[type="checkbox"] {
     height: 20px;
     margin: 12px 12px 0 12px;
 }
-
-
+label {
+    cursor: pointer;
+    margin: 0;
+}
+.not-found {
+    font-size: 40px;
+    text-transform: uppercase;
+}
