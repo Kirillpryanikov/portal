@@ -5,13 +5,20 @@ namespace App\Http\Controllers;
 use App\City;
 use App\Driver;
 use App\Invoice;
+use App\Mail\SendMail;
 use App\Trip;
 use App\TripCall;
 use App\Wallet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class DriverController extends Controller
 {
+    private $data = [];
+
+    private function getDriver($id){
+        $this->data['driver'] = Driver::select('_id', 'full_name')->where('_id', $id)->first()->toArray();
+    }
     //get drivers list for menu
     public function getDrivers(){
         $drivers = Driver::select('_id', 'full_name', 'driver_status')->get()->toArray();
@@ -28,7 +35,7 @@ class DriverController extends Controller
     public function getBooking($id){
         $trips = Trip::all()->toArray();
         $trip_calls = TripCall::all()->toArray();
-        $driver = Driver::select('_id', 'full_name')->where('_id', $id)->first()->toArray();
+        $this->getDriver($id);
 
         $misseds = [];
         $bookings = [];
@@ -45,27 +52,30 @@ class DriverController extends Controller
             }
         }
 
-        foreach ($trip_calls as $trip_call){
-            if(isset($trip_call['driver_id']) && $trip_call['driver_id'] == $id){
+        foreach ($trip_calls as $trip_call) {
+            if (isset($trip_call['driver_id']) && $trip_call['driver_id'] == $id) {
                 $trip_no = '';
-                foreach ($bookings as $booking){
-                    if($booking['_id'] == $trip_call['trip_id']){
+                foreach ($bookings as $booking) {
+                    if ($booking['_id'] == $trip_call['trip_id']) {
                         $trip_no = $booking['trip_no'];
                         break 1;
                     }
                 }
 
                 $misseds[] = [
-                    '_id'           => isset($trip_call['_id'])?$trip_call['_id']:'',
-                    'driver_id'     => isset($trip_call['driver_id'])?$trip_call['driver_id']:'',
-                    'trip_no'       => $trip_no,
-                    'created_at'    => isset($trip_call['created_at'])?$trip_call['created_at']:'',
-                    'status'        => isset($trip_call['status'])?$trip_call['status']:'',
+                    '_id' => isset($trip_call['_id']) ? $trip_call['_id'] : '',
+                    'driver_id' => isset($trip_call['driver_id']) ? $trip_call['driver_id'] : '',
+                    'trip_no' => $trip_no,
+                    'created_at' => isset($trip_call['created_at']) ? $trip_call['created_at'] : '',
+                    'status' => isset($trip_call['status']) ? $trip_call['status'] : '',
                 ];
             }
         }
 
-        return view('menu.options.bookings', ['bookings'=>$bookings, 'misseds'=>$misseds, 'driver'=>$driver]);
+        $this->data['bookings'] = $bookings;
+        $this->data['misseds']  = $misseds;
+
+        return view('menu.options.bookings', $this->data);
     }
 
     //get driver profile
@@ -78,16 +88,25 @@ class DriverController extends Controller
 
     //get booking detail
     public function getBookingDetail($trip_no, $id){
-        $details = Invoice::where('trip_no', $trip_no)->first()->toArray();
-        $driver = Driver::select('_id', 'full_name')->where('_id', $id)->first()->toArray();
+        $this->getDriver($id);
+        
+        $this->data['details'] = Invoice::where('trip_no', $trip_no)->first();
+        if(count($this->data['details'])){
+            $this->data['details'] = $this->data['details']->toArray();
+        }
 
-        return view('menu.options.booking_detail',['details' => $details, 'driver'=>$driver]);
+        $this->data['trip'] = Trip::where('trip_no', $trip_no)->first()->toArray();
+        if(count($this->data['trip'])){
+            $this->data['trip'] = $this->data['trip']->toArray();
+        }
+
+        return view('menu.options.booking_detail',$this->data);
     }
 
     // get wallet data
     public function getWallets($id){
         $wallets_all = Wallet::all()->toArray();
-        $driver = Driver::select('_id', 'full_name')->where('_id', $id)->first()->toArray();
+        $this->getDriver($id);
 
         $wallets_out = [];
 
@@ -109,13 +128,15 @@ class DriverController extends Controller
             }
         }
 
-        return view('menu.options.wallets',['wallets' => $wallets_out, 'driver'=>$driver]);
+        $this->data['wallets'] = $wallets_out;
+
+        return view('menu.options.wallets', $this->data);
     }
 
     //get Complaints Filed data
     public function getComplaintsFiled($id){
         $complaints_filed_all = Trip::all()->toArray();
-        $driver = Driver::select('_id', 'full_name')->where('_id', $id)->first()->toArray();
+        $this->getDriver($id);
 
         $complaints_fileds = [];
 
@@ -131,13 +152,15 @@ class DriverController extends Controller
             }
         }
 
-        return view('menu.options.complaints_filed',['complaints_fileds' => $complaints_fileds]);
+        $this->data['complaints_fileds'] = $complaints_fileds;
+
+        return view('menu.options.complaints_filed',$this->data);
     }
 
     // get Statements data
     public function getStatements($id){
         $statements_all = Trip::all()->toArray();
-        $driver = Driver::select('_id', 'full_name')->where('_id', $id)->first()->toArray();
+        $this->getDriver($id);
 
         $statements = [];
 
@@ -153,7 +176,20 @@ class DriverController extends Controller
             }
         }
 
-        return view('menu.options.statements',['statements' => $statements]);
+        $this->data['statements'] = $statements;
+
+        return view('menu.options.statements', $this->data);
+    }
+
+    public function getMessage($id){
+        $driver = Driver::where('_id', $id)->first()->toArray();
+        return view('menu.options.send_message', ['driver'=>$driver]);
+    }
+
+    public function sendMessage(Request $request){
+        $data = $request->all();
+        $data['driver'] = Driver::where('_id', $request['driver_id'])->first()->toArray();
+        Mail::send(new SendMail($data));
     }
 
 }
