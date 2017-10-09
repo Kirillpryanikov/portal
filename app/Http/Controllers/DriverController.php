@@ -269,7 +269,17 @@ class DriverController extends Controller
         return view('menu.options.send_message', ['driver'=>$driver]);
     }
 
-
+    /**
+     * @api {post} /send_message Send Message
+     * @apiName Send Message
+     * @apiGroup Drivers
+     * @apiDescription Send message from driver
+     * @apiParam {string} driver_id The drivers id
+     * @apiParam {string} content The message for send
+     * @apiParam {string} value The value of parameter for change
+     * @apiParam {string} name The name of parameter for change
+     * @apiSuccess {back} page Back to send page.
+     */
     public function sendMessage(Request $request){
         $data = $request->all();
         $data['driver'] = Driver::where('_id', $request['driver_id'])->first()->toArray();

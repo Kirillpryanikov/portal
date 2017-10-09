@@ -255,6 +255,64 @@
     "groupTitle": "Drivers"
   },
   {
+    "type": "post",
+    "url": "/send_message",
+    "title": "Send Message",
+    "name": "Send_Message",
+    "group": "Drivers",
+    "description": "<p>Send message from driver</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "driver_id",
+            "description": "<p>The drivers id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "content",
+            "description": "<p>The message for send</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "value",
+            "description": "<p>The value of parameter for change</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "name",
+            "description": "<p>The name of parameter for change</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "back",
+            "optional": false,
+            "field": "page",
+            "description": "<p>Back to send page.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "./app/Http/Controllers/DriverController.php",
+    "groupTitle": "Drivers"
+  },
+  {
     "type": "get",
     "url": "/investor/statements/{id}",
     "title": "Get drivers Statements",
