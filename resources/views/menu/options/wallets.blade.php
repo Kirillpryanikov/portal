@@ -10,10 +10,9 @@
     </div>
 
     <div class="container">
-
-        <!----------------------------------------->
+    <!----------------------------------------->
         <div class="row gray">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 btn-1" style="background-color:#FFF;">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 btn-1 bg-white">
                 <h1 class="status text-center">Wallet</h1>
             </div>
         </div>
@@ -25,12 +24,12 @@
                 <h3 class="status text-white">Balance</h3>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                <h3 class="status pull-right text-white">Rs. 30</h3>
+                <h3 class="status pull-right text-white">Rs. {{count($wallets)}}</h3>
             </div>
         </div>
-        <!----------------------------------------->
-        <!----------------------------------------->
 
+        <!----------------------------------------->
+        <!----------------------------------------->
         <div class="row gray">
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                 <h3 class="status text-center fz-16">Titles</h3>
@@ -48,134 +47,37 @@
         <!----------------------------------------->
 
         <!----------------------------------------->
-
-        <div class="row white">
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                <p class="fz-10 mt-20 mb-10">KHI8986580</p>
-                <h3 class="status m-0 fz-16 p-0">Earning</h3>
-                <p class="mb-10 fz-10 mt-10">Via Wallet</p>
+        <div id="walletTable" data-count="{{count($wallets)}}">
+        @foreach($wallets as $wallet)
+            <?php
+            $dateTime = strtotime($wallet['created_at']);
+            $dateStr = date('j M', $dateTime);
+            $timeStr = date('g:i A', $dateTime);
+            ?>
+            <div class="row white collapse">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                    <p class="fz-10 mt-20 mb-10">{{$wallet['trip_no']}}</p>
+                    <h3 class="status m-0 fz-16 p-0">{{$wallet['title']}}</h3>
+                    <p class="mb-10 fz-10 mt-10">{{$wallet['last_received_via']}}</p>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                    <h3 class="status mt-45 fz-16 p-0 text-center green">{{$wallet['total']}}</h3>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                    <p class="fz-10 mt-20 mb-10"><?php echo $dateStr;?></p>
+                    <h3 class="status m-0 p-0 fz-16">{{$wallet['transfer']}}</h3>
+                    <p class="time fz-10 mt-10"><?php echo $timeStr;?></p>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                    <h3 class="status mt-45  p-0 fz-16 text-center green">{{$wallet['balance']}}</h3>
+                </div>
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                <h3 class="status mt-45 fz-16 p-0 text-center green">50</h3>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                <p class="fz-10 mt-20 mb-10">22 aug </p>
-                <h3 class="status m-0 p-0 fz-16">37</h3>
-                <p class="time fz-10 mt-10">10:48 AM</p>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                <h3 class="status mt-45  p-0 fz-16 text-center green">37</h3>
-            </div>
+        @endforeach
+            <nav id="walletsPagination" class="mt-4 collapse" aria-label="Wallets navigation">
+                <ul class="pagination justify-content-center"></ul>
+            </nav>
         </div>
-        <!----------------------------------------->
-        <!----------------------------------------->
-
-        <div class="row white">
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                <p class="fz-10 mt-20 mb-10">KHI8986580</p>
-                <h3 class="status m-0 fz-16 p-0">Earning</h3>
-                <p class="mb-10 fz-10 mt-10">Via Wallet</p>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                <h3 class="status mt-45 fz-16 p-0 text-center green">50</h3>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                <p class="fz-10 mt-20 mb-10">22 aug </p>
-                <h3 class="status m-0 p-0 fz-16">37</h3>
-                <p class="time fz-10 mt-10">10:48 AM</p>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                <h3 class="status mt-45  p-0 fz-16 text-center green">37</h3>
-            </div>
-        </div>
-        <!----------------------------------------->
-        <!----------------------------------------->
-
-        <div class="row white">
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                <p class="fz-10 mt-20 mb-10">KHI8986580</p>
-                <h3 class="status m-0 fz-16 p-0">Earning</h3>
-                <p class="mb-10 fz-10 mt-10">Via Wallet</p>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                <h3 class="status mt-45 fz-16 p-0 text-center green">50</h3>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                <p class="fz-10 mt-20 mb-10">22 aug </p>
-                <h3 class="status m-0 p-0 fz-16">37</h3>
-                <p class="time fz-10 mt-10">10:48 AM</p>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                <h3 class="status mt-45  p-0 fz-16 text-center green">37</h3>
-            </div>
-        </div>
-        <!----------------------------------------->
-        <!----------------------------------------->
-
-        <div class="row white">
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                <p class="fz-10 mt-20 mb-10">KHI8986580</p>
-                <h3 class="status m-0 fz-16 p-0">Earning</h3>
-                <p class="mb-10 fz-10 mt-10">Via Wallet</p>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                <h3 class="status mt-45 fz-16 p-0 text-center green">50</h3>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                <p class="fz-10 mt-20 mb-10">22 aug </p>
-                <h3 class="status m-0 p-0 fz-16">37</h3>
-                <p class="time fz-10 mt-10">10:48 AM</p>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                <h3 class="status mt-45  p-0 fz-16 text-center green">37</h3>
-            </div>
-        </div>
-        <!----------------------------------------->
-        <!----------------------------------------->
-
-        <div class="row white">
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                <p class="fz-10 mt-20 mb-10">KHI8986580</p>
-                <h3 class="status m-0 fz-16 p-0">Earning</h3>
-                <p class="mb-10 fz-10 mt-10">Via Wallet</p>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                <h3 class="status mt-45 fz-16 p-0 text-center green">50</h3>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                <p class="fz-10 mt-20 mb-10">22 aug </p>
-                <h3 class="status m-0 p-0 fz-16">37</h3>
-                <p class="time fz-10 mt-10">10:48 AM</p>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                <h3 class="status mt-45  p-0 fz-16 text-center green">37</h3>
-            </div>
-        </div>
-        <!----------------------------------------->
-        <!----------------------------------------->
-
-        <div class="row white">
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                <p class="fz-10 mt-20 mb-10">KHI8986580</p>
-                <h3 class="status m-0 fz-16 p-0">Earning</h3>
-                <p class="mb-10 fz-10 mt-10">Via Wallet</p>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                <h3 class="status mt-45 fz-16 p-0 text-center green">50</h3>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                <p class="fz-10 mt-20 mb-10">22 aug </p>
-                <h3 class="status m-0 p-0 fz-16">37</h3>
-                <p class="time fz-10 mt-10">10:48 AM</p>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                <h3 class="status mt-45  p-0 fz-16 text-center green">37</h3>
-            </div>
-        </div>
-        <!----------------------------------------->
-
-
-
+    <!----------------------------------------->
     </div>
 
 @endsection
@@ -185,11 +87,11 @@
 
     <script>
         $(document).ready(function () {
-            var cancelledItemsCount = $('#cancelledSection').data('count');
-            var bookedItemsCount = $('#bookingsSection').data('count');
+            var cancelledItemsCount = $('#walletTable').data('count');
 
-            if (cancelledItemsCount>20) {paginationHandler('#cancelledSection', '#missedsPagination', cancelledItemsCount)}
-            if (bookedItemsCount>20) {paginationHandler('#bookingsSection', '#bookingsPagination', bookedItemsCount)}
+            if (cancelledItemsCount > 20) {
+                paginationHandler('#walletTable', '#walletsPagination', cancelledItemsCount)
+            }
         })
     </script>
 @endsection

@@ -127,7 +127,7 @@
 
         <!----------------------------------------->
         <!----------------------------------------->
-        <div class="row" class="white">
+        <div class="row white">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <h3 class="status pull-left green">Amount Top Up</h3>
             </div>

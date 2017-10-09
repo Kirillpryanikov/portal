@@ -26,7 +26,7 @@
             <?php  $rs_driver = count($bookings); ?>
             <div class="tab-pane active" data-count="{{count($bookings)}}" id="bookingsSection" role="tabpanel">
                 @foreach($bookings as $booking)
-                    <a href="{{route('get_booking_detail', $booking['_id'])}}" class="collapse">
+                    <a href="{{route('get_booking_detail', [$booking['trip_no'], $booking['driver_id']])}}" class="collapse">
                         <div class="row white">
                             <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
                                 <p class="time">{{$booking['created_at']}}</p>
@@ -47,7 +47,7 @@
             </div>
             <div class="tab-pane" data-count="{{count($misseds)}}" id="cancelledSection" role="tabpanel">
                 @foreach($misseds as $missed)
-                <a href="{{route('get_missed_detail', $missed['_id'])}}" class="collapse" data-row="{{$loop->index+1}}">
+                <a href="{{route('get_missed_detail', [$missed['trip_no'], $missed['driver_id']])}}" class="collapse" data-row="{{$loop->index+1}}">
                     <div class="row white">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                             <p class="time">{{$missed['created_at']}}</p>

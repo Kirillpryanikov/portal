@@ -15,10 +15,10 @@ function paginationHandler(sectionID, paginationID, itemsCount) {
     pageButtons += "<li class=\"page-item\"><a class=\"page-link\" data-page=\""+pagesTotal+"\" href=\"#\" aria-label=\"Next\"><span aria-hidden=\"true\">&raquo;</span><span class=\"sr-only\">Last</span></a></li>";
     $(paginationID+' ul').html(pageButtons);
     for (i = 0; i < 20; i++) {
-        $(sectionID+' a:eq('+i+')').removeClass('collapse');
+        $(sectionID).children(':eq('+i+')').removeClass('collapse');
     }
     $(paginationID+' ul').on('click', 'a', function () {
-        $(sectionID+' a').addClass('collapse');
+        $(sectionID).children(':not('+paginationID+')').addClass('collapse');
         $(paginationID+' li').removeClass('active');
         var index = $(this).data('page');
         $(paginationID+' li:eq('+index+')').addClass('active');
@@ -26,7 +26,7 @@ function paginationHandler(sectionID, paginationID, itemsCount) {
         var start = end-20;
         if (itemsCount < end) {end = itemsCount}
         for (i = start; i < end; i++) {
-            $(sectionID+' a:eq('+i+')').removeClass('collapse');
+            $(sectionID).children(':eq('+i+')').removeClass('collapse');
         }
     });
 }

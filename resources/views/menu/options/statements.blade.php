@@ -38,151 +38,32 @@
         <!----------------------------------------->
 
         <!----------------------------------------->
-
-        <div class="row white">
+        <div id="statementsTable" data-count="{{count($statements)}}">
+        @foreach($statements as $statement)
+                <?php
+                $dateTime = strtotime($statement['created_at']);
+                $dateStr = date('j M', $dateTime);
+                ?>
+        <div class="row white collapse">
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                <h3 class="status fz-16">22 Sep </h3>
+                <h3 class="status fz-16"><?php echo $dateStr ?></h3>
             </div>
             <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                <p class="time fz-14">Lorem Ipsum is simply dummy text of the printing and typesetting
-                    industry. </p>
+                <p class="time fz-14">{{$statement['status']}}</p>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                <a href="images/Test.pdf">
+                <a href="{{asset('images/Test.pdf')}}">
                     <i class="fa fa-download next fz-24 text-center"></i>
                 </a>
             </div>
 
         </div>
-        <!----------------------------------------->
-        <!----------------------------------------->
-
-        <div class="row white">
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                <h3 class="status fz-16">22 Sep </h3>
-            </div>
-            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                <p class="time fz-14">Lorem Ipsum is simply dummy text of the printing and typesetting
-                    industry. </p>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                <a href="images/Test.pdf">
-                    <i class="fa fa-download next fz-24 text-center"></i>
-                </a>
-            </div>
-
+        @endforeach
+            <nav id="statementsPagination" class="mt-4 collapse" aria-label="Statements navigation">
+                <ul class="pagination justify-content-center"></ul>
+            </nav>
         </div>
         <!----------------------------------------->
-        <!----------------------------------------->
-
-        <div class="row white">
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                <h3 class="status fz-16">22 Sep </h3>
-            </div>
-            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                <p class="time fz-14">Lorem Ipsum is simply dummy text of the printing and typesetting
-                    industry. </p>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                <a href="images/Test.pdf">
-                    <i class="fa fa-download next fz-24 text-center"></i>
-                </a>
-            </div>
-
-        </div>
-        <!----------------------------------------->
-        <!----------------------------------------->
-
-        <div class="row white">
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                <h3 class="status fz-16">22 Sep </h3>
-            </div>
-            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                <p class="time fz-14">Lorem Ipsum is simply dummy text of the printing and typesetting
-                    industry. </p>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                <a href="images/Test.pdf">
-                    <i class="fa fa-download next fz-24 text-center"></i>
-                </a>
-            </div>
-
-        </div>
-        <!----------------------------------------->
-        <!----------------------------------------->
-
-        <div class="row white">
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                <h3 class="status fz-16">22 Sep </h3>
-            </div>
-            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                <p class="time fz-14">Lorem Ipsum is simply dummy text of the printing and typesetting
-                    industry. </p>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                <a href="images/Test.pdf">
-                    <i class="fa fa-download next fz-24 text-center"></i>
-                </a>
-            </div>
-
-        </div>
-        <!----------------------------------------->
-        <!----------------------------------------->
-
-        <div class="row white">
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                <h3 class="status fz-16">22 Sep </h3>
-            </div>
-            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                <p class="time fz-14">Lorem Ipsum is simply dummy text of the printing and typesetting
-                    industry. </p>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                <a href="images/Test.pdf">
-                    <i class="fa fa-download next fz-24 text-center"></i>
-                </a>
-            </div>
-
-        </div>
-        <!----------------------------------------->
-        <!----------------------------------------->
-
-        <div class="row white">
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                <h3 class="status fz-16">22 Sep </h3>
-            </div>
-            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                <p class="time fz-14">Lorem Ipsum is simply dummy text of the printing and typesetting
-                    industry. </p>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                <a href="images/Test.pdf">
-                    <i class="fa fa-download next fz-24 text-center"></i>
-                </a>
-            </div>
-
-        </div>
-        <!----------------------------------------->
-        <!----------------------------------------->
-
-        <div class="row white">
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                <h3 class="status fz-16">22 Sep </h3>
-            </div>
-            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                <p class="time fz-14">Lorem Ipsum is simply dummy text of the printing and typesetting
-                    industry. </p>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                <a href="images/Test.pdf">
-                    <i class="fa fa-download next fz-24 text-center"></i>
-                </a>
-            </div>
-
-        </div>
-        <!----------------------------------------->
-
-
 
     </div>
 
@@ -192,6 +73,12 @@
     <script src="{{asset('js/pagination/pagination.js')}}"></script>
 
     <script>
+        $(document).ready(function () {
+            var cancelledItemsCount = $('#statementsTable').data('count');
 
+            if (cancelledItemsCount > 20) {
+                paginationHandler('#statementsTable', '#statementsPagination', cancelledItemsCount)
+            }
+        })
     </script>
 @endsection
