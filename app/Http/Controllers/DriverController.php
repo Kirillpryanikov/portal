@@ -89,13 +89,13 @@ class DriverController extends Controller
     //get booking detail
     public function getBookingDetail($trip_no, $id){
         $this->getDriver($id);
-        
+
         $this->data['details'] = Invoice::where('trip_no', $trip_no)->first();
         if(count($this->data['details'])){
             $this->data['details'] = $this->data['details']->toArray();
         }
 
-        $this->data['trip'] = Trip::where('trip_no', $trip_no)->first()->toArray();
+        $this->data['trip'] = Trip::where('trip_no', $trip_no)->first();
         if(count($this->data['trip'])){
             $this->data['trip'] = $this->data['trip']->toArray();
         }
