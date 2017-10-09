@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row white">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <p style="" class="breadcrumb"><a href="{{route('menu')}}">Drivers Names</a> &gt; <a href="{{route('personal_menu',$driver['_id'])}}">{{$driver['full_name']}}</a> &gt; Bookings</p>
+                <p style class="breadcrumb"><a href="{{route('menu')}}">Drivers Names</a> &gt; <a href="{{route('personal_menu',$driver['_id'])}}">{{$driver['full_name']}}</a> &gt; Bookings</p>
             </div>
         </div>
     </div>
@@ -13,10 +13,10 @@
 
         <!-- Nav tabs -->
         <ul class="nav nav-tabs row gray" role="tablist">
-            <li class="nav-item col-lg-6 col-md-6 col-sm-6 col-xs-6 ">
+            <li class="nav-item col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6 ">
                 <a class="nav-link text-center active" data-toggle="tab" id="bookings" href="#bookingsSection" role="tab">Booking History</a>
             </li>
-            <li class="nav-item col-lg-6 col-md-6 col-sm-6 col-xs-6 ">
+            <li class="nav-item col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6 ">
                 <a class="nav-link text-center" data-toggle="tab" id="cancelled" href="#cancelledSection" role="tab">Missed</a>
             </li>
         </ul>
@@ -28,16 +28,16 @@
                 @foreach($bookings as $booking)
                     <a href="{{route('get_booking_detail', [$booking['trip_no'], $booking['driver_id']])}}" class="collapse">
                         <div class="row white">
-                            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                            <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                 <p class="time">{{$booking['created_at']}}</p>
                                 <h3 class="status status-bookings status-line green">{{$booking['trip_no']}}</h3>
                             </div>
-                            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                            <div class="col-3 col-lg-4 col-md-4 col-sm-4 col-xs-4">
 
                                 <h3 class="status rs">Rs. {{$rs_driver}}</h3>
                                 <p class="time rs-compl green">{{$booking['status']}}</p>
                             </div>
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"> <i class="fa fa-arrow-right pull-right next mt-14"></i> </div>
+                            <div class="col-3 col-lg-2 col-md-2 col-sm-2 col-xs-2"> <i class="fa fa-arrow-right pull-right next mt-14"></i> </div>
                         </div>
                     </a>
                 @endforeach
@@ -49,11 +49,11 @@
                 @foreach($misseds as $missed)
                 <a href="{{route('get_missed_detail', [$missed['trip_no'], $missed['driver_id']])}}" class="collapse" data-row="{{$loop->index+1}}">
                     <div class="row white">
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
                             <p class="time">{{$missed['created_at']}}</p>
                             <h3 class="status status-bookings status-line green">{{$missed['trip_no']}}</h3>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
                             <h3 class="status status-line red pull-right mt-4">{{$missed['status']}}</h3>
                         </div>
                     </div>

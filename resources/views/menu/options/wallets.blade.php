@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row white">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                {{--<p style="" class="breadcrumb"><a href="{{route('menu')}}">Drivers Names</a> &gt; <a href="{{route('personal_menu',$driver['_id'])}}">{{$driver['full_name']}}</a> &gt; Wallets</p>--}}
+                <p class="breadcrumb"><a href="{{route('menu')}}">Drivers Names</a> &gt; <a href="{{route('personal_menu',$driver['_id'])}}">{{$driver['full_name']}}</a> &gt; Wallets</p>
             </div>
         </div>
     </div>
@@ -31,16 +31,16 @@
         <!----------------------------------------->
         <!----------------------------------------->
         <div class="row gray">
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <div class="col-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
                 <h3 class="status text-center fz-16">Titles</h3>
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <div class="col-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
                 <h3 class="status text-center fz-16">Amount</h3>
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <div class="col-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
                 <h3 class="status text-center fz-16">Transfer</h3>
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <div class="col-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
                 <h3 class="status text-center fz-16">Balance</h3>
             </div>
         </div>
@@ -55,20 +55,20 @@
             $timeStr = date('g:i A', $dateTime);
             ?>
             <div class="row white collapse">
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                <div class="col-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
                     <p class="fz-10 mt-20 mb-10">{{$wallet['trip_no']}}</p>
                     <h3 class="status m-0 fz-16 p-0">{{$wallet['title']}}</h3>
-                    <p class="mb-10 fz-10 mt-10">{{$wallet['last_received_via']}}</p>
+                    <p class="mb-10 fz-10 mt-10">{{$wallet['comments']}}</p>
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                <div class="col-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
                     <h3 class="status mt-45 fz-16 p-0 text-center green">{{$wallet['total']}}</h3>
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                <div class="col-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
                     <p class="fz-10 mt-20 mb-10"><?php echo $dateStr;?></p>
                     <h3 class="status m-0 p-0 fz-16">{{$wallet['transfer']}}</h3>
                     <p class="time fz-10 mt-10"><?php echo $timeStr;?></p>
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                <div class="col-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
                     <h3 class="status mt-45  p-0 fz-16 text-center green">{{$wallet['balance']}}</h3>
                 </div>
             </div>
