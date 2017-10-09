@@ -16,6 +16,7 @@
                 <h1 class="status text-center">Complaints Filed</h1>
             </div>
         </div>
+        <?php dd($complaints_fileds) ?>
         <!----------------------------------------->
 
         <!----------------------------------------->
