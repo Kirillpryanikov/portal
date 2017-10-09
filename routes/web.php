@@ -28,4 +28,6 @@ Route::prefix('investor')->group(function () {
     Route::get('/wallets/{id}', 'DriverController@getWallets')->name('get_wallets');
     Route::get('/complaints_filed/{id}', 'DriverController@getComplaintsFiled')->name('get_complaints_filed');
     Route::get('/statements/{id}', 'DriverController@getStatements')->name('get_statements');
+    Route::get('/settings-change/{id}', 'DriverController@getMessage')->name('get_message');
+    Route::post('/send_message', 'DriverController@sendMessage')->name('post_send_message');
 });
