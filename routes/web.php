@@ -18,3 +18,16 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::prefix('investor')->group(function () {
+    Route::get('/menu', 'DriverController@getDrivers')->name('menu');
+    Route::get('/{id}', 'DriverController@getDriverMenu')->name('personal_menu');
+    Route::get('/booking/{id}', 'DriverController@getBooking')->name('menu_booking');
+    Route::get('/settings/{id}', 'DriverController@getDriverProfile')->name('get_driver_profile');
+    Route::get('/booking/detail/{trip_no}/{driver_id}', 'DriverController@getBookingDetail')->name('get_booking_detail');
+    Route::get('/missed/detail/{trip_no}/{driver_id}', 'DriverController@getBookingDetail')->name('get_missed_detail');
+    Route::get('/wallets/{id}', 'DriverController@getWallets')->name('get_wallets');
+    Route::get('/complaints_filed/{id}', 'DriverController@getComplaintsFiled')->name('get_complaints_filed');
+    Route::get('/statements/{id}', 'DriverController@getStatements')->name('get_statements');
+    Route::get('/settings-change/{id}', 'DriverController@getMessage')->name('get_message');
+    Route::post('/send_message', 'DriverController@sendMessage')->name('post_send_message');
+});
