@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <!----------------------------------------->
-        <div class="row col-sm-6 offset-sm-3 mt-45">
+        <div class="row col-10 offset-1 col-sm-6 offset-sm-3 mt-20vh">
             <div class="bg-white">
                 <img src="{{asset('images/not_found.jpg')}}" style="max-width: 100%;height: auto" alt="Not Found">
             </div>

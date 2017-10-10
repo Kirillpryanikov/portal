@@ -36,18 +36,18 @@ $timeStr = date('g:i A', $dateTime);
 
 <!----------------------------------------->
         <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <h3 class="status pull-left">Booking Time</h3>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <h3 class="status pull-right font-thin fz-16"><?php echo "$dateStr, $timeStr" ?></h3>
             </div>
         </div>
         <div class="row white">
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <h3 class="status pull-left">Service Type</h3>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <h3 class="status pull-right font-thin fz-16">{{$trip['trip_type']}}</h3>
             </div>
         </div>
@@ -55,10 +55,10 @@ $timeStr = date('g:i A', $dateTime);
         <!----------------------------------------->
         <!----------------------------------------->
         <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <h3 class="status pull-left">{{$details['km']}} km</h3>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <h3 class="status pull-right font-thin fz-16">{{$details['price_km']}}</h3>
             </div>
         </div>
@@ -66,12 +66,12 @@ $timeStr = date('g:i A', $dateTime);
         <!----------------------------------------->
         <!----------------------------------------->
         <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <h3 class="status pull-left">{{$details['minutes']}} min</h3>
             </div>
             <?php $cost = $details['minutes'] * $details['trip_charges']; ?>
 
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <h3 class="status pull-right font-thin fz-16"><?php echo $cost; ?></h3>
             </div>
         </div>
@@ -79,10 +79,10 @@ $timeStr = date('g:i A', $dateTime);
         <!----------------------------------------->
         <!----------------------------------------->
         <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <h3 class="status pull-left">Base Fare</h3>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <h3 class="status pull-right font-thin fz-16">{{$details['base_fare']}}</h3>
             </div>
         </div>
@@ -90,10 +90,10 @@ $timeStr = date('g:i A', $dateTime);
         <!----------------------------------------->
         <!----------------------------------------->
         <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <h3 class="status pull-left">Fare</h3>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <h3 class="status pull-right font-thin fz-16">{{$details['trip_charges']}}</h3>
             </div>
         </div>
@@ -101,10 +101,10 @@ $timeStr = date('g:i A', $dateTime);
         <!----------------------------------------->
         <!----------------------------------------->
         <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <h3 class="status pull-left">Promo</h3>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <h3 class="status pull-right font-thin fz-16">{{$details['promo_deduction']}}</h3>
             </div>
         </div>
@@ -112,10 +112,10 @@ $timeStr = date('g:i A', $dateTime);
         <!----------------------------------------->
         <!----------------------------------------->
         <div class="row white">
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <h3 class="status pull-left">Wallet</h3>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <h3 class="status pull-right font-thin fz-16">{{$details['wallet_deduction']}}</h3>
             </div>
         </div>
@@ -123,10 +123,10 @@ $timeStr = date('g:i A', $dateTime);
         <!----------------------------------------->
         <!----------------------------------------->
         <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <h3 class="status pull-left fz-24">Total</h3>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <h3 class="status pull-right font-thin fz-24">Rs {{$details['total']}}</h3>
             </div>
         </div>
@@ -134,10 +134,10 @@ $timeStr = date('g:i A', $dateTime);
         <!----------------------------------------->
         <!----------------------------------------->
         <div class="row white">
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <h3 class="status pull-left green">Amount Top Up</h3>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <h3 class="status pull-right font-thin fz-16">Rs. {{$details['remaining_amount']}}</h3>
             </div>
         </div>
