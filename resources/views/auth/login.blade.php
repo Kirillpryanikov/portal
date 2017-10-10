@@ -10,7 +10,7 @@
                     </div>
                 </div>
                 <div class="mt-20">
-                    <form id="loginForm" class="full-width" method="POST" action="{{route('post_send_message')}}">
+                    <form id="loginForm" class="full-width" method="POST" action="{{route('Login_post')}}">
                         {{ csrf_field() }}
                         <div class="input-group mt-20">
                             <span class="input-group-addon" id="basic-addon3"><i class="fa fa-user text-white"></i></span>
