@@ -10,7 +10,7 @@
                     </div>
                 </div>
                 <div class="mt-20">
-                    <form id="changePasswordForm" class="full-width" method="POST" action="">
+                    <form id="changePasswordForm" class="full-width" method="POST" action="{{route('change_password_post')}}">
                         {{ csrf_field() }}
                         <input type="hidden" name="driver_id" value="{{$driver['_id']}}">
                         <input type="password" name="password_old" id="password_old"  class="form-control login-input"
