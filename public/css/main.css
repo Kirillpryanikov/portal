@@ -176,6 +176,9 @@ a:hover{
 .modal-close:hover i {
     color: darkred;
 }
+#activateProfile {
+    margin-right: 0;
+}
 
 /*
 **  ****************************
@@ -197,12 +200,32 @@ a:hover{
     background-color: #390;
     color: #ffffff;
 }
+.input-group-addon {
+    border-radius: 0;
+    border:2px solid #333;
+    padding:0;
+    width: 54px;
+    font-size: 36px;
+    background-color: #03ab31;
+    height: 54px;
+}
+.login-input {
+    border:1px solid #000;
+    height:54px;
+    padding: 10px;
+    border-radius: 0;
+    font-size: 20px;
+    color: rgb(51,51,51);
+}
 .breadcrumb {
     margin-bottom: 0;
     background-color: #ffffff;
 }
 .hgt-54 {
     height: 54px;
+}
+.hgt-95{
+    height: 95px;
 }
 .mt-10 {
     margin-top: 10px;
@@ -215,6 +238,9 @@ a:hover{
 }
 .mt-45 {
     margin-top: 45px;
+}
+.mt-10vh {
+    margin-top: 10vh;
 }
 .mt-20vh {
     margin-top: 20vh;
@@ -274,4 +300,11 @@ label {
 }
 .full-width {
     width: 100%;
+}
+.error {
+    display: none;
+    color: #ad0000;
+}
+.error.active {
+    display: inline;
 }
