@@ -12,6 +12,7 @@ class UserController extends Controller
     }
 
     public function login(Request $request){
+        return redirect()->route('menu');
         $request['username'];
         $request['password'];
     }
@@ -23,6 +24,8 @@ class UserController extends Controller
     }
 
     public function changePassword(Request $request){
+        return redirect()->route('menu');
+
         $driver = Driver::where('_id', $request['driver_id'])->first()->toArray();
 
         $request['password_old'];
