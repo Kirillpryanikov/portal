@@ -20,13 +20,13 @@
         <!----------------------------------------->
         <a href="#" class="modal-executer" data-modal="gpsModal">
             <div class="row white">
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <div class="col-3 col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     <h3 class="driver-name font-thin">GPS</h3>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <h3 id="gpsModalValue" class="driver-name font-thin">{{$driver['last_lat']}}&nbsp;{{$driver['last_lng']}}</h3>
+                <div class="col-7 col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <h3 id="gpsModalValue" class="ps-15 driver-name font-thin">{{$driver['last_lat']}}, {{$driver['last_lng']}}</h3>
                 </div>
-                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"><i class="fa fa-arrow-right pull-right next"></i>
+                    <div class="text-right col-2 col-lg-2 col-md-2 col-sm-2 col-xs-2"><i class="fa fa-arrow-right pull-right next"></i>
                 </div>
             </div>
         </a>
@@ -34,13 +34,13 @@
         <!----------------------------------------->
         <a href="#" class="modal-executer" data-modal="addressModal">
             <div class="row white">
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <div class="col-3 col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     <h3 class="driver-name font-thin">Address</h3>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <h3 id="addressModalValue" class="driver-name font-thin">{{$driver['address']}}</h3>
+                <div class="col-7 col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <h3 id="addressModalValue" class="ps-15 driver-name font-thin">{{$driver['address']}}</h3>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"><i class="fa fa-arrow-right pull-right next"></i>
+                <div class="text-right col-2 col-lg-2 col-md-2 col-sm-2 col-xs-2"><i class="fa fa-arrow-right pull-right next"></i>
                 </div>
             </div>
         </a>
@@ -48,13 +48,13 @@
         <!----------------------------------------->
         <a href="#" class="modal-executer" data-modal="cityModal">
             <div class="row white">
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <div class="col-3 col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     <h3 class="driver-name font-thin">City</h3>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <h3 id="cityModalValue" class="driver-name font-thin">{{$driver['address']}}</h3>
+                <div class="col-7 col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <h3 id="cityModalValue" class="ps-15 driver-name font-thin">{{$driver['city_data']['name']}}</h3>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"><i class="fa fa-arrow-right pull-right next"></i>
+                <div class="text-right col-2 col-lg-2 col-md-2 col-sm-2 col-xs-2"><i class="fa fa-arrow-right pull-right next"></i>
                 </div>
             </div>
         </a>
@@ -62,13 +62,13 @@
         <!----------------------------------------->
         <a href="#" class="modal-executer" data-modal="licenseModal">
             <div class="row white">
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <div class="col-3 col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     <h3 class="driver-name font-thin">License #</h3>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <h3 id="licenseModalValue" class="driver-name font-thin">{{$driver['driver_license_number']}}</h3>
+                <div class="col-7 col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <h3 id="licenseModalValue" class="ps-15 driver-name font-thin">{{$driver['driver_license_number']}}</h3>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"><i class="fa fa-arrow-right pull-right next"></i>
+                <div class="text-right col-2 col-lg-2 col-md-2 col-sm-2 col-xs-2"><i class="fa fa-arrow-right pull-right next"></i>
                 </div>
             </div>
         </a>
@@ -76,39 +76,39 @@
         <!----------------------------------------->
         <a href="#" class="modal-executer" data-modal="phoneModal">
             <div class="row white">
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <div class="col-3 col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     <h3 class="driver-name font-thin">Mobile (Company Provided)</h3>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <h3 id="phoneModalValue" class="driver-name font-thin">{{$driver['phone']}}</h3>
+                <div class="col-7 col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <h3 id="phoneModalValue" class="ps-15 driver-name font-thin">{{$driver['phone']}}</h3>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"><i class="fa fa-arrow-right pull-right next"></i>
+                <div class="text-right col-2 col-lg-2 col-md-2 col-sm-2 col-xs-2"><i class="fa fa-arrow-right pull-right next"></i>
                 </div>
             </div>
         </a>
         <!-----------------------------------------> <!----------------------------------------->
         <a href="#" class="modal-executer" data-modal="mobile1Modal">
             <div class="row white">
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <div class="col-3 col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     <h3 class="driver-name font-thin">Mobile (Personal 1)</h3>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <h3 id="mobile1ModalValue" class="driver-name font-thin">{{$driver['mobile_1']}}</h3>
+                <div class="col-7 col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <h3 id="mobile1ModalValue" class="ps-15 driver-name font-thin">{{$driver['mobile_1']}}</h3>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"><i class="fa fa-arrow-right pull-right next"></i>
+                <div class="text-right col-2 col-lg-2 col-md-2 col-sm-2 col-xs-2"><i class="fa fa-arrow-right pull-right next"></i>
                 </div>
             </div>
         </a>
         <!-----------------------------------------> <!----------------------------------------->
         <a href="#" class="modal-executer" data-modal="mobile2Modal">
             <div class="row white">
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <div class="col-3 col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     <h3 class="driver-name font-thin">Mobile (Personal 2)</h3>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <h3 id="mobile2ModalValue" class="driver-name font-thin">{{$driver['mobile_2']}}</h3>
+                <div class="col-7 col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <h3 id="mobile2ModalValue" class="ps-15 driver-name font-thin">{{$driver['mobile_2']}}</h3>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"><i class="fa fa-arrow-right pull-right next"></i>
+                <div class="text-right col-2 col-lg-2 col-md-2 col-sm-2 col-xs-2"><i class="fa fa-arrow-right pull-right next"></i>
                 </div>
             </div>
         </a>
@@ -116,13 +116,13 @@
         <!----------------------------------------->
         <a href="#" class="modal-executer" data-modal="emailModal">
             <div class="row white">
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <div class="col-3 col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     <h3 class="driver-name font-thin">Email</h3>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <h3 id="emailModalValue" class="driver-name font-thin">{{$driver['email']}}</h3>
+                <div class="col-7 col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <h3 id="emailModalValue" class="ps-15 driver-name font-thin">{{$driver['email']}}</h3>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"><i class="fa fa-arrow-right pull-right next"></i>
+                <div class="text-right col-2 col-lg-2 col-md-2 col-sm-2 col-xs-2"><i class="fa fa-arrow-right pull-right next"></i>
                 </div>
             </div>
         </a>
@@ -130,13 +130,13 @@
         <!----------------------------------------->
         <a href="#">
             <div class="row white">
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <div class="col-3 col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     <h3 class="driver-name font-thin">Activation</h3>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                    <h3 class="driver-name font-thin">{{$driver['updated_at']}}</h3>
+                <div class="col-7 col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <h3 class="ps-15 driver-name font-thin">{{$driver['updated_at']}}</h3>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <div class="text-right col-2 col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     <input id="activateProfile" type="checkbox" data-id="{{$driver['_id']}}" class="pull-right">
                     <h3 class="driver-name pull-right red"><label for="activateProfile"> Deactive</label></h3>
                 </div>
@@ -147,8 +147,8 @@
     </div>
 
     {{------------ gps Modal Window --------------------}}
-    <div id="gpsModal" class="modal-container">
-        <div class="container">
+    <div id="gpsModal" class="modal-container col-12 col-sm-6 offset-sm-3 col-lg-4 offset-lg-4">
+        <div class="full-width">
             <div class="white">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <h1 class="status text-center">GPS</h1>
@@ -156,7 +156,7 @@
             </div>
 
             <div class="row">
-                <form id="gpsModalForm" class="container" method="POST" action="{{route('post_send_message')}}">
+                <form id="gpsModalForm" class="full-width" method="POST" action="{{route('post_send_message')}}">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     {{ csrf_field() }}
                     <input type="hidden" name="driver_id" value="{{$driver['_id']}}">
@@ -167,12 +167,13 @@
                 </form>
             </div>
         </div>
+        <div class="modal-close" data-close="gpsModal"><i class="fa fa-lg fa-window-close" aria-hidden="true"></i></div>
     </div>
     {{------------ end of gps Modal Window -------------}}
 
     {{------------ address Modal Window --------------------}}
-    <div id="addressModal" class="modal-container">
-        <div class="container">
+    <div id="addressModal" class="modal-container col-12 col-sm-6 offset-sm-3 col-lg-4 offset-lg-4">
+        <div class="full-width">
             <div class="white">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
@@ -181,23 +182,24 @@
             </div>
 
             <div class="row">
-                <form id="addressModalForm" class="container" method="POST" action="{{route('post_send_message')}}">
+                <form id="addressModalForm" class="full-width" method="POST" action="{{route('post_send_message')}}">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         {{ csrf_field() }}
                         <input type="hidden" name="driver_id" value="{{$driver['_id']}}">
                         <input type="hidden" name="param_name"  value="address">
-                        <textarea name="" placeholder="Address" class="modal-text-area" id="addressModalData"></textarea>
+                        <textarea  name="param_value" placeholder="Address" class="modal-text-area" id="addressModalData"></textarea>
                         <input type="submit" class="modal-submit" data-modal="addressModal" value="Request For Change">
                     </div>
                 </form>
             </div>
         </div>
+        <div class="modal-close" data-close="addressModal"><i class="fa fa-lg fa-window-close" aria-hidden="true"></i></div>
     </div>
     {{------------ end of address Modal Window -------------}}
 
     {{------------ city Modal Window --------------------}}
-    <div id="cityModal" class="modal-container">
-        <div class="container">
+    <div id="cityModal" class="modal-container col-12 col-sm-6 offset-sm-3 col-lg-4 offset-lg-4">
+        <div class="full-width">
             <div class="white">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
@@ -206,23 +208,24 @@
             </div>
 
             <div class="row">
-                <form id="cityModalForm" class="container" method="POST" action="{{route('post_send_message')}}">
+                <form id="cityModalForm" class="full-width" method="POST" action="{{route('post_send_message')}}">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         {{ csrf_field() }}
                         <input type="hidden" name="driver_id" value="{{$driver['_id']}}">
                         <input type="hidden" name="param_name"  value="city">
-                        <textarea placeholder="City" class="modal-text-area" id="cityModalData"></textarea>
+                        <textarea placeholder="City" name="param_value" class="modal-text-area" id="cityModalData"></textarea>
                         <input type="submit" class="modal-submit" data-modal="cityModal" value="Request For Change">
                     </div>
                 </form>
             </div>
         </div>
+        <div class="modal-close" data-close="cityModal"><i class="fa fa-lg fa-window-close" aria-hidden="true"></i></div>
     </div>
     {{------------ end of city Modal Window -------------}}
 
     {{------------ license Modal Window --------------------}}
-    <div id="licenseModal" class="modal-container">
-        <div class="container">
+    <div id="licenseModal" class="modal-container col-12 col-sm-6 offset-sm-3 col-lg-4 offset-lg-4">
+        <div class="full-width">
             <div class="white">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
@@ -231,23 +234,24 @@
             </div>
 
             <div class="row">
-                <form id="licenseModalForm" class="container" method="POST" action="{{route('post_send_message')}}">
+                <form id="licenseModalForm" class="full-width" method="POST" action="{{route('post_send_message')}}">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         {{ csrf_field() }}
                         <input type="hidden" name="driver_id" value="{{$driver['_id']}}">
                         <input type="hidden" name="param_name"  value="driver_license_number">
-                        <textarea placeholder="License number" class="modal-text-area" id="licenseModalData"></textarea>
+                        <textarea placeholder="License number" name="param_value" class="modal-text-area" id="licenseModalData"></textarea>
                         <input type="submit" class="modal-submit" data-modal="licenseModal" value="Request For Change">
                     </div>
                 </form>
             </div>
         </div>
+        <div class="modal-close" data-close="licenseModal"><i class="fa fa-lg fa-window-close" aria-hidden="true"></i></div>
     </div>
     {{------------ end of license Modal Window -------------}}
 
     {{------------ phone Modal Window --------------------}}
-    <div id="phoneModal" class="modal-container">
-        <div class="container">
+    <div id="phoneModal" class="modal-container col-12 col-sm-6 offset-sm-3 col-lg-4 offset-lg-4">
+        <div class="full-width">
             <div class="white">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
@@ -256,23 +260,24 @@
             </div>
 
             <div class="row">
-                <form id="phoneModalForm" class="container" method="POST" action="{{route('post_send_message')}}">
+                <form id="phoneModalForm" class="full-width" method="POST" action="{{route('post_send_message')}}">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         {{ csrf_field() }}
                         <input type="hidden" name="driver_id" value="{{$driver['_id']}}">
                         <input type="hidden" name="param_name"  value="phone">
-                        <textarea placeholder="Phone number(Company provided)" class="modal-text-area" id="phoneModalData"></textarea>
+                        <textarea placeholder="Phone number(Company provided)" name="param_value" class="modal-text-area" id="phoneModalData"></textarea>
                         <input type="submit" class="modal-submit" data-modal="phoneModal" value="Request For Change">
                     </div>
                 </form>
             </div>
         </div>
+        <div class="modal-close" data-close="phoneModal"><i class="fa fa-lg fa-window-close" aria-hidden="true"></i></div>
     </div>
     {{------------ end of phone Modal Window -------------}}
 
     {{------------ mobile1 Modal Window --------------------}}
-    <div id="mobile1Modal" class="modal-container">
-        <div class="container">
+    <div id="mobile1Modal" class="modal-container col-12 col-sm-6 offset-sm-3 col-lg-4 offset-lg-4">
+        <div class="full-width">
             <div class="white">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
@@ -281,23 +286,24 @@
             </div>
 
             <div class="row">
-                <form id="mobile1ModalForm" class="container" method="POST" action="{{route('post_send_message')}}">
+                <form id="mobile1ModalForm" class="full-width" method="POST" action="{{route('post_send_message')}}">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         {{ csrf_field() }}
                         <input type="hidden" name="driver_id" value="{{$driver['_id']}}">
                         <input type="hidden" name="param_name"  value="mobile_1">
-                        <textarea placeholder="Phone number (Personal 1)" class="modal-text-area" id="mobile1ModalData"></textarea>
+                        <textarea placeholder="Phone number (Personal 1)" name="param_value" class="modal-text-area" id="mobile1ModalData"></textarea>
                         <input type="submit" class="modal-submit" data-modal="mobile1Modal" value="Request For Change">
                     </div>
                 </form>
             </div>
         </div>
+        <div class="modal-close" data-close="mobile1Modal"><i class="fa fa-lg fa-window-close" aria-hidden="true"></i></div>
     </div>
     {{------------ end of mobile1 Modal Window -------------}}
 
     {{------------ mobile2 Modal Window --------------------}}
-    <div id="mobile2Modal" class="modal-container">
-        <div class="container">
+    <div id="mobile2Modal" class="modal-container col-12 col-sm-6 offset-sm-3 col-lg-4 offset-lg-4">
+        <div class="full-width">
             <div class="white">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
@@ -306,23 +312,24 @@
             </div>
 
             <div class="row">
-                <form id="Phone number (Personal 1)" class="container" method="POST" action="{{route('post_send_message')}}">
+                <form id="mobile2ModalForm" class="full-width" method="POST" action="{{route('post_send_message')}}">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         {{ csrf_field() }}
                         <input type="hidden" name="driver_id" value="{{$driver['_id']}}">
                         <input type="hidden" name="param_name"  value="mobile_2">
-                        <textarea placeholder="GPS coordinates" class="modal-text-area" id="mobile2ModalData"></textarea>
+                        <textarea placeholder="Phone number (Personal 2)" name="param_value" class="modal-text-area" id="mobile2ModalData"></textarea>
                         <input type="submit" class="modal-submit" data-modal="mobile2Modal" value="Request For Change">
                     </div>
                 </form>
             </div>
         </div>
+        <div class="modal-close" data-close="mobile2Modal"><i class="fa fa-lg fa-window-close" aria-hidden="true"></i></div>
     </div>
     {{------------ end of mobile2 Modal Window -------------}}
 
     {{------------ email Modal Window --------------------}}
-    <div id="emailModal" class="modal-container">
-        <div class="container">
+    <div id="emailModal" class="modal-container col-12 col-sm-6 offset-sm-3 col-lg-4 offset-lg-4">
+        <div class="full-width">
             <div class="white">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
@@ -331,17 +338,18 @@
             </div>
 
             <div class="row">
-                <form id="emailModalForm" class="container" method="POST" action="{{route('post_send_message')}}">
+                <form id="emailModalForm" class="full-width" method="POST" action="{{route('post_send_message')}}">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         {{ csrf_field() }}
                         <input type="hidden" name="driver_id" value="{{$driver['_id']}}">
                         <input type="hidden" name="param_name"  value="email">
-                        <textarea placeholder="GPS coordinates" class="modal-text-area" id="emailModalData"></textarea>
+                        <textarea placeholder="Enter Email" name="param_value" class="modal-text-area" id="emailModalData"></textarea>
                         <input type="submit" class="modal-submit" data-modal="emailModal" value="Request For Change">
                     </div>
                 </form>
             </div>
         </div>
+        <div class="modal-close" data-close="emailModal"><i class="fa fa-lg fa-window-close" aria-hidden="true"></i></div>
     </div>
     {{------------ end of email Modal Window -------------}}
 
@@ -392,7 +400,12 @@
                 modal.addClass('active');
             });
 
-
+            //hide Modal Window
+            $(document).on('click', '.modal-close', function () {
+                var modId = $(this).data('close');
+                var modal = $('#'+modId);
+                modal.removeClass('active');
+            });
 
         })
     </script>
