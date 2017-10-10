@@ -301,3 +301,10 @@ label {
 .full-width {
     width: 100%;
 }
+.error {
+    display: none;
+    color: #ad0000;
+}
+.error.active {
+    display: inline;
+}
