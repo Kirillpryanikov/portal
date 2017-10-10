@@ -15,11 +15,14 @@
 <body>
 <header>
     <div class="container">
-        <div class="row">
+        <div class="row header-not-login">
             <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6 hgt-54 d-flex align-items-center">
                 <img src="{{asset('images/logo.gif')}}" width="80" height="25" alt="logo"/>
             </div>
             @yield('password_link')
+        </div>
+        <div class="row header-login hgt-95 d-flex align-items-center justify-content-center">
+            <img src="{{asset('images/logo.gif')}}" width="200" height="55" alt="logo"/>
         </div>
     </div>
 </header>
@@ -28,5 +31,15 @@
 <script src="{{asset('js/tether/tether.min.js')}}"></script>
 <script src="{{asset('js/bootstrap/bootstrap.min.js')}}"></script>
     @yield('scripts')
+<script>
+    $(document).ready(function () {
+        if (window.location.pathname == '/login'||window.location.pathname == '/change_password') {
+            $('.header-not-login').css('display', 'none');
+            $('.header-login').css('display', 'block');
+            $('header').height('95px');
+        }
+        //console.log(window.location.pathname);
+    })
+</script>
 </body>
 </html>
