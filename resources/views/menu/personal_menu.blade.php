@@ -22,8 +22,7 @@
     </a>
     <!----------------------------------------->
     <!----------------------------------------->
-    <?php $linkedAddress = str_replace ( " " , "+" , $driver['address'] )?>
-    <a href="https://www.google.com/maps/place/<?php echo $linkedAddress?>">
+    <a href="https://www.google.com/maps?q=loc:{{$driver['last_lat']}},{{$driver['last_lng']}}">
         <div class="row white">
             <div class="col-9 col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <h3 class="driver-name font-thin">Location</h3>

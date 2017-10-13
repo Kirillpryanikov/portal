@@ -47,17 +47,21 @@
             </div>
             <div class="tab-pane" data-count="{{count($misseds)}}" id="cancelledSection" role="tabpanel">
                 @foreach($misseds as $missed)
-                <a href="{{route('get_missed_detail', [$missed['trip_no'], $missed['driver_id']])}}" class="collapse" data-row="{{$loop->index+1}}">
-                    <div class="row white">
-                        <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                            <p class="time">{{$missed['created_at']}}</p>
-                            <h3 class="status status-bookings status-line green">{{$missed['trip_no']}}</h3>
-                        </div>
-                        <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                            <h3 class="status status-line red pull-right mt-4">{{$missed['status']}}</h3>
-                        </div>
-                    </div>
-                </a>
+
+                    {{-- "If" works, but pagination doesn't. Better to solve only "missed problem from the backend" --}}
+                    @if($missed['status']=='missed')
+                        <a href="{{route('get_missed_detail', [$missed['trip_no'], $missed['driver_id']])}}" class="collapse" data-row="{{$loop->index+1}}">
+                            <div class="row white">
+                                <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <p class="time">{{$missed['created_at']}}</p>
+                                    <h3 class="status status-bookings status-line green">{{$missed['trip_no']}}</h3>
+                                </div>
+                                <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <h3 class="status status-line red pull-right mt-4">{{$missed['status']}}</h3>
+                                </div>
+                            </div>
+                        </a>
+                    @endif
                 @endforeach
                 <nav id="missedsPagination" class="mt-4 collapse" aria-label="Misseds navigation">
                     <ul class="pagination justify-content-center"></ul>
