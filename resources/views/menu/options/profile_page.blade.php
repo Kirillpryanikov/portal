@@ -134,11 +134,14 @@
                     <h3 class="driver-name font-thin">Activation</h3>
                 </div>
                 <div class="col-7 col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                    <h3 class="ps-15 driver-name font-thin">{{$driver['updated_at']}}</h3>
+                    <h3 class="ps-15 driver-name font-thin">{{(isset($driver['updated_at']))?$driver['updated_at']:''}}</h3>
                 </div>
                 <div class="text-right col-2 col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                    <input id="activateProfile" type="checkbox" data-id="{{$driver['_id']}}" class="pull-right">
-                    <h3 class="driver-name pull-right red"><label for="activateProfile"> Deactive</label></h3>
+                    @if((isset($driver['status']))&&($driver['status']=='active'))
+                        <h3 class="driver-name pull-right green"><label for="activateProfile"> Active</label></h3>
+                    @else
+                        <h3 class="driver-name pull-right red"><label for="activateProfile"> Inactive</label></h3>
+                    @endif
                 </div>
             </div>
         </a>
