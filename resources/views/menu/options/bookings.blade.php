@@ -49,7 +49,7 @@
                 @foreach($misseds as $missed)
 
                     {{-- "If" works, but pagination doesn't. Better to solve only "missed problem from the backend" --}}
-                    @if($missed['status']=='missed')
+                    {{--@if($missed['status']=='missed')--}}
                         <a href="{{route('get_missed_detail', [$missed['trip_no'], $missed['driver_id']])}}" class="collapse" data-row="{{$loop->index+1}}">
                             <div class="row white">
                                 <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -61,7 +61,7 @@
                                 </div>
                             </div>
                         </a>
-                    @endif
+                    {{--@endif--}}
                 @endforeach
                 <nav id="missedsPagination" class="mt-4 collapse" aria-label="Misseds navigation">
                     <ul class="pagination justify-content-center"></ul>
