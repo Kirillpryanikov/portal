@@ -24,7 +24,7 @@
                     <h3 class="driver-name font-thin">GPS</h3>
                 </div>
                 <div class="col-7 col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <h3 id="gpsModalValue" class="ps-15 driver-name font-thin">{{$driver['last_lat']}}, {{$driver['last_lng']}}</h3>
+                    <h3 id="gpsModalValue" class="ps-15 driver-name font-thin">{{(isset($driver['last_lat']))?$driver['last_lat']:''}}, {{(isset($driver['last_lng']))?$driver['last_lng']:''}}</h3>
                 </div>
                     <div class="text-right col-2 col-lg-2 col-md-2 col-sm-2 col-xs-2"><i class="fa fa-arrow-right pull-right next"></i>
                 </div>
@@ -38,7 +38,7 @@
                     <h3 class="driver-name font-thin">Address</h3>
                 </div>
                 <div class="col-7 col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <h3 id="addressModalValue" class="ps-15 driver-name font-thin">{{$driver['address']}}</h3>
+                    <h3 id="addressModalValue" class="ps-15 driver-name font-thin">{{(isset($driver['phone']))?$driver['phone']:''}}</h3>
                 </div>
                 <div class="text-right col-2 col-lg-2 col-md-2 col-sm-2 col-xs-2"><i class="fa fa-arrow-right pull-right next"></i>
                 </div>
@@ -52,7 +52,7 @@
                     <h3 class="driver-name font-thin">City</h3>
                 </div>
                 <div class="col-7 col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <h3 id="cityModalValue" class="ps-15 driver-name font-thin">{{$driver['city_data']['name']}}</h3>
+                    <h3 id="cityModalValue" class="ps-15 driver-name font-thin">{{(isset($driver['city_data']))?$driver['city_data']['name']:''}}</h3>
                 </div>
                 <div class="text-right col-2 col-lg-2 col-md-2 col-sm-2 col-xs-2"><i class="fa fa-arrow-right pull-right next"></i>
                 </div>
@@ -66,7 +66,7 @@
                     <h3 class="driver-name font-thin">License #</h3>
                 </div>
                 <div class="col-7 col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <h3 id="licenseModalValue" class="ps-15 driver-name font-thin">{{$driver['driver_license_number']}}</h3>
+                    <h3 id="licenseModalValue" class="ps-15 driver-name font-thin">{{(isset($driver['driver_license_number']))?$driver['driver_license_number']:''}}</h3>
                 </div>
                 <div class="text-right col-2 col-lg-2 col-md-2 col-sm-2 col-xs-2"><i class="fa fa-arrow-right pull-right next"></i>
                 </div>
@@ -80,7 +80,7 @@
                     <h3 class="driver-name font-thin">Mobile (Company Provided)</h3>
                 </div>
                 <div class="col-7 col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <h3 id="phoneModalValue" class="ps-15 driver-name font-thin">{{$driver['phone']}}</h3>
+                    <h3 id="phoneModalValue" class="ps-15 driver-name font-thin">{{(isset($driver['phone']))?$driver['phone']:''}}</h3>
                 </div>
                 <div class="text-right col-2 col-lg-2 col-md-2 col-sm-2 col-xs-2"><i class="fa fa-arrow-right pull-right next"></i>
                 </div>
@@ -93,7 +93,7 @@
                     <h3 class="driver-name font-thin">Mobile (Personal 1)</h3>
                 </div>
                 <div class="col-7 col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <h3 id="mobile1ModalValue" class="ps-15 driver-name font-thin">{{$driver['mobile_1']}}</h3>
+                    <h3 id="mobile1ModalValue" class="ps-15 driver-name font-thin">{{(isset($driver['mobile_1']))?$driver['mobile_1']:''}}</h3>
                 </div>
                 <div class="text-right col-2 col-lg-2 col-md-2 col-sm-2 col-xs-2"><i class="fa fa-arrow-right pull-right next"></i>
                 </div>
@@ -106,7 +106,7 @@
                     <h3 class="driver-name font-thin">Mobile (Personal 2)</h3>
                 </div>
                 <div class="col-7 col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <h3 id="mobile2ModalValue" class="ps-15 driver-name font-thin">{{$driver['mobile_2']}}</h3>
+                    <h3 id="mobile2ModalValue" class="ps-15 driver-name font-thin">{{(isset($driver['mobile_2']))?$driver['mobile_2']:''}}</h3>
                 </div>
                 <div class="text-right col-2 col-lg-2 col-md-2 col-sm-2 col-xs-2"><i class="fa fa-arrow-right pull-right next"></i>
                 </div>
@@ -120,7 +120,7 @@
                     <h3 class="driver-name font-thin">Email</h3>
                 </div>
                 <div class="col-7 col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <h3 id="emailModalValue" class="ps-15 driver-name font-thin">{{$driver['email']}}</h3>
+                    <h3 id="emailModalValue" class="ps-15 driver-name font-thin">{{(isset($driver['email']))?$driver['email']:''}}</h3>
                 </div>
                 <div class="text-right col-2 col-lg-2 col-md-2 col-sm-2 col-xs-2"><i class="fa fa-arrow-right pull-right next"></i>
                 </div>
