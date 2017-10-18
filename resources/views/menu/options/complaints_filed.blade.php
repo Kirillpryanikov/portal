@@ -35,37 +35,29 @@
         <!----------------------------------------->
 
         <!----------------------------------------->
-
+        <div id="complaintsTable" data-count="{{count($complaints_fileds)}}">
+        @foreach($complaints_fileds as $complaints_filed)
+        <?php
+        $dateTime = strtotime($complaints_filed['created_at']);
+        $dateStr = date('j M', $dateTime);
+        ?>
         <div class="row white">
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                <h3 class="status fz-16">22 Sep </h3>
+                <h3 class="status fz-16"><?php echo $dateStr ?></h3>
             </div>
             <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                <p class="time fz-14">Lorem Ipsum is simply dummy text of the printing and typesetting
-                    industry. </p>
+                <p class="time fz-14">{{$complaints_filed['description']}}</p>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                <p class="time fz-14">KHI83847 </p>
+                <p class="time fz-14">{{$complaints_filed['trip_id']}}</p>
             </div>
         </div>
-        <!----------------------------------------->
-        <!----------------------------------------->
-
-        <div class="row white">
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                <h3 class="status fz-16">22 Sep </h3>
-            </div>
-            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                <p class="time fz-14">Lorem Ipsum is simply dummy text of the printing and typesetting
-                    industry. </p>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                <p class="time fz-14">KHI83847 </p>
-            </div>
+        @endforeach
+            <nav id="complaintsPagination" class="mt-4 collapse" aria-label="Complaints navigation">
+                <ul class="pagination justify-content-center"></ul>
+            </nav>
         </div>
-        <!-----------------------------------------> <!----------------------------------------->
-
-
+        <!----------------------------------------->
 
     </div>
 @endsection
@@ -74,6 +66,12 @@
     <script src="{{asset('js/pagination/pagination.js')}}"></script>
 
     <script>
+        $(document).ready(function () {
+            var cancelledItemsCount = $('#complaintsTable').data('count');
 
+            if (cancelledItemsCount > 20) {
+                paginationHandler('#complaintsTable', '#complaintsPagination', cancelledItemsCount)
+            }
+        })
     </script>
 @endsection
