@@ -26,7 +26,7 @@
             <?php  $rs_driver = count($bookings); ?>
             <div class="tab-pane active" data-count="{{count($bookings)}}" id="bookingsSection" role="tabpanel">
                 @foreach($bookings as $booking)
-                    <a href="{{route('get_booking_detail', [$booking['trip_no'], $booking['driver_id']])}}" class="collapse">
+                    <a href="{{route('get_booking_detail', [$booking['trip_no'], $booking['driver_id']])}}">
                         <div class="row white">
                             <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                 <p class="time">{{$booking['created_at']}}</p>
@@ -48,9 +48,7 @@
             <div class="tab-pane" data-count="{{count($misseds)}}" id="cancelledSection" role="tabpanel">
                 @foreach($misseds as $missed)
 
-                    {{-- "If" works, but pagination doesn't. Better to solve only "missed problem from the backend" --}}
-                    {{--@if($missed['status']=='missed')--}}
-                        <a href="{{route('get_missed_detail', [$missed['trip_no'], $missed['driver_id']])}}" class="collapse" data-row="{{$loop->index+1}}">
+                        <a href="{{route('get_missed_detail', [$missed['trip_no'], $missed['driver_id']])}}" data-row="{{$loop->index+1}}">
                             <div class="row white">
                                 <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                     <p class="time">{{$missed['created_at']}}</p>
@@ -61,7 +59,7 @@
                                 </div>
                             </div>
                         </a>
-                    {{--@endif--}}
+
                 @endforeach
                 <nav id="missedsPagination" class="mt-4 collapse" aria-label="Misseds navigation">
                     <ul class="pagination justify-content-center"></ul>

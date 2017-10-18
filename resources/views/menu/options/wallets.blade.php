@@ -54,7 +54,7 @@
             $dateStr = date('j M', $dateTime);
             $timeStr = date('g:i A', $dateTime);
             ?>
-            <div class="row white collapse">
+            <div class="row white">
                 <div class="col-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
                     <p class="fz-10 mt-20 mb-10">{{$wallet['trip_no']}}</p>
                     <h3 class="status m-0 fz-16 p-0">{{$wallet['title']}}</h3>
