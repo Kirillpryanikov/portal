@@ -82,8 +82,9 @@ class DriverController extends Controller
         }
 
         foreach ($trip_calls as $trip_call) {
-            if (isset($trip_call['driver_id']) && $trip_call['driver_id'] == $id) {
+            if (isset($trip_call['driver_id']) && $trip_call['driver_id'] == $id && $trip_call['status'] == "missed") {
                 $trip_no = '';
+
                 foreach ($bookings as $booking) {
                     if ($booking['_id'] == $trip_call['trip_id']) {
                         $trip_no = $booking['trip_no'];
@@ -91,19 +92,18 @@ class DriverController extends Controller
                     }
                 }
 
-                $misseds[] = [
-                    '_id' => isset($trip_call['_id']) ? $trip_call['_id'] : '',
-                    'driver_id' => isset($trip_call['driver_id']) ? $trip_call['driver_id'] : '',
-                    'trip_no' => $trip_no,
-                    'created_at' => isset($trip_call['created_at']) ? $trip_call['created_at'] : '',
-                    'status' => isset($trip_call['status']) ? $trip_call['status'] : '',
-                ];
+                    $misseds[] = [
+                        '_id' => isset($trip_call['_id']) ? $trip_call['_id'] : '',
+                        'driver_id' => isset($trip_call['driver_id']) ? $trip_call['driver_id'] : '',
+                        'trip_no' => $trip_no,
+                        'created_at' => isset($trip_call['created_at']) ? $trip_call['created_at'] : '',
+                        'status' => isset($trip_call['status']) ? $trip_call['status'] : '',
+                    ];
             }
         }
 
         $this->data['bookings'] = $bookings;
         $this->data['misseds']  = $misseds;
-
 
         return view('menu.options.bookings', $this->data);
     }
