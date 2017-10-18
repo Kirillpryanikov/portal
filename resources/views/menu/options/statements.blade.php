@@ -44,7 +44,7 @@
                 $dateTime = strtotime($statement['created_at']);
                 $dateStr = date('j M', $dateTime);
                 ?>
-        <div class="row white collapse">
+        <div class="row white">
             <div class="text-center col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4">
                 <h3 class="status fz-16"><?php echo $dateStr ?></h3>
             </div>

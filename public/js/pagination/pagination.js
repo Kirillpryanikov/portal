@@ -6,6 +6,7 @@
 *   - itemsCount - int - number of items to show or hide
  */
 function paginationHandler(sectionID, paginationID, itemsCount) {
+    $(sectionID).children(':not('+paginationID+')').addClass('collapse');
     var pagesTotal = (itemsCount%20!=0)?(Math.ceil(itemsCount/20)):(itemsCount/20);
     $(paginationID).removeClass('collapse');
     var pageButtons = "<li class=\"page-item disabled\"><a class=\"page-link\" data-page=\"1\" href=\"#\" aria-label=\"Previous\"><span aria-hidden=\"true\">&laquo;</span><span class=\"sr-only\">First</span></a></li>";
