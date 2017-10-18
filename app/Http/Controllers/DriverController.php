@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\City;
+use App\ComplaintFiled;
 use App\Driver;
 use App\Invoice;
 use App\Mail\SendMail;
@@ -209,23 +210,17 @@ class DriverController extends Controller
      */
     //get Complaints Filed data
     public function getComplaintsFiled($id){
-        $complaints_filed_all = Trip::all()->toArray();
+        $trips = Trip::all()->toArray();
         $this->getDriver($id);
 
-        $complaints_fileds = [];
-
-        foreach ($complaints_filed_all as $complaints) {
-            if (isset($complaints['driver_id']) && $complaints['driver_id'] == $id) {
-                $complaints_filed[] = [
-                    '_id' => isset($complaints['_id']) ? $complaints['_id'] : '',
-                    'driver_id' => isset($complaints['driver_id']) ? $complaints['driver_id'] : '',
-                    'trip_no' => isset($complaints['trip_no']) ? $complaints['trip_no'] : '',
-                    'created_at' => isset($complaints['created_at']) ? $complaints['created_at'] : '',
-                    'status' => isset($complaints['status']) ? $complaints['status'] : '',
-                ];
+        $trips_id = [];
+        foreach ($trips as $trip){
+            if(isset($trip['driver_id']) && $trip['driver_id'] == $id){
+                $trips_id[] =  isset($trip['trip_no'])?$trip['trip_no']:'';
             }
         }
 
+        $complaints_fileds = ComplaintFiled::whereIn('trip_id', $trips_id)->get()->toArray();
         $this->data['complaints_fileds'] = $complaints_fileds;
 
         return view('menu.options.complaints_filed',$this->data);
