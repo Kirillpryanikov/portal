@@ -11,6 +11,7 @@ use App\Trip;
 use App\TripCall;
 use App\Wallet;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Mail;
 
 class DriverController extends Controller
@@ -29,10 +30,12 @@ class DriverController extends Controller
      * @apiSuccess {page} page Drivers list.
      */
     //get drivers list for menu
-    public function getDrivers(){
+    public function getDrivers(Request $request){
         $drivers = Driver::select('_id', 'full_name', 'driver_status')->get()->toArray();
 
-        return view('menu.drivers_list', ['drivers'=>$drivers]);
+        $out_drivers = new PaginationArrayController($drivers,20);
+
+        return view('menu.drivers_list', ['drivers'=>$out_drivers->getPageData($request)]);
     }
 
     /**
@@ -62,7 +65,7 @@ class DriverController extends Controller
      * @apiSuccess {page} page Booking and Missed.
      */
     //get data for booking and missed pages
-    public function getBooking($id){
+    public function getBooking(Request $request, $id){
         $trips = Trip::all()->toArray();
         $trip_calls = TripCall::all()->toArray();
         $this->getDriver($id);
@@ -103,8 +106,11 @@ class DriverController extends Controller
             }
         }
 
-        $this->data['bookings'] = $bookings;
-        $this->data['misseds']  = $misseds;
+        $bookings_data = new PaginationArrayController($bookings,20);
+        $misseds_data = new PaginationArrayController($misseds,20);
+
+        $this->data['bookings'] = $bookings_data->getPageData($request);
+        $this->data['misseds']  = $misseds_data->getPageData($request);
 
         return view('menu.options.bookings', $this->data);
     }
@@ -171,7 +177,7 @@ class DriverController extends Controller
      * @apiSuccess {page} page Wallets.
      */
     // get wallet data
-    public function getWallets($id){
+    public function getWallets(Request $request, $id){
         $wallets_all = Wallet::all()->toArray();
         $this->getDriver($id);
 
@@ -195,7 +201,9 @@ class DriverController extends Controller
             }
         }
 
-        $this->data['wallets'] = $wallets_out;
+        $wallets_out = new PaginationArrayController($wallets_out,20);
+
+        $this->data['wallets'] = $wallets_out->getPageData($request);
 
         return view('menu.options.wallets', $this->data);
     }
@@ -258,7 +266,10 @@ class DriverController extends Controller
         return view('menu.options.statements', $this->data);
     }
 
-
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function getMessage($id){
         $driver = Driver::where('_id', $id)->first()->toArray();
         return view('menu.options.send_message', ['driver'=>$driver]);
