@@ -56,6 +56,25 @@ class DriverController extends Controller
         return view('menu.personal_menu', ['driver'=>$driver]);
     }
 
+    private function getBookingsData($id){
+        $trips = Trip::all()->toArray();
+        $bookings = [];
+
+        foreach ($trips as $trip){
+            if(isset($trip['driver_id']) && $trip['driver_id'] == $id){
+                $bookings[] = [
+                    '_id'           => isset($trip['_id'])?$trip['_id']:'',
+                    'driver_id'     => isset($trip['driver_id'])?$trip['driver_id']:'',
+                    'trip_no'       => isset($trip['trip_no'])?$trip['trip_no']:'',
+                    'created_at'    => isset($trip['created_at'])?$trip['created_at']:'',
+                    'status'        => isset($trip['status'])?$trip['status']:'',
+                ];
+            }
+        }
+
+        return $bookings;
+    }
+
     /**
      * @api {get} /investor/booking/{id} Get drivers Booking and Missed
      * @apiName Booking and Missed
@@ -66,24 +85,21 @@ class DriverController extends Controller
      */
     //get data for booking and missed pages
     public function getBooking(Request $request, $id){
-        $trips = Trip::all()->toArray();
+        $this->getDriver($id);
+        $bookings = $this->getBookingsData($id);
+
+        $bookings_data = new PaginationArrayController($bookings,20);
+        $this->data['bookings'] = $bookings_data->getPageData($request);
+
+        return view('menu.options.bookings_extension', $this->data);
+    }
+
+    public function getMissed(Request $request, $id){
         $trip_calls = TripCall::all()->toArray();
         $this->getDriver($id);
 
         $misseds = [];
-        $bookings = [];
-
-        foreach ($trips as $trip){
-            if(isset($trip['driver_id']) && $trip['driver_id'] == $id){
-                $bookings[] = [
-                                '_id'           => isset($trip['_id'])?$trip['_id']:'',
-                                'driver_id'     => isset($trip['driver_id'])?$trip['driver_id']:'',
-                                'trip_no'       => isset($trip['trip_no'])?$trip['trip_no']:'',
-                                'created_at'    => isset($trip['created_at'])?$trip['created_at']:'',
-                                'status'        => isset($trip['status'])?$trip['status']:'',
-                            ];
-            }
-        }
+        $bookings = $this->getBookingsData($id);
 
         foreach ($trip_calls as $trip_call) {
             if (isset($trip_call['driver_id']) && $trip_call['driver_id'] == $id && $trip_call['status'] == "missed") {
@@ -106,13 +122,11 @@ class DriverController extends Controller
             }
         }
 
-        $bookings_data = new PaginationArrayController($bookings,20);
         $misseds_data = new PaginationArrayController($misseds,20);
 
-        $this->data['bookings'] = $bookings_data->getPageData($request);
         $this->data['misseds']  = $misseds_data->getPageData($request);
 
-        return view('menu.options.bookings', $this->data);
+        return view('menu.options.misseds_extension', $this->data);
     }
 
     /**
