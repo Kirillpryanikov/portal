@@ -90,6 +90,7 @@ class DriverController extends Controller
 
         $bookings_data = new PaginationArrayController($bookings,20);
         $this->data['bookings'] = $bookings_data->getPageData($request);
+        $this->data['rs_booking'] = count($bookings);
 
         return view('menu.options.bookings_extension', $this->data);
     }
