@@ -16,6 +16,7 @@ Route::get('/change_password/{id}', 'UserController@changePasswordPage')        
 Route::post('/change_password_post', 'UserController@changePassword')                   ->name('change_password_post');
 Route::get('/menu', 'DriverController@getDrivers')                                      ->name('menu');
 Route::get('/booking/{id}', 'DriverController@getBooking')                              ->name('menu_booking');
+Route::get('/missed/{id}', 'DriverController@getMissed')                                ->name('menu_missed');
 Route::get('/settings/{id}', 'DriverController@getDriverProfile')                       ->name('get_driver_profile');
 Route::get('/booking/detail/{trip_no}/{driver_id}', 'DriverController@getBookingDetail')->name('get_booking_detail');
 Route::get('/missed/detail/{trip_no}/{driver_id}', 'DriverController@getBookingDetail') ->name('get_missed_detail');
