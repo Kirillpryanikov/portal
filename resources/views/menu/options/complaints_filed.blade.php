@@ -33,7 +33,7 @@
             </div>
         </div>
         <!----------------------------------------->
-<?php dd($complaints_fileds)?>
+
         <!----------------------------------------->
         @foreach($complaints_fileds as $complaints_filed)
         <?php
@@ -53,22 +53,14 @@
         </div>
         @endforeach
         <div class="container d-flex justify-content-center mt-3 mb-3">
-            <nav id="complaintsPagination" data-id="{{$driver['_id']}}" data-pages="{{$complaints_fileds['allPage']}}" data-current="{{$complaints_fileds['page']}}" ></nav>
+            {{--<nav id="complaintsPagination" data-id="{{$driver['_id']}}" data-pages="{{$complaints_fileds['allPage']}}" data-current="{{$complaints_fileds['page']}}" ></nav>--}}
         </div>
 
     </div>
 @endsection
 
 @section('options_scripts')
-    <script src="{{asset('js/pagination/pagination.js')}}"></script>
-
     <script>
-        $(document).ready(function () {
-            var cancelledItemsCount = $('#complaintsTable').data('count');
 
-            if (cancelledItemsCount > 20) {
-                paginationHandler('#complaintsTable', '#complaintsPagination', cancelledItemsCount)
-            }
-        })
     </script>
 @endsection
