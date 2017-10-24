@@ -33,7 +33,7 @@ class PaginationArrayController extends Controller
             'perPage' => $this->perPage,
             'thisPage' => count($out_array),
             'allPage' => $allPage,
-            'page' => $page,
+            'page' => (integer)$page,
         ];
 
         if ($page > 1){
