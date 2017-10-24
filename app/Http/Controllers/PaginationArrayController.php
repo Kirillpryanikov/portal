@@ -28,12 +28,12 @@ class PaginationArrayController extends Controller
 
         $out_data = [
             'datas' => $out_array,
-            'from' => $from,
-            'to' => $to<$this->count_array?$to:$this->count_array,
-            'perPage' => $this->perPage,
+            'from' =>(integer) $from,
+            'to' => (integer) ($to<$this->count_array?$to:$this->count_array),
+            'perPage' => (integer) $this->perPage,
             'thisPage' => count($out_array),
-            'allPage' => $allPage,
-            'page' => (integer)$page,
+            'allPage' => (integer) $allPage,
+            'page' => (integer) $page,
         ];
 
         if ($page > 1){
