@@ -2,7 +2,7 @@
 
 @section('password_link')
 <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6 hgt-54 d-flex align-items-center">
-    <a class="text-white" href="{{route('change_password', $drivers[0]['_id'])}}">Change Password</a>
+    <a class="text-white" href="{{route('change_password', $drivers['datas'][0]['_id'])}}">Change Password</a>
 </div>
 @endsection
 
@@ -19,7 +19,7 @@
     </div>
     <!----------------------------------------->
     <!----------------------------------------->
-    @foreach($drivers as $driver)
+    @foreach($drivers['datas'] as $driver)
         @php
         $class_var = '';
             switch ($driver['driver_status']) {
@@ -47,7 +47,27 @@
         </div>
         </a>
     @endforeach
+    <div class="container d-flex justify-content-center mt-3 mb-3">
+        <nav id="driversPagination" data-pages="{{$drivers['allPage']}}" data-current="{{$drivers['page']}}" ></nav>
+    </div>
 
 
 </div>
+@endsection
+
+@section('scripts')
+    <script src="{{asset('js/bootpag/bootpag.min.js')}}"></script>
+    <script src="{{asset('js/bootpag/bootpag-init.js')}}"></script>
+    <script>
+        $(document).ready(function () {
+            var totalPages = parseInt($('#driversPagination').data('pages'));
+            var currentPage = parseInt($('#driversPagination').data('current'));
+            var nav = $('#driversPagination');
+
+            if (totalPages>1) {bootpagInit(nav, '/menu/', currentPage, totalPages)}
+
+
+        });
+
+    </script>
 @endsection

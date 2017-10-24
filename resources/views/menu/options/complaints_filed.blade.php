@@ -33,9 +33,8 @@
             </div>
         </div>
         <!----------------------------------------->
-
+<?php dd($complaints_fileds)?>
         <!----------------------------------------->
-        <div id="complaintsTable" data-count="{{count($complaints_fileds)}}">
         @foreach($complaints_fileds as $complaints_filed)
         <?php
         $dateTime = strtotime($complaints_filed['created_at']);
@@ -53,11 +52,9 @@
             </div>
         </div>
         @endforeach
-            <nav id="complaintsPagination" class="mt-4 collapse" aria-label="Complaints navigation">
-                <ul class="pagination justify-content-center"></ul>
-            </nav>
+        <div class="container d-flex justify-content-center mt-3 mb-3">
+            <nav id="complaintsPagination" data-id="{{$driver['_id']}}" data-pages="{{$complaints_fileds['allPage']}}" data-current="{{$complaints_fileds['page']}}" ></nav>
         </div>
-        <!----------------------------------------->
 
     </div>
 @endsection

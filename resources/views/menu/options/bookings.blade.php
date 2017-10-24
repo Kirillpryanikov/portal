@@ -11,64 +11,8 @@
 
     <div class="container">
 
-        <!-- Nav tabs -->
-        <ul class="nav nav-tabs row gray" role="tablist">
-            <li class="nav-item col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6 ">
-                <a class="nav-link text-center active" data-toggle="tab" id="bookings" href="#bookingsSection" role="tab">Booking History</a>
-            </li>
-            <li class="nav-item col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6 ">
-                <a class="nav-link text-center" data-toggle="tab" id="cancelled" href="#cancelledSection" role="tab">Missed</a>
-            </li>
-        </ul>
 
-        <!-- Tab panes -->
-        <div class="tab-content">
-            <?php  $rs_driver = count($bookings); ?>
-            <div class="tab-pane active" data-count="{{count($bookings)}}" id="bookingsSection" role="tabpanel">
-                @foreach($bookings as $booking)
-                    <a href="{{route('get_booking_detail', [$booking['trip_no'], $booking['driver_id']])}}">
-                        <div class="row white">
-                            <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                <p class="time">{{$booking['created_at']}}</p>
-                                <h3 class="status status-bookings status-line green">{{$booking['trip_no']}}</h3>
-                            </div>
-                            <div class="col-3 col-lg-4 col-md-4 col-sm-4 col-xs-4">
-
-                                <h3 class="status rs">Rs. {{$rs_driver}}</h3>
-                                <p class="time rs-compl green">{{$booking['status']}}</p>
-                            </div>
-                            <div class="col-3 col-lg-2 col-md-2 col-sm-2 col-xs-2"> <i class="fa fa-arrow-right pull-right next mt-14"></i> </div>
-                        </div>
-                    </a>
-                @endforeach
-                <nav id="bookingsPagination" class="mt-4 collapse" aria-label="Bookings navigation">
-                    <ul class="pagination justify-content-center"></ul>
-                </nav>
-            </div>
-            <div class="tab-pane" data-count="{{count($misseds)}}" id="cancelledSection" role="tabpanel">
-                @foreach($misseds as $missed)
-
-                        <a href="{{route('get_missed_detail', [$missed['trip_no'], $missed['driver_id']])}}" data-row="{{$loop->index+1}}">
-                            <div class="row white">
-                                <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <p class="time">{{$missed['created_at']}}</p>
-                                    <h3 class="status status-bookings status-line green">{{$missed['trip_no']}}</h3>
-                                </div>
-                                <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <h3 class="status status-line red pull-right mt-4">{{$missed['status']}}</h3>
-                                </div>
-                            </div>
-                        </a>
-
-                @endforeach
-                <nav id="missedsPagination" class="mt-4 collapse" aria-label="Misseds navigation">
-                    <ul class="pagination justify-content-center"></ul>
-                </nav>
-            </div>
-        </div>
-
-        <!----------------------------------------->
-
+        @yield('booking_extension')
 
 
     </div>
@@ -87,5 +31,8 @@
             if (bookedItemsCount>20) {paginationHandler('#bookingsSection', '#bookingsPagination', bookedItemsCount)}
         })
     </script>
+
+    @yield('options_scripts')
+
 @endsection
 
