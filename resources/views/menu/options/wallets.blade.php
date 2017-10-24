@@ -47,8 +47,7 @@
         <!----------------------------------------->
 
         <!----------------------------------------->
-        <div id="walletTable" data-count="{{count($wallets)}}">
-        @foreach($wallets as $wallet)
+        @foreach($wallets['datas'] as $wallet)
             <?php
             $dateTime = strtotime($wallet['created_at']);
             $dateStr = date('j M', $dateTime);
@@ -73,9 +72,8 @@
                 </div>
             </div>
         @endforeach
-            <nav id="walletsPagination" class="mt-4 collapse" aria-label="Wallets navigation">
-                <ul class="pagination justify-content-center"></ul>
-            </nav>
+        <div class="container d-flex justify-content-center mt-3 mb-3">
+            <nav id="walletPagination" data-id="{{$driver['_id']}}" data-pages="{{$wallets['allPage']}}" data-current="{{$wallets['page']}}" ></nav>
         </div>
     <!----------------------------------------->
     </div>
@@ -83,15 +81,21 @@
 @endsection
 
 @section('options_scripts')
-    <script src="{{asset('js/pagination/pagination.js')}}"></script>
-
+    <script src="{{asset('js/bootpag/bootpag.min.js')}}"></script>
+    <script src="{{asset('js/bootpag/bootpag-init.js')}}"></script>
     <script>
         $(document).ready(function () {
-            var cancelledItemsCount = $('#walletTable').data('count');
+            var nav = $('#walletPagination');
+            var driverID = nav.data('id');
+            var url = '/wallets/'+driverID+'/';
+            var totalPages = parseInt(nav.data('pages'));
+            var currentPage = parseInt(nav.data('current'));
 
-            if (cancelledItemsCount > 20) {
-                paginationHandler('#walletTable', '#walletsPagination', cancelledItemsCount)
-            }
-        })
+
+            if (totalPages>1) {bootpagInit(nav, url, currentPage, totalPages)}
+
+
+        });
+
     </script>
 @endsection
