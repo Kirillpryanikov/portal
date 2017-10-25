@@ -148,16 +148,5 @@ $timeStr = date('g:i A', $dateTime);
 @endsection
 
 @section('options_scripts')
-    {{--<script>
-        $('#bookings').click(function (e) {
-            e.preventDefault();
-            $(this).tab('show');
-            console.log('Bookings selected');
-        })
-        $('#cancelled').click(function (e) {
-            e.preventDefault();
-            $(this).tab('show');
-            console.log('Cancelled selected');
-        })
-    </script>--}}
+
 @endsection

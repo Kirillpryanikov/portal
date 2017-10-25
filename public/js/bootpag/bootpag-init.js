@@ -15,7 +15,6 @@ function bootpagInit(nav, url, currentPage, totalPages) {
         lastClass: 'last',
         firstClass: 'first'
     }).on("page", function(e, num){
-        console.log('num ',num);
         window.location.replace(url+'?page='+num);
     });
     nav.find('ul').children('li').addClass('page-item');

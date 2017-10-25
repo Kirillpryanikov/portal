@@ -79,7 +79,7 @@
 
     <script>
         $(document).ready(function () {
-            console.log($('#linkToMap').data('address'));
+
 
         })
     </script>

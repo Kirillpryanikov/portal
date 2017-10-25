@@ -13,6 +13,11 @@
 </head>
 
 <body>
+<div id="loader">
+    <div id="loading-item">
+
+    </div>
+</div>
 <header>
     <div class="container">
         <div class="row header-not-login">
@@ -38,7 +43,10 @@
             $('.header-login').css('display', 'block');
             $('header').height('95px');
         }
-        //console.log(window.location.pathname);
+    })
+
+    $(document).on('click', 'a:not(.not-away)', function () {
+        $('#loader').addClass('active');
     })
 </script>
 </body>
