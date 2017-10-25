@@ -60,21 +60,7 @@ class DriverController extends Controller
         $trips = Trip::all();
         $trips = $trips->where('driver_id', $id)->toArray();
 
-        $bookings = [];
-
-        foreach ($trips as $trip){
-            $bookings[] = [
-                '_id'           => isset($trip['_id'])?$trip['_id']:'',
-                'driver_id'     => isset($trip['driver_id'])?$trip['driver_id']:'',
-                'trip_no'       => isset($trip['trip_no'])?$trip['trip_no']:'',
-                'created_at'    => isset($trip['created_at'])?$trip['created_at']:'',
-                'status'        => isset($trip['status'])?$trip['status']:'',
-            ];
-        }
-
-        $trips = [];
-
-        return $bookings;
+        return $trips;
     }
 
     /**
