@@ -304,7 +304,11 @@ class DriverController extends Controller
     public function sendMessage(Request $request){
         $data = $request->all();
         $data['driver'] = Driver::where('_id', $request['driver_id'])->first()->toArray();
+        $city = City::where('_id', $data['driver']['city'])->first()->toArray();
+        $data['city_data'] = $city;
         Mail::send(new SendMail($data));
+
+        return redirect()->route('get_driver_profile', ['id'=>$request['driver_id']]);
     }
 
 }
