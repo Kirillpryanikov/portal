@@ -8,7 +8,7 @@
             <a class="nav-link text-center" href="{{route('menu_booking', $driver['_id'])}}">Booking History</a>
         </li>
         <li class="nav-item col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6 ">
-            <a class="nav-link text-center active"  href="#" role="tab">Missed</a>
+            <a class="nav-link text-center active not-away"  href="#" role="tab">Missed</a>
         </li>
     </ul>
 
@@ -20,7 +20,7 @@
                     <div class="row white">
                         <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
                             <p class="time">{{$missed['created_at']}}</p>
-                            <h3 class="status status-bookings status-line green">{{$missed['trip_no']}}</h3>
+                            <h3 class="status status-bookings status-line {{($missed['trip_no']!='')?'green':'orange ml-34'}} mb-1">{{($missed['trip_no']!='')?$missed['trip_no']:'N/A'}}</h3>
                         </div>
                         <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
                             <h3 class="status status-line red pull-right mt-4">{{$missed['status']}}</h3>

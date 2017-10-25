@@ -150,7 +150,7 @@ a:hover{
 }
 .time{
     font-size:12px;
-    margin-top: 18px; /*changed*/
+    margin-top: 14px; /*changed*/
     margin-bottom: 12px; /*added*/
 }
 .rs {
@@ -291,6 +291,9 @@ a {
 }
 .mb-10{
     margin-bottom: 10px;
+}
+.ml-34{
+    margin-left: 34px;
 }
 .pt-15 {
     padding-top: 15px;

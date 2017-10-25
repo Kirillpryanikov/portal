@@ -4,7 +4,7 @@
     <!-- Nav tabs -->
     <ul class="nav nav-tabs row gray">
         <li class="nav-item col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6 ">
-            <a class="nav-link text-center active" href="#">Booking History</a>
+            <a class="nav-link text-center active not-away" href="#">Booking History</a>
         </li>
         <li class="nav-item col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6 ">
             <a class="nav-link text-center" href="{{route('menu_missed', $driver['_id'])}}">Missed</a>
@@ -19,7 +19,7 @@
                     <div class="row white">
                         <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
                             <p class="time">{{$booking['created_at']}}</p>
-                            <h3 class="status status-bookings status-line green">{{$booking['trip_no']}}</h3>
+                            <h3 class="status status-bookings status-line green mb-1">{{$booking['trip_no']}}</h3>
                         </div>
                         <div class="col-3 col-lg-4 col-md-4 col-sm-4 col-xs-4">
 
