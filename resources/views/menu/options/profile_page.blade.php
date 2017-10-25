@@ -18,7 +18,7 @@
         </div>
         <!----------------------------------------->
         <!----------------------------------------->
-        <a href="#" class="modal-executer" data-modal="gpsModal">
+        <a href="#" class="modal-executer not-away " data-modal="gpsModal">
             <div class="row white">
                 <div class="col-3 col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     <h3 class="driver-name font-thin">GPS</h3>
@@ -32,7 +32,7 @@
         </a>
         <!----------------------------------------->
         <!----------------------------------------->
-        <a href="#" class="modal-executer" data-modal="addressModal">
+        <a href="#" class="modal-executer not-away" data-modal="addressModal">
             <div class="row white">
                 <div class="col-3 col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     <h3 class="driver-name font-thin">Address</h3>
@@ -46,7 +46,7 @@
         </a>
         <!----------------------------------------->
         <!----------------------------------------->
-        <a href="#" class="modal-executer" data-modal="cityModal">
+        <a href="#" class="modal-executer not-away" data-modal="cityModal">
             <div class="row white">
                 <div class="col-3 col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     <h3 class="driver-name font-thin">City</h3>
@@ -60,7 +60,7 @@
         </a>
         <!----------------------------------------->
         <!----------------------------------------->
-        <a href="#" class="modal-executer" data-modal="licenseModal">
+        <a href="#" class="modal-executer not-away" data-modal="licenseModal">
             <div class="row white">
                 <div class="col-3 col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     <h3 class="driver-name font-thin">License #</h3>
@@ -74,7 +74,7 @@
         </a>
         <!----------------------------------------->
         <!----------------------------------------->
-        <a href="#" class="modal-executer" data-modal="phoneModal">
+        <a href="#" class="modal-executer not-away" data-modal="phoneModal">
             <div class="row white">
                 <div class="col-3 col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     <h3 class="driver-name font-thin">Mobile (Company Provided)</h3>
@@ -87,7 +87,7 @@
             </div>
         </a>
         <!-----------------------------------------> <!----------------------------------------->
-        <a href="#" class="modal-executer" data-modal="mobile1Modal">
+        <a href="#" class="modal-executer not-away" data-modal="mobile1Modal">
             <div class="row white">
                 <div class="col-3 col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     <h3 class="driver-name font-thin">Mobile (Personal 1)</h3>
@@ -100,7 +100,7 @@
             </div>
         </a>
         <!-----------------------------------------> <!----------------------------------------->
-        <a href="#" class="modal-executer" data-modal="mobile2Modal">
+        <a href="#" class="modal-executer not-away" data-modal="mobile2Modal">
             <div class="row white">
                 <div class="col-3 col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     <h3 class="driver-name font-thin">Mobile (Personal 2)</h3>
@@ -114,7 +114,7 @@
         </a>
         <!----------------------------------------->
         <!----------------------------------------->
-        <a href="#" class="modal-executer" data-modal="emailModal">
+        <a href="#" class="modal-executer not-away" data-modal="emailModal">
             <div class="row white">
                 <div class="col-3 col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     <h3 class="driver-name font-thin">Email</h3>
@@ -128,7 +128,7 @@
         </a>
         <!----------------------------------------->
         <!----------------------------------------->
-        <a href="#">
+        <a href="#" class="not-away">
             <div class="row white">
                 <div class="col-3 col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     <h3 class="driver-name font-thin">Activation</h3>
@@ -369,7 +369,6 @@
                 var id = $(this).data('id');
                 var data ={};
                 var isChecked = $(this).is(":checked");
-                console.log(id);
                 if (isChecked)
                 {
                     data = {id: id, activated: true};
