@@ -8,7 +8,7 @@ use function MongoDB\BSON\toJSON;
 class PaginationArrayController extends Controller
 {
     private $array = [];
-    private $count_array = [];
+    public $count_array = [];
     private $perPage = 20;
 
     public function __construct($array, $perPage=20)
