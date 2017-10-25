@@ -4,7 +4,7 @@ function bootpagInit(nav, url, currentPage, totalPages) {
         page: currentPage,
         maxVisible: 5,
         leaps: true,
-        firstLastUse: true,
+        firstLastUse: false,
         first: '←',
         last: '→',
         wrapClass: 'pagination',
@@ -12,8 +12,8 @@ function bootpagInit(nav, url, currentPage, totalPages) {
         disabledClass: 'disabled',
         nextClass: 'next-item',
         prevClass: 'prev-item',
-        lastClass: 'last-item',
-        firstClass: 'first-item'
+        lastClass: 'last',
+        firstClass: 'first'
     }).on("page", function(e, num){
         console.log('num ',num);
         window.location.replace(url+'?page='+num);
