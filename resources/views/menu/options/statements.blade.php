@@ -114,7 +114,11 @@
                     <div class="gray statements-top">
                         <h3 class="status m-0 text-center">Date</h3>
                     </div>
-                    <p class="text-center fz-14 mt-10">N/A</p>
+                    <?php
+                    $dateTime = strtotime($statements['Date']);
+                    $dateStr = date('j M', $dateTime);
+                    ?>
+                    <p class="text-center fz-14 mt-10">{{$dateStr}}</p>
                 </div>
             </div>
         </div>
