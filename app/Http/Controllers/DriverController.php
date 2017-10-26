@@ -100,7 +100,7 @@ class DriverController extends Controller
                 $trip_no = $booking['trip_no'];
             }
 
-            $trip_calls[$key] = $trip_no;
+            $trip_calls[$key]['trip_no'] = $trip_no;
         }
 
         $misseds_data = new PaginationArrayController($trip_calls,20);
