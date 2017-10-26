@@ -22,7 +22,7 @@
     </a>
     <!----------------------------------------->
     <!----------------------------------------->
-    <a href="https://www.google.com/maps?q=loc:{{$driver['last_lat']}},{{$driver['last_lng']}}">
+    <a class="to-map not-away" href="https://www.google.com/maps?q=loc:{{$driver['last_lat']}},{{$driver['last_lng']}}">
         <div class="row white">
             <div class="col-9 col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <h3 class="driver-name font-thin">Location</h3>
@@ -79,7 +79,11 @@
 
     <script>
         $(document).ready(function () {
-
+            $("a.to-map").on("click",function(e){
+                e.preventDefault();
+                var address = $(this).attr('href');
+                window.open(address,'_blank');
+            });
 
         })
     </script>
