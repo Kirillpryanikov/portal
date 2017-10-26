@@ -12,6 +12,6 @@ class TripCall extends Eloquent
     protected $primaryKey='_id';
 
     public function trip(){
-        return $this->hasOne('App\Trip', '_id', 'trip_id');
+        return $this->belongsTo('App\Trip', '_id', 'trip_id');
     }
 }

@@ -90,31 +90,20 @@ class DriverController extends Controller
 
         $this->getDriver($id);
 
-        $misseds = [];
-        $bookings = $this->getBookingsData($id);
+        $bookings = collect($this->getBookingsData($id));
 
-        foreach ($trip_calls as $trip_call) {
+        foreach ($trip_calls as $key=>$trip_call) {
             $trip_no = '';
+            $booking = $bookings->where('_id', $trip_call['trip_id'])->first();
 
-            foreach ($bookings as $booking) {
-                if ($booking['_id'] == $trip_call['trip_id']) {
-                    $trip_no = $booking['trip_no'];
-                    break 1;
-                }
+            if ($booking) {
+                $trip_no = $booking['trip_no'];
             }
 
-            $misseds[] = [
-                '_id' => isset($trip_call['_id']) ? $trip_call['_id'] : '',
-                'driver_id' => isset($trip_call['driver_id']) ? $trip_call['driver_id'] : '',
-                'trip_no' => $trip_no,
-                'created_at' => isset($trip_call['created_at']) ? $trip_call['created_at'] : '',
-                'status' => isset($trip_call['status']) ? $trip_call['status'] : '',
-            ];
+            $trip_calls[$key] = $trip_no;
         }
 
-        $trip_calls = [];
-
-        $misseds_data = new PaginationArrayController($misseds,20);
+        $misseds_data = new PaginationArrayController($trip_calls,20);
         $this->data['misseds']  = $misseds_data->getPageData($request);
 
         return view('menu.options.misseds_extension', $this->data);
