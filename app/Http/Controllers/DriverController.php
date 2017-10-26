@@ -250,7 +250,12 @@ class DriverController extends Controller
     // get Statements data
     public function getStatements($id){
         $statement = Statement::all();
-        $statement = $statement->where('partner_id', $id)->first()->toArray();
+        $statement = $statement->where('partner_id', $id)->first();
+        if($statement) {
+            $statement = $statement->toArray();
+        } else {
+            $statement = [];
+        }
         $this->getDriver($id);
 
         $this->data['statements'] = $statement;
