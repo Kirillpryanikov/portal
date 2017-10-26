@@ -7,6 +7,7 @@ use App\ComplaintFiled;
 use App\Driver;
 use App\Invoice;
 use App\Mail\SendMail;
+use App\Statement;
 use App\Trip;
 use App\TripCall;
 use App\Wallet;
@@ -248,24 +249,11 @@ class DriverController extends Controller
      */
     // get Statements data
     public function getStatements($id){
-        $statements_all = Trip::all()->toArray();
+        $statement = Statement::all();
+        $statement = $statement->where('partner_id', $id)->first()->toArray();
         $this->getDriver($id);
 
-        $statements = [];
-
-        foreach ($statements_all as $statement) {
-            if (isset($statement['driver_id']) && $statement['driver_id'] == $id) {
-                $statements[] = [
-                    '_id' => isset($statement['_id']) ? $statement['_id'] : '',
-                    'driver_id' => isset($statement['driver_id']) ? $statement['driver_id'] : '',
-                    'trip_no' => isset($statement['trip_no']) ? $statement['trip_no'] : '',
-                    'created_at' => isset($statement['created_at']) ? $statement['created_at'] : '',
-                    'status' => isset($statement['status']) ? $statement['status'] : '',
-                ];
-            }
-        }
-
-        $this->data['statements'] = $statements;
+        $this->data['statements'] = $statement;
 
         return view('menu.options.statements', $this->data);
     }
