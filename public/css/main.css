@@ -219,6 +219,33 @@ a:hover{
 #activateProfile {
     margin-right: 0;
 }
+.statements-column {
+    border: 1px solid #666;
+    box-sizing: border-box;
+    flex-basis: 12.5%;
+}
+.statements-top {
+    height:50px;
+    width:100%;
+    padding:10px;
+}
+.statements-top h3{
+    font-size:11px;
+}
+@media screen and (max-width: 767px)  {
+    .statements-column {
+        flex-basis: 25%;
+    }
+    .statements-top h3{
+        font-size:9px;
+    }
+}
+@media screen and (max-width: 434px)  {
+    .statements-top {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}
 
 /*
 **  ****************************

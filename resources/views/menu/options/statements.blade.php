@@ -17,52 +17,108 @@
                 <h1 class="status text-center">Statements</h1>
             </div>
         </div>
-        <!----------------------------------------->
 
-
-        <!----------------------------------------->
-        <!----------------------------------------->
-
-        <div class="row gray">
-            <div class="text-center col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                <h3 class="status fz-16">Date</h3>
+        <div class="row">
+            <div class="container d-flex flex-wrap">
+                <div class="col-sm-4 col-xs-4 m-0 p-0 statements-column">
+                    <div class="gray statements-top" >
+                        <h3 class="status m-0 text-center">Total Rides</h3>
+                    </div>
+                    <p class="text-center fz-14 mt-10">{{$statements['total_rides']}}</p>
+                </div>
+                <div class="col-sm-4 col-xs-4 m-0 p-0 statements-column" >
+                    <div class="gray statements-top" >
+                        <h3 class="status m-0 text-center">Fake Imei</h3>
+                    </div>
+                    <p class="text-center fz-14 mt-10">{{$statements['fake_imei']}}</p>
+                </div>
+                <div class="col-sm-4 col-xs-4 m-0 p-0 statements-column" >
+                    <div class="gray statements-top" >
+                        <h3 class="status m-0 text-center">Less Than 1 km</h3>
+                    </div>
+                    <p class="text-center fz-14 mt-10">{{$statements['less_than_1_km']}}</p>
+                </div>
+                <div class="col-sm-4 col-xs-4 m-0 p-0 statements-column" >
+                    <div class="gray statements-top" >
+                        <h3 class="status m-0 text-center">Repeat Ride</h3>
+                    </div>
+                    <p class="text-center fz-14 mt-10">{{$statements['repeat_ride']}}</p>
+                </div>
+                <div class="col-sm-4 col-xs-4 m-0 p-0 statements-column" >
+                    <div class="gray statements-top" >
+                        <h3 class="status m-0 text-center">Collection</h3>
+                    </div>
+                    <p class="text-center fz-14 mt-10">{{$statements['collection']}}</p>
+                </div>
+                <div class="col-sm-4 col-xs-4 m-0 p-0 statements-column" >
+                    <div class="gray statements-top" >
+                        <h3 class="status m-0 text-center">Expected Collection</h3>
+                    </div>
+                    <p class="text-center fz-14 mt-10">{{$statements['expected_collection']}}</p>
+                </div>
+                <div class="col-sm-4 col-xs-4 m-0 p-0 statements-column" >
+                    <div class="gray statements-top" >
+                        <h3 class="status m-0 text-center">Short Collection</h3>
+                    </div>
+                    <p class="text-center fz-14 mt-10">{{$statements['short_collection']}}</p>
+                </div>
+                <div class="col-sm-4 col-xs-4 m-0 p-0 statements-column" >
+                    <div class="gray statements-top" >
+                        <h3 class="status m-0 text-center">Bonus</h3>
+                    </div>
+                    <p class="text-center fz-14 mt-10">{{$statements['bonus']}}</p>
+                </div>
+                <div class="col-sm-4 col-xs-4 m-0 p-0 statements-column" >
+                    <div class="gray statements-top" >
+                        <h3 class="status m-0 text-center">Fake Topup</h3>
+                    </div>
+                    <p class="text-center fz-14 mt-10">{{$statements['fake_topup']}}</p>
+                </div>
+                <div class="col-sm-4 col-xs-4 m-0 p-0 statements-column" >
+                    <div class="gray statements-top" >
+                        <h3 class="status m-0 text-center">User Penalty</h3>
+                    </div>
+                    <p class="text-center fz-14 mt-10">{{$statements['customer_complain_penalty']}}</p>
+                </div>
+                <div class="col-sm-4 col-xs-4 m-0 p-0 statements-column" >
+                    <div class="gray statements-top" >
+                        <h3 class="status m-0 text-center">Misuse App</h3>
+                    </div>
+                    <p class="text-center fz-14 mt-10">{{$statements['misuse_app']}}</p>
+                </div>
+                <div class="col-sm-4 col-xs-4 m-0 p-0 statements-column" >
+                    <div class="gray statements-top" >
+                        <h3 class="status m-0 text-center">Time Block Penalty</h3>
+                    </div>
+                    <p class="text-center fz-14 mt-10">{{$statements['time_block_penalty']}}</p>
+                </div>
+                <div class="col-sm-4 col-xs-4 m-0 p-0 statements-column" >
+                    <div class="gray statements-top" >
+                        <h3 class="status m-0 text-center">Fake Ride</h3>
+                    </div>
+                    <p class="text-center fz-14 mt-10">{{$statements['fake_ride']}}</p>
+                </div>
+                <div class="col-sm-4 col-xs-4 m-0 p-0 statements-column" >
+                    <div class="gray statements-top" >
+                        <h3 class="status m-0 text-center">Fake Customer</h3>
+                    </div>
+                    <p class="text-center fz-14 mt-10">{{$statements['fake_customer']}}</p>
+                </div>
+                <div class="col-sm-4 col-xs-4 m-0 p-0 statements-column" >
+                    <div class="gray statements-top" >
+                        <h3 class="status m-0 text-center">Total Penalty</h3>
+                    </div>
+                    <p class="text-center fz-14 mt-10">{{$statements['total_penalty']}}</p>
+                </div>
+                <div class="col-sm-4 col-xs-4 m-0 p-0 statements-column" >
+                    <div class="gray statements-top">
+                        <h3 class="status m-0 text-center">Date</h3>
+                    </div>
+                    <p class="text-center fz-14 mt-10">N/A</p>
+                </div>
             </div>
-            <div class="text-center col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                <h3 class="status fz-16">Details</h3>
-            </div>
-            <div class="text-center col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                <h3 class="status fz-16">Payouts</h3>
-            </div>
-
         </div>
-        <!----------------------------------------->
 
-        <!----------------------------------------->
-        <div id="statementsTable" data-count="{{count($statements)}}">
-        @foreach($statements as $statement)
-                <?php
-                $dateTime = strtotime($statement['created_at']);
-                $dateStr = date('j M', $dateTime);
-                ?>
-        <div class="row white">
-            <div class="text-center col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                <h3 class="status fz-16"><?php echo $dateStr ?></h3>
-            </div>
-            <div class="text-center col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                <p class="time fz-14">{{$statement['status']}}</p>
-            </div>
-            <div class="text-center col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                <a href="{{asset('images/Test.pdf')}}">
-                    <i class="fa fa-download next fz-24 text-center"></i>
-                </a>
-            </div>
-
-        </div>
-        @endforeach
-            <nav id="statementsPagination" class="mt-4 collapse" aria-label="Statements navigation">
-                <ul class="pagination justify-content-center"></ul>
-            </nav>
-        </div>
         <!----------------------------------------->
 
     </div>
@@ -70,15 +126,5 @@
 @endsection
 
 @section('options_scripts')
-    <script src="{{asset('js/pagination/pagination.js')}}"></script>
 
-    <script>
-        $(document).ready(function () {
-            var cancelledItemsCount = $('#statementsTable').data('count');
-
-            if (cancelledItemsCount > 20) {
-                paginationHandler('#statementsTable', '#statementsPagination', cancelledItemsCount)
-            }
-        })
-    </script>
 @endsection
