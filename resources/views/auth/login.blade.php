@@ -14,7 +14,7 @@
                         {{ csrf_field() }}
                         <div class="input-group mt-20">
                             <span class="input-group-addon" id="basic-addon3"><i class="fa fa-user text-white"></i></span>
-                            <input type="text" name="username" id="username" class="form-control login-input" aria-describedby="emailHelp" placeholder="Enter user name" required>
+                            <input type="text" name="username" value="{{old('username')}}" id="username" class="form-control login-input" aria-describedby="emailHelp" placeholder="Enter user name" required>
                         </div>
                         <div class="input-group mt-20">
                             <span class="input-group-addon" id="basic-addon3"><i class="fa fa-user text-white"></i></span>
