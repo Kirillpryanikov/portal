@@ -8,27 +8,44 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
 
-    public function testLogin(){
-        $data = ['email' => 'azmatraza91@gmail.com',
-                 'password' => '123456'];
-        $ch = curl_init();
-        $uA = $_SERVER['HTTP_USER_AGENT'];
+    public function loginAPI($mail, $password){
+        $curl = curl_init();
 
-        $header[] = "Content-Type:application/x-www-form-urlencoded";
+        curl_setopt_array($curl, array(
+            CURLOPT_PORT => "3000",
+            CURLOPT_URL => "https://staging.bykea.net:3000/api/v1/admin/login",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_SSL_VERIFYPEER => 0,
+            CURLOPT_SSL_VERIFYHOST => 0,
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"email\"\r\n\r\n$mail\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"password\"\r\n\r\n$password\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--",
+            CURLOPT_HTTPHEADER => array(
+                "cache-control: no-cache",
+                "content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW",
+                "postman-token: e2887833-7404-7785-17ce-6ac2fb100a3e"
+            ),
+        ));
 
-        curl_setopt($ch, CURLOPT_URL, 'https://staging.bykea.net:3000/api/v1/admin/login');
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-        curl_setopt($ch, CURLOPT_HEADER, 1);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
-        curl_setopt($ch, CURLOPT_USERAGENT, $uA);
+        $response = curl_exec($curl);
+        curl_close($curl);
 
-        $out = curl_exec($ch);
+        $id = '';
 
-        dd($out, $ch);
+        $data = collect(json_decode($response));
 
-        curl_close($ch);
+        if (isset($data['data'])){
+            $data = collect($data['data']);
+
+            if (isset($data['personalInfo'])){
+                $id = $data['personalInfo']->_id;
+            }
+        }
+
+        return $id;
     }
 
     public function loginPage(){
@@ -36,9 +53,13 @@ class UserController extends Controller
     }
 
     public function login(Request $request){
-        return redirect()->route('menu');
-        $request['username'];
-        $request['password'];
+        $id = $this->loginAPI($request['username'], $request['password']);
+        if ($id){
+            $request->session()->put('user_id', $id);
+            return redirect()->route('menu');
+        } else {
+            return back();
+        }
     }
 
     public function changePasswordPage($id){
