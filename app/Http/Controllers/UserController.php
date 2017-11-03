@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Driver;
 use Illuminate\Http\Request;
+use Validator;
 
 class UserController extends Controller
 {
@@ -52,13 +53,36 @@ class UserController extends Controller
         return view('auth.login');
     }
 
+    private function loginValidator(Request $request){
+        $validate = [
+            'username' => 'required|email',
+            'password' => 'required'
+        ];
+
+        return Validator::make($request->all(), $validate);
+    }
+
     public function login(Request $request){
+        $validator = $this->loginValidator($request);
+
+        if($validator->fails()){
+            return back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
         $id = $this->loginAPI($request['username'], $request['password']);
+
         if ($id){
             $request->session()->put('user_id', $id);
+
             return redirect()->route('menu');
         } else {
-            return back();
+            $validator->errors()->add('login','Incorrect login and password');
+
+            return back()
+                ->withErrors($validator)
+                ->withInput();
         }
     }
 
