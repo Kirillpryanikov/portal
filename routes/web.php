@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/test_log', 'UserController@testLogin')                                     ->name('log_test');
 Route::get('/', 'UserController@loginPage')                                             ->name('login');
 Route::post('/login', 'UserController@login')                                           ->name('Login_post');
 Route::get('/change_password/{id}', 'UserController@changePasswordPage')                ->name('change_password');
