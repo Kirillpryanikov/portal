@@ -20,6 +20,20 @@
                             <span class="input-group-addon" id="basic-addon3"><i class="fa fa-user text-white"></i></span>
                             <input type="password" name="password" class="form-control login-input" id="password" placeholder="Password" required>
                         </div>
+                        @if($errors->get('username')||$errors->get('password')||$errors->get('login'))
+                            <?php
+                                if ($errors->get('username')) {
+                                    $err = $errors->get('username');
+                                }
+                                elseif ($errors->get('password')) {
+                                    $err = $errors->get('password');
+                                }
+                                elseif ($errors->get('login')) {
+                                    $err = $errors->get('login');
+                                }
+                            ?>
+                            <small class="red">{{$err[0]}}</small>
+                        @endif
                         <button type="submit" class="modal-submit mt-20">LOG IN</button>
                     </form>
                 </div>
