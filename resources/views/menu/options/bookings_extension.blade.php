@@ -1,5 +1,7 @@
 @extends('menu.options.bookings')
 
+@section('bookings-menu-page-title', 'Bookings')
+
 @section('booking_extension')
     <!-- Nav tabs -->
     <ul class="nav nav-tabs row gray">
@@ -18,13 +20,18 @@
                 <a href="{{route('get_booking_detail', [$booking['trip_no'], $booking['driver_id']])}}">
                     <div class="row white">
                         <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                            <p class="time">{{$booking['created_at']}}</p>
+                            <?php
+                            $dateTime = strtotime($booking['created_at']);
+                            $dateStr = date('M jS Y', $dateTime);
+                            $timeStr = date('g:i A', $dateTime);
+                            ?>
+                            <p class="time">{{$dateStr}} {{$timeStr}}</p>
                             <h3 class="status status-bookings status-line green mb-1">{{$booking['trip_no']}}</h3>
                         </div>
                         <div class="col-3 col-lg-4 col-md-4 col-sm-4 col-xs-4">
 
                             <h3 class="status rs">Rs. {{$rs_booking}}</h3>
-                            <p class="time rs-compl green">{{$booking['status']}}</p>
+                            <p class="time rs-compl mw-100px {{($booking['status']==="cancelled")?'red':'green'}}">{{($booking['status']==="cancelled")?$booking['status'].' by '.$booking['cancel_by']:$booking['status']}}</p>
                         </div>
                         <div class="col-3 col-lg-2 col-md-2 col-sm-2 col-xs-2"> <i class="fa fa-arrow-right pull-right next mt-14"></i> </div>
                     </div>

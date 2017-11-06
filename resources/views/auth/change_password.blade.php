@@ -1,5 +1,7 @@
 @extends('layouts.base')
 
+@section('page-title', 'Change Password')
+
 @section('content')
     <div class="container">
         <div class="mt-10vh">

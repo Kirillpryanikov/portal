@@ -50,13 +50,16 @@ h1,h2,h3,h4,h5,h6,p{
     /*font-family:english !important;*/
 }
 header{
-    height: 54px;
+    min-height: 54px;
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#00af29+0,299a0b+35,00bc2c+67,009304+100 */
     background: #00af29; /* Old browsers */
     background: -moz-radial-gradient(center, ellipse cover, #00af29 0%, #299a0b 35%, #00bc2c 67%, #009304 100%); /* FF3.6-15 */
     background: -webkit-radial-gradient(center, ellipse cover, #00af29 0%,#299a0b 35%,#00bc2c 67%,#009304 100%); /* Chrome10-25,Safari5.1-6 */
     background: radial-gradient(ellipse at center, #00af29 0%,#299a0b 35%,#00bc2c 67%,#009304 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00af29', endColorstr='#009304',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+header h4 {
+    margin: 0;
 }
 .heading-1{
     color:#03ab31;
@@ -171,7 +174,6 @@ a:hover{
     border:1px solid #FFF;
 }
 .modal-container {
-    position: relative;
     display: none;
     padding: 15px;
     background-color: #e8e8e8;
@@ -287,6 +289,9 @@ a {
     font-size: 20px;
     color: rgb(51,51,51);
 }
+.btn {
+    cursor: pointer;
+}
 .breadcrumb {
     margin-bottom: 0;
     background-color: #ffffff;
@@ -331,6 +336,9 @@ a {
 .ps-15 {
     padding-left: 15px;
     padding-right: 15px;
+}
+.mw-100px {
+    max-width: 100px;
 }
 .bg-green {
     background-color:#02aa31;

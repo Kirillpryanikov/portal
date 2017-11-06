@@ -1,5 +1,7 @@
 @extends('layouts.base')
 
+@section('page-title', 'Login')
+
 @section('content')
 <div class="container">
     <div class="mt-10vh">
@@ -17,7 +19,7 @@
                             <input type="text" name="username" value="{{old('username')}}" id="username" class="form-control login-input" aria-describedby="emailHelp" placeholder="Enter user name" required>
                         </div>
                         <div class="input-group mt-20">
-                            <span class="input-group-addon" id="basic-addon3"><i class="fa fa-user text-white"></i></span>
+                            <span class="input-group-addon" id="basic-addon3"><i class="fa fa-key"></i></span>
                             <input type="password" name="password" class="form-control login-input" id="password" placeholder="Password" required>
                         </div>
                         @if($errors->get('username')||$errors->get('password')||$errors->get('login'))

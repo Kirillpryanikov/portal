@@ -1,5 +1,7 @@
 @extends('menu.menu_body')
 
+@section('menu-page-title', 'Profile')
+
 @section('menu_options')
     <div class="container">
         <div class="row white">
@@ -128,7 +130,7 @@
         </a>
         <!----------------------------------------->
         <!----------------------------------------->
-        <a href="#" class="not-away">
+        <a href="#" class="modal-executer not-away" data-modal="activationModal">
             <div class="row white">
                 <div class="col-3 col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     <h3 class="driver-name font-thin">Activation</h3>
@@ -356,6 +358,32 @@
     </div>
     {{------------ end of email Modal Window -------------}}
 
+    {{------------ activation Modal Window --------------------}}
+    <div id="activationModal" class="modal-container col-12 col-sm-6 offset-sm-3 col-lg-4 offset-lg-4">
+        <div class="full-width">
+            <div class="white">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                    <h1 class="status text-center">Activation</h1>
+                </div>
+            </div>
+
+            <div class="row">
+                <form id="activationModalForm" class="full-width" method="POST" action="{{route('post_send_message')}}">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="driver_id" value="{{$driver['_id']}}">
+                        <input type="hidden" name="param_name"  value="activation">
+                        <textarea placeholder="Enter your message" name="param_value" class="modal-text-area" id="activationModalData"></textarea>
+                        <input type="submit" class="modal-submit" data-modal="activationModal" value="Request For Change">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-close" data-close="activationModal"><i class="fa fa-lg fa-window-close" aria-hidden="true"></i></div>
+    </div>
+    {{------------ end of activation Modal Window -------------}}
+
 
 
 
@@ -365,33 +393,6 @@
 @section('options_scripts')
     <script>
         $(document).ready(function () {
-            $('input[type="checkbox"]').on('click', function (e) {
-                var id = $(this).data('id');
-                var data ={};
-                var isChecked = $(this).is(":checked");
-                if (isChecked)
-                {
-                    data = {id: id, activated: true};
-                } else {
-                    data = {id: id, activated: false};
-                }
-
-                $.ajax({
-                    url: "#",
-                    method: 'post',
-                    data: data
-                }).done(function() {
-                    if (isChecked) {
-                        $( this ).siblings('driver-name').addClass('red').text('Deactivate');
-                        $( this ).siblings('driver-name').removeClass('green').text('Activate');
-                    } else {
-                        $( this ).siblings('driver-name').addClass('green').text('Activate');
-                        $( this ).siblings('driver-name').removeClass('red').text('Deactivate');
-                    }
-
-                });
-
-            });
 
             //show Modal Window
             $(document).on('click', 'a.modal-executer', function () {
