@@ -30,7 +30,7 @@
                         </div>
                         <div class="col-3 col-lg-4 col-md-4 col-sm-4 col-xs-4">
 
-                            <h3 class="status rs">Rs. {{$rs_booking}}</h3>
+                            <h3 class="status rs">Rs. {{$booking['rs']}}</h3>
                             <p class="time rs-compl mw-100px {{($booking['status']==="cancelled")?'red':'green'}}">{{($booking['status']==="cancelled")?$booking['status'].' by '.$booking['cancel_by']:$booking['status']}}</p>
                         </div>
                         <div class="col-3 col-lg-2 col-md-2 col-sm-2 col-xs-2"> <i class="fa fa-arrow-right pull-right next mt-14"></i> </div>

@@ -32,9 +32,11 @@
         <!----------------------------------------->
 
     <?php
-    $dateTime = strtotime($trip['created_at']);
-    $dateStr = date('M jS Y', $dateTime);
-    $timeStr = date('g:i A', $dateTime);
+            $ttt = collect($trip['accpted_time'])->toArray();
+    $dateTimeMS = (int)$ttt['$date']['$numberLong'];
+
+    $dateTimeS = round($dateTimeMS/1000);
+    $dateStr = date('M jS Y g:i A', $dateTimeS);
     ?>
 
 <!----------------------------------------->
@@ -43,7 +45,7 @@
                 <h3 class="status pull-left">Booking Time</h3>
             </div>
             <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                <h3 class="status pull-right font-thin fz-16">{{$dateStr}} {{$timeStr}}</h3>
+                <h3 class="status pull-right font-thin fz-16">{{$dateStr}}</h3>
             </div>
         </div>
         <div class="row white">
