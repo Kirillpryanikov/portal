@@ -69,12 +69,24 @@ class DriverController extends Controller
         $time = $this->getTime();
         $driver_id =new ObjectID($id);
 
-        $trips = Trip::orderBy('created_at', 'desc')
-            ->where('created_at', '>=', $time)
+        $trips = Trip::where('created_at', '>=', $time)
             ->where('driver_id', $driver_id)
-            ->get()->toArray();
+            ->get();
 
-        return $trips;
+        $trips_id = [];
+        foreach ($trips as $trip)
+        {
+            $trips_id[]=new ObjectID($trip->_id);
+        }
+
+        $invoice = Invoice::whereIn('trip_id', $trips_id)->get();
+
+        foreach ($trips as $key=>$trip)
+        {
+            $trips[$key]->rs = $invoice->where('trip_id', $trip->_id)->pluck('total')->sum();
+        }
+
+        return $trips->toArray();
     }
 
     /**
