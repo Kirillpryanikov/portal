@@ -11,9 +11,11 @@ use App\Statement;
 use App\Trip;
 use App\TripCall;
 use App\Wallet;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Mail;
+use MongoDB\BSON\ObjectID;
 
 class DriverController extends Controller
 {
@@ -21,6 +23,11 @@ class DriverController extends Controller
 
     private function getDriver($id){
         $this->data['driver'] = Driver::select('_id', 'full_name')->where('_id', $id)->first()->toArray();
+    }
+
+    private function getTime(){
+        return Carbon::createFromTimestampUTC( time() - (30 * 24 * 60 * 60));
+
     }
 
     /**
@@ -59,8 +66,13 @@ class DriverController extends Controller
     }
 
     private function getBookingsData($id){
-        $trips = Trip::all();
-        $trips = $trips->where('driver_id', $id)->toArray();
+        $time = $this->getTime();
+        $driver_id =new ObjectID($id);
+
+        $trips = Trip::orderBy('created_at', 'desc')
+            ->where('created_at', '>=', $time)
+            ->where('driver_id', $driver_id)
+            ->get()->toArray();
 
         return $trips;
     }
@@ -86,8 +98,14 @@ class DriverController extends Controller
     }
 
     public function getMissed(Request $request, $id){
-        $trip_calls = TripCall::all();
-        $trip_calls = $trip_calls->where('driver_id', $id)->where('status', "missed")->toArray();
+        $time = $this->getTime();
+        $driver_id =new ObjectID($id);
+
+        $trip_calls = TripCall::orderBy('created_at', 'desc')
+            ->where('created_at', '>=', $time)
+            ->where('driver_id', $driver_id)
+            ->where('status', '=',"missed")
+            ->get()->toArray();
 
         $this->getDriver($id);
 
@@ -173,31 +191,17 @@ class DriverController extends Controller
      */
     // get wallet data
     public function getWallets(Request $request, $id){
-        $wallets_all = Wallet::all()->toArray();
+        $time = $this->getTime();
+        $driver_id =new ObjectID($id);
+
+        $wallets_all = Wallet::orderBy('created_at', 'desc')
+            ->where('created_at', '>=', $time)
+            ->where('driver_id', $driver_id)
+            ->get()->toArray();
+
         $this->getDriver($id);
 
-        $wallets_out = [];
-
-        foreach ($wallets_all as $wallet) {
-            if (isset($wallet['driver_id']) && $wallet['driver_id'] == $id) {
-                $wallets_out[] = [
-                    '_id' => isset($wallet['_id']) ? $wallet['_id'] : '',
-                    'driver_id' => isset($wallet['driver_id']) ? $wallet['driver_id'] : '',
-                    'trip_no' => isset($wallet['trip_no']) ? $wallet['trip_no'] : '',
-                    'created_at' => isset($wallet['created_at']) ? $wallet['created_at'] : '',
-                    'title' => isset($wallet['title']) ? $wallet['title'] : '',
-                    'comments' => isset($wallet['comments']) ? $wallet['comments'] : '',
-                    'balance' => isset($wallet['balance']) ? $wallet['balance'] : '',
-                    'total' => isset($wallet['total']) ? $wallet['total'] : '',
-                    'trip_status' => isset($wallet['trip_status']) ? $wallet['trip_status'] : '',
-                    'transfer' => isset($wallet['transfer']) ? $wallet['transfer'] : '',
-                    'last_received_via' => isset($wallet['last_received_via']) ? $wallet['last_received_via'] : '',
-                ];
-            }
-        }
-
-        $wallets_out = new PaginationArrayController($wallets_out,20);
-
+        $wallets_out = new PaginationArrayController($wallets_all,20);
         $this->data['wallets'] = $wallets_out->getPageData($request);
 
         return view('menu.options.wallets', $this->data);
@@ -239,15 +243,16 @@ class DriverController extends Controller
      */
     // get Statements data
     public function getStatements($id){
-        $statement = Statement::all();
-        $statement = $statement->where('partner_id', $id)->first();
+        $driver_id =new ObjectID($id);
+        $statement = Statement::where('partner_id', $driver_id)->first();
+
         if($statement) {
             $statement = $statement->toArray();
         } else {
             $statement = [];
         }
-        $this->getDriver($id);
 
+        $this->getDriver($id);
         $this->data['statements'] = $statement;
 
         return view('menu.options.statements', $this->data);
