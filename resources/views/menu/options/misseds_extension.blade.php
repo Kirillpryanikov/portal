@@ -55,7 +55,7 @@
         $(document).ready(function () {
             var nav = $('#missedsPagination');
             var driverID = nav.data('id');
-            var url = '/booking/'+driverID+'/';
+            var url = '/missed/'+driverID+'/';
             var totalPages = parseInt(nav.data('pages'));
             var currentPage = parseInt(nav.data('current'));
 
