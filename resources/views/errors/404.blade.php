@@ -1,5 +1,7 @@
 @extends('layouts.base')
 
+@section('page-title', '404')
+
 @section('content')
     <div class="container">
         <!----------------------------------------->
