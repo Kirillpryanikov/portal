@@ -1,17 +1,13 @@
 @extends('layouts.base')
 
-@section('password_link')
-<div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6 hgt-54 d-flex align-items-center">
-    <a class="text-white" href="{{route('change_password', $drivers['datas'][0]['_id'])}}">Change Password</a>
-</div>
-@endsection
+@section('page-title', 'Partners')
 
 @section('content')
 <div class="container">
     <!----------------------------------------->
     <div class="row gray">
         <div class="col-8 col-lg-6 col-md-6 col-sm-6 col-xs-6">
-            <h3 class="status">Driver Name</h3>
+            <h3 class="status">Partner's Name</h3>
         </div>
         <div class="col-4 text-right col-lg-6 col-md-6 col-sm-6 col-xs-6">
             <h3 class="status">Status</h3>

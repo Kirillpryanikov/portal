@@ -1,5 +1,9 @@
 @extends('menu.menu_body')
 
+@section('menu-page-title')
+@yield('bookings-menu-page-title')
+@endsection
+
 @section('menu_options')
     <div class="container">
         <div class="row white">

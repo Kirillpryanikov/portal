@@ -1,10 +1,12 @@
 @extends('menu.menu_body')
 
+@section('menu-page-title', 'Details')
+
 @section('menu_options')
     <div class="container">
         <div class="row white">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <p class="breadcrumb"><a href="{{route('menu')}}">Drivers Names</a> &gt; <a href="{{route('personal_menu',$driver['_id'])}}">{{$driver['full_name']}}</a> &gt; <a href="{{route('menu_booking', $driver['_id'])}}">Bookings</a> &gt; Detail</p>
+                <p class="breadcrumb"><a href="{{route('menu')}}">Drivers Names</a> &gt; <a href="{{route('personal_menu',$driver['_id'])}}">{{$driver['full_name']}}</a> &gt; <a href="{{route('menu_booking', $driver['_id'])}}">Bookings</a> &gt; Details</p>
             </div>
         </div>
     </div>
@@ -28,11 +30,12 @@
             </div>
         </div>
         <!----------------------------------------->
-<?php
-$dateTime = strtotime($trip['created_at']);
-$dateStr = date('j M', $dateTime);
-$timeStr = date('g:i A', $dateTime);
-?>
+
+    <?php
+    $dateTime = strtotime($trip['created_at']);
+    $dateStr = date('M jS Y', $dateTime);
+    $timeStr = date('g:i A', $dateTime);
+    ?>
 
 <!----------------------------------------->
         <div class="row">
@@ -40,7 +43,7 @@ $timeStr = date('g:i A', $dateTime);
                 <h3 class="status pull-left">Booking Time</h3>
             </div>
             <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                <h3 class="status pull-right font-thin fz-16"><?php echo "$dateStr, $timeStr" ?></h3>
+                <h3 class="status pull-right font-thin fz-16">{{$dateStr}} {{$timeStr}}</h3>
             </div>
         </div>
         <div class="row white">
@@ -69,7 +72,7 @@ $timeStr = date('g:i A', $dateTime);
             <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <h3 class="status pull-left">{{$details['minutes']}} min</h3>
             </div>
-            <?php $cost = $details['minutes'] * $details['trip_charges']; ?>
+            <?php $cost = $details['minutes'] * $details['price_per_minute']; ?>
 
             <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <h3 class="status pull-right font-thin fz-16"><?php echo $cost; ?></h3>

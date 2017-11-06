@@ -1,5 +1,7 @@
 @extends('menu.menu_body')
 
+@section('menu-page-title', 'Statements')
+
 @section('menu_options')
     <div class="container">
         <div class="row white">
