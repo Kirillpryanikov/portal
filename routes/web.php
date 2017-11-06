@@ -17,6 +17,7 @@ Route::middleware('un_login')->group(function () {
 });
 
 Route::middleware('is_login')->group(function () {
+    Route::get('/logout', 'UserController@logout')->name('Logout_post');
     Route::get('/change_password/{id}', 'UserController@changePasswordPage')->name('change_password');
     Route::post('/change_password_post', 'UserController@changePassword')->name('change_password_post');
     Route::get('/menu', 'DriverController@getDrivers')->name('menu');

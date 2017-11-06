@@ -32,17 +32,10 @@ class DriverController extends Controller
      */
     //get drivers list for menu
     public function getDrivers(Request $request){
-        $drivers = Driver::select('_id', 'full_name', 'driver_status', 'vendor_id')->get()->toArray();
+        $drivers = Driver::select('_id', 'full_name', 'driver_status', 'vendor_id', 'status')->get();
+        $drivers = $drivers->where('status', 'active')->where('vendor_id', session('user_id'))->toArray();
 
-        $drivers_out = [];
-
-        foreach ($drivers as $driver){
-            if (isset($driver['vendor_id']) && $driver['vendor_id'] == session('user_id')){
-                $drivers_out[] = $driver;
-            }
-        }
-
-        $out_drivers = new PaginationArrayController($drivers_out,20);
+        $out_drivers = new PaginationArrayController($drivers,20);
 
         return view('menu.drivers_list', ['drivers'=>$out_drivers->getPageData($request)]);
     }
@@ -289,5 +282,4 @@ class DriverController extends Controller
 
         return redirect()->route('get_driver_profile', ['id'=>$request['driver_id']]);
     }
-
 }

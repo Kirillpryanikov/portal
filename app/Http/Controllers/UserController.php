@@ -86,19 +86,9 @@ class UserController extends Controller
         }
     }
 
-    public function changePasswordPage($id){
-        $driver = Driver::select('_id', 'full_name')->where('_id', $id)->first()->toArray();
+    public function logout(Request $request){
+        $request->session()->forget('user_id');
 
-        return view('auth.change_password',['driver'=>$driver]);
-    }
-
-    public function changePassword(Request $request){
-        return redirect()->route('menu');
-
-        $driver = Driver::where('_id', $request['driver_id'])->first()->toArray();
-
-        $request['password_old'];
-        $request['password_new'];
-        $request['password_new_1'];
+        return redirect()->route('login');
     }
 }
