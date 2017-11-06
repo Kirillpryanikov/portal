@@ -26,7 +26,7 @@ Route::middleware('is_login')->group(function () {
     Route::get('/settings/{id}', 'DriverController@getDriverProfile')->name('get_driver_profile');
     Route::get('/booking/detail/{trip_no}/{driver_id}', 'DriverController@getBookingDetail')->name('get_booking_detail');
     Route::get('/missed/detail/{trip_no}/{driver_id}', 'DriverController@getBookingDetail')->name('get_missed_detail');
-    Route::get('/wallets/{id}', 'DriverController@getWallets')->name('get_wallets');
+    Route::get('/wallet/{id}', 'DriverController@getWallets')->name('get_wallets');
     Route::get('/complaints_filed/{id}', 'DriverController@getComplaintsFiled')->name('get_complaints_filed');
     Route::get('/statements/{id}', 'DriverController@getStatements')->name('get_statements');
     Route::get('/settings-change/{id}', 'DriverController@getMessage')->name('get_message');
