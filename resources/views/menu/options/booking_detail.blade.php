@@ -32,14 +32,16 @@
         <!----------------------------------------->
 
     <?php
+    $dateTime = strtotime($trip['created_at']);
+    $dateStr = date('M jS Y g:i A', $dateTime);
+
             if (isset($trip['accpted_time'])) {
                 $ttt = collect($trip['accpted_time'])->toArray();
-                $dateTimeMS = (int)$ttt['$date']['$numberLong'];
-                $dateTimeS = round($dateTimeMS/1000);
-                $dateStr = date('M jS Y g:i A', $dateTimeS);
-            } else {
-                $dateTime = strtotime($trip['created_at']);
-                $dateStr = date('M jS Y g:i A', $dateTime);
+                if (isset($ttt['$date']['$numberLong'])){
+                    $dateTimeMS = (int)$ttt['$date']['$numberLong'];
+                    $dateTimeS = round($dateTimeMS/1000);
+                    $dateStr = date('M jS Y g:i A', $dateTimeS);
+                }
             }
     ?>
 
