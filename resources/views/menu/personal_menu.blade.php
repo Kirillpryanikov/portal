@@ -23,8 +23,8 @@
         </div>
     </a>
     <!----------------------------------------->
-    <!----------------------------------------->
-    <a class="to-map not-away" href="https://www.google.com/maps?q=loc:{{$driver['last_lat']}},{{$driver['last_lng']}}">
+    <!-------------------https://www.google.com/maps/search/33.66877,73.0755083---------------------->
+    <a class="to-map not-away" href="https://www.google.com/maps/search/{{$driver['last_lat']}},{{$driver['last_lng']}}">
         <div class="row white">
             <div class="col-9 col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <h3 class="driver-name font-thin">Location</h3>
@@ -32,7 +32,6 @@
             <div class="col-3 col-lg-6 col-md-6 col-sm-6 col-xs-6"> <i class="fa fa-arrow-right pull-right next"></i> </div>
         </div>
     </a>
-    <!----------------------------------------->
     <!----------------------------------------->
     <a href="{{route('get_wallets', $driver['_id'])}}">
         <div class="row white">
@@ -43,7 +42,6 @@
         </div>
     </a>
     <!----------------------------------------->
-    <!----------------------------------------->
     <a href="{{route('get_driver_profile', $driver['_id'])}}">
         <div class="row white">
             <div class="col-9 col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -53,7 +51,6 @@
         </div>
     </a>
     <!----------------------------------------->
-    <!----------------------------------------->
     <a href="{{route('get_complaints_filed', $driver['_id'])}}">
         <div class="row white">
             <div class="col-9 col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -62,7 +59,6 @@
             <div class="col-3 col-lg-6 col-md-6 col-sm-6 col-xs-6"> <i class="fa fa-arrow-right pull-right next"></i> </div>
         </div>
     </a>
-    <!----------------------------------------->
     <!----------------------------------------->
     <a href="{{route('get_statements', $driver['_id'])}}">
         <div class="row white">
