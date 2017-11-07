@@ -63,7 +63,7 @@
 $current = $data['param_name'] !='city'?$data['driver'][$data['param_name']]:$data['city_data']['name'];
 $label = 'Email';
 
-if($data['param_name'] == 'gps_coords'){
+if($data['param_name'] == 'address_coordinates'){
     $label = 'GPS';
 } elseif($data['param_name'] == 'address'){
     $label = 'Address';
@@ -77,6 +77,8 @@ if($data['param_name'] == 'gps_coords'){
     $label = 'Mobile (Personal 1)';
 } elseif($data['param_name'] == 'mobile_2'){
     $label = 'Mobile (Personal 2)';
+} elseif($data['param_name'] == 'status'){
+    $label = 'Status of driver';
 }
 ?>
 
