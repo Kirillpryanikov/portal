@@ -215,6 +215,7 @@ class DriverController extends Controller
 
         $wallets_out = new PaginationArrayController($wallets_all,20);
         $this->data['wallets'] = $wallets_out->getPageData($request);
+        $this->data['wallets_rs'] = count($wallets_all);
 
         return view('menu.options.wallets', $this->data);
     }
