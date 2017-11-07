@@ -69,7 +69,8 @@ class DriverController extends Controller
         $time = $this->getTime();
         $driver_id =new ObjectID($id);
 
-        $trips = Trip::where('created_at', '>=', $time)
+        $trips = Trip::orderBy('created_at', 'desc')
+            ->where('created_at', '>=', $time)
             ->where('driver_id', $driver_id)
             ->get();
 
@@ -85,7 +86,7 @@ class DriverController extends Controller
         {
             $trips[$key]->rs = $invoice->where('trip_id', $trip->_id)->pluck('total')->sum();
         }
-
+//dd($trips);
         return $trips->toArray();
     }
 
