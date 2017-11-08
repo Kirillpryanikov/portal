@@ -50,8 +50,5 @@ cp .env.example .env
 php artisan key:generate
 ```
 ```$xslt
-php artisan migrate
-```
-```$xslt
 composer require guzzlehttp/guzzle
 ```
