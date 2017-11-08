@@ -30,7 +30,8 @@ DB_PASSWORD=secret
 ```
 - Mail parameters:
 ```$xslt
-MAIL_ADDRESS=report@example.com
+MAIL_ADDRESS_FROM=report@example.com
+MAIL_ADDRESS_TO=report@example.com
 MAIL_DRIVER=mail_driver
 MAIL_HOST=mail_host
 MAIL_PORT=2525
