@@ -6,7 +6,6 @@
 - Mbstring PHP Extension
 - Tokenizer PHP Extension
 - XML PHP Extension
-- MySQL
 
 ## API DOC
 The located documentation for IPA:
