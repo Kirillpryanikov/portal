@@ -26,7 +26,7 @@
                 <h3 class="status text-white">Balance</h3>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                <h3 class="status pull-right text-white">Rs. {{count($wallets)}}</h3>
+                <h3 class="status pull-right text-white">Rs. {{$wallets_rs}}</h3>
             </div>
         </div>
 

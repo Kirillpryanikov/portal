@@ -165,7 +165,7 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     {{ csrf_field() }}
                     <input type="hidden" name="driver_id" value="{{$driver['_id']}}">
-                    <input type="hidden" name="param_name"  value="gps_coords">
+                    <input type="hidden" name="param_name"  value="address_coordinates">
                     <textarea placeholder="GPS coordinates" name="param_value" class="modal-text-area" id="gpsModalData"></textarea>
                     <input type="submit" class="modal-submit" data-modal="gpsModal" value="Request For Change">
                 </div>
@@ -373,7 +373,7 @@
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         {{ csrf_field() }}
                         <input type="hidden" name="driver_id" value="{{$driver['_id']}}">
-                        <input type="hidden" name="param_name"  value="activation">
+                        <input type="hidden" name="param_name"  value="status">
                         <textarea placeholder="Enter your message" name="param_value" class="modal-text-area" id="activationModalData"></textarea>
                         <input type="submit" class="modal-submit" data-modal="activationModal" value="Request For Change">
                     </div>
