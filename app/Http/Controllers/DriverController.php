@@ -58,7 +58,7 @@ class DriverController extends Controller
      */
     //get drivers data for personal menu
     public function getDriverMenu($id){
-        $driver = Driver::select('_id', 'full_name', 'address', 'last_lat', 'last_lng')->where('_id', $id)->first()->toArray();
+        $driver = Driver::select('_id', 'full_name', 'address', 'current_lat', 'current_lng')->where('_id', $id)->first()->toArray();
         if (count($driver) == 0){
             return view('errors.404',$this->data);
         }
