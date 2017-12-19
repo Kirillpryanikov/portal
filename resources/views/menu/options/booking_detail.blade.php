@@ -23,10 +23,10 @@
         <!----------------------------------------->
         <div class="row gray">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 btn-1">
-                <h3 class="status font-thin fz-16"><span class="font-bold">Pick Up: </span>{{$trip['start_address']}}</h3>
+                <h3 class="status font-thin fz-16"><span class="font-bold">Pick Up: </span>{{isset($trip['start_address'])?$trip['start_address']:''}}</h3>
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 btn-1">
-                <h3 class="status font-thin fz-16" ><span class="font-bold">Drop Off: </span>{{$trip['end_address']}}</h3>
+                <h3 class="status font-thin fz-16" ><span class="font-bold">Drop Off: </span>{{isset($trip['end_address'])?$trip['end_address']:''}}</h3>
             </div>
         </div>
         <!----------------------------------------->
