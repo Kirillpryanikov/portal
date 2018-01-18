@@ -24,7 +24,7 @@
     </a>
     <!----------------------------------------->
     <!-------------------https://www.google.com/maps/search/33.66877,73.0755083---------------------->
-    <a class="to-map not-away" href="https://www.google.com/maps/search/{{$driver['last_lat']}},{{$driver['last_lng']}}">
+    <a class="to-map not-away" href="https://www.google.com/maps/search/{{$driver['current_lat']}},{{$driver['current_lng']}}">
         <div class="row white">
             <div class="col-9 col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <h3 class="driver-name font-thin">Location</h3>

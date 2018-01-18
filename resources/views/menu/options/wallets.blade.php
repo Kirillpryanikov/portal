@@ -89,7 +89,7 @@
         $(document).ready(function () {
             var nav = $('#walletPagination');
             var driverID = nav.data('id');
-            var url = '/wallets/'+driverID+'/';
+            var url = '/wallet/'+driverID+'/';
             var totalPages = parseInt(nav.data('pages'));
             var currentPage = parseInt(nav.data('current'));
 
