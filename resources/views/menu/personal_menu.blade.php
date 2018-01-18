@@ -50,7 +50,7 @@
             <div class="col-3 col-lg-6 col-md-6 col-sm-6 col-xs-6"> <i class="fa fa-arrow-right pull-right next"></i> </div>
         </div>
     </a>
-    <!----------------------------------------->
+    <!----------------------------------------->{{--
     <a href="{{route('get_complaints_filed', $driver['_id'])}}">
         <div class="row white">
             <div class="col-9 col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -58,7 +58,7 @@
             </div>
             <div class="col-3 col-lg-6 col-md-6 col-sm-6 col-xs-6"> <i class="fa fa-arrow-right pull-right next"></i> </div>
         </div>
-    </a>
+    </a> --}}
     <!----------------------------------------->
     <a href="{{route('get_statements', $driver['_id'])}}">
         <div class="row white">

@@ -11,10 +11,11 @@ class UserController extends Controller
 
     public function loginAPI($mail, $password){
         $curl = curl_init();
+	$type='v';
 
         curl_setopt_array($curl, array(
             CURLOPT_PORT => "3000",
-            CURLOPT_URL => "https://staging.bykea.net:3000/api/v1/admin/login",
+            CURLOPT_URL => "https://secure.bykea.net:3000/api/v1/admin/login",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_SSL_VERIFYPEER => 0,
