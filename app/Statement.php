@@ -9,5 +9,7 @@ class Statement extends Eloquent
 {
     protected $collection='vendor_summary';
 
+    protected $connection = 'mongodb';
+
     protected $primaryKey='_id';
 }

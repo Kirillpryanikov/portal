@@ -9,6 +9,8 @@ class TripCall extends Eloquent
 {
     protected $collection='trip_calls';
 
+    protected $connection = 'mongodb';
+
     protected $primaryKey='_id';
 
     public function trip(){

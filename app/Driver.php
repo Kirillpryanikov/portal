@@ -9,5 +9,7 @@ class Driver extends Eloquent
 {
     protected $collection='drivers';
 
+    protected $connection = 'mongodb';
+
     protected $primaryKey='_id';
 }

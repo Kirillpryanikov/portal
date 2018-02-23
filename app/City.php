@@ -10,5 +10,7 @@ class City extends Eloquent
 {
     protected $collection='cities';
 
+    protected $connection = 'mongodb';
+
     protected $primaryKey='_id';
 }

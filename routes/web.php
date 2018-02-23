@@ -11,12 +11,20 @@
 |
 */
 
+Route::post('/file', 'UploadedFileController@uploadFile')->name('file');
+Route::get('/get_files', 'UploadedFileController@getFiles')->name('get_files');
+Route::get('/get_file/:id', 'UploadedFileController@makeFile')->name('get_file');
+
 Route::middleware('un_login')->group(function () {
     Route::get('/', 'UserController@loginPage')->name('login');
     Route::post('/login', 'UserController@login')->name('Login_post');
 });
 
 Route::middleware('is_login')->group(function () {
+    Route::post('/file', 'UploadedFileController@uploadFile')->name('file');
+    Route::get('/get_files', 'UploadedFileController@getFiles')->name('get_files');
+    Route::get('/get_file/{id}', 'UploadedFileController@getFile')->name('get_file');
+    Route::get('/show_file/{id}', 'UploadedFileController@showFile')->name('show_file');
     Route::get('/logout', 'UserController@logout')->name('Logout_post');
     Route::get('/change_password/{id}', 'UserController@changePasswordPage')->name('change_password');
     Route::post('/change_password_post', 'UserController@changePassword')->name('change_password_post');
@@ -33,3 +41,4 @@ Route::middleware('is_login')->group(function () {
     Route::post('/send_message', 'DriverController@sendMessage')->name('post_send_message');
     Route::get('/{id}', 'DriverController@getDriverMenu')->name('personal_menu');
 });
+

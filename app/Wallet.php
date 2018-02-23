@@ -10,5 +10,7 @@ class Wallet extends Eloquent
 {
     protected $collection='wallets';
 
+    protected $connection = 'mongodb';
+
     protected $primaryKey='_id';
 }

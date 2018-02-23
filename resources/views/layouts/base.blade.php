@@ -23,7 +23,8 @@
         <div class="row">
             <div class="col-12 text-white d-flex flex-row flex-nowrap justify-content-between align-items-center">
                 <h4>Bykea Partner Management Portal  (PMP)</h4>
-                @if(isset($driver))
+                <a href="{{url('/get_files')}}"><button type="submit" data-toggle="tooltip" data-placement="bottom" title="Show files" class="btn btn-default text-success"><i class="fa fa-file" aria-hidden="true"></i></button></a>
+            @if(isset($driver))
                     <form class="ml-3" action="{{route('Logout_post')}}">
                         {{ csrf_field() }}
                         <button type="submit" data-toggle="tooltip" data-placement="bottom" title="Logout" class="btn btn-default text-danger"><i class="fa fa-sign-out" aria-hidden="true"></i></button>
@@ -40,7 +41,7 @@
     @yield('scripts')
 <script>
     $(document).on('click', 'a:not(.not-away)', function () {
-        $('#loader').addClass('active');
+        // $('#loader').addClass('active');
     })
 </script>
 </body>

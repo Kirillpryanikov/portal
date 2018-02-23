@@ -10,5 +10,7 @@ class Invoice extends Eloquent
 {
     protected $collection='invoices';
 
+    protected $connection = 'mongodb';
+
     protected $primaryKey='_id';
 }

@@ -9,5 +9,7 @@ class Trip extends Eloquent
 {
     protected $collection='trips';
 
+    protected $connection = 'mongodb';
+
     protected $primaryKey='_id';
 }

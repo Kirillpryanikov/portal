@@ -10,5 +10,7 @@ class ComplaintFiled extends Eloquent
 {
     protected $collection='partner_complaints';
 
+    protected $connection = 'mongodb';
+
     protected $primaryKey='_id';
 }

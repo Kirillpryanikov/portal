@@ -36,7 +36,7 @@ class UserController extends Controller
         curl_close($curl);
 
         $id = '';
-
+        $isAdmin = false;
         $data = collect(json_decode($response));
 
         if (isset($data['data'])){
@@ -44,10 +44,12 @@ class UserController extends Controller
 
             if (isset($data['personalInfo'])){
                 $id = $data['personalInfo']->_id;
+                $isAdmin = data_get($data, 'personalInfo.isAdmin', false);
             }
+
         }
 
-        return $id;
+        return [$id,$isAdmin];
     }
 
     public function loginPage(){
@@ -74,8 +76,11 @@ class UserController extends Controller
 
         $id = $this->loginAPI($request['username'], $request['password']);
 
-        if ($id){
+        if ($id[0]){
             $request->session()->put('user_id', $id);
+            if ($id[1] === true){
+                $request->session()->put('admin', 'true');
+            }
 
             return redirect()->route('menu');
         } else {
@@ -89,6 +94,7 @@ class UserController extends Controller
 
     public function logout(Request $request){
         $request->session()->forget('user_id');
+        $request->session()->forget('admin');
 
         return redirect()->route('login');
     }
