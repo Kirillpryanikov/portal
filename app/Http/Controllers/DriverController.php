@@ -14,8 +14,10 @@ use App\Wallet;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Mail;
 use MongoDB\BSON\ObjectID;
+use Symfony\Component\VarDumper\Dumper\DataDumperInterface;
 
 class DriverController extends Controller
 {
@@ -39,8 +41,12 @@ class DriverController extends Controller
      */
     //get drivers list for menu
     public function getDrivers(Request $request){
-        $drivers = Driver::select('_id', 'full_name', 'driver_status', 'vendor_id', 'status')->get();
-        $drivers = $drivers->where('status', 'active')->where('vendor_id', session('user_id'))->toArray();
+        $drivers = Driver::select('_id', 'full_name', 'driver_status', 'vendor_id', 'status', 'wallet')->get();
+        $drivers = $drivers
+            ->where('status', 'active')
+            ->where('vendor_id', session('user_id'))
+            ->sortBy('driver_status')
+            ->toArray();
         $out_drivers = new PaginationArrayController($drivers,20);
 
         return view('menu.drivers_list', ['drivers'=>$out_drivers->getPageData($request)]);

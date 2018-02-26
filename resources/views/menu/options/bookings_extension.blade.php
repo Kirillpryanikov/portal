@@ -17,11 +17,12 @@
     <div class="tab-content">
         <div class="tab-pane active">
             @foreach($bookings['datas'] as $booking)
+                @if($booking['trip_no'] != '')
                 <a href="{{route('get_booking_detail', [$booking['trip_no'], $booking['driver_id']])}}">
                     <div class="row white">
                         <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
                             <?php
-                            $dateTime = strtotime($booking['created_at']);
+                            $dateTime = strtotime($booking['created_at'] . '+5 hours');
                             $dateStr = date('M jS Y', $dateTime);
                             $timeStr = date('g:i A', $dateTime);
                             ?>
@@ -36,6 +37,7 @@
                         <div class="col-3 col-lg-2 col-md-2 col-sm-2 col-xs-2"> <i class="fa fa-arrow-right pull-right next mt-14"></i> </div>
                     </div>
                 </a>
+                @endif
             @endforeach
             <div class="container d-flex justify-content-center mt-3 mb-3">
                 <nav id="bookingsPagination" data-id="{{$driver['_id']}}" data-pages="{{$bookings['allPage']}}" data-current="{{$bookings['page']}}" ></nav>

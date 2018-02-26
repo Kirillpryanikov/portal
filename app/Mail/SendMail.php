@@ -30,8 +30,11 @@ class SendMail extends Mailable
      */
     public function build()
     {
-        return $this->from(env('MAIL_ADDRESS_FROM'))
+        return $this
+            ->from(env('MAIL_ADDRESS_FROM'))
                     ->to(env('MAIL_ADDRESS_TO'))
+//            ->from(config('mail.from.address'))
+//            ->to(config('mail.to.address'))
                     ->subject('Partner Profile Change Request')
                     ->with(['data'=>$this->data])
                     ->view('mail.mail');

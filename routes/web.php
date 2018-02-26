@@ -11,10 +11,6 @@
 |
 */
 
-Route::post('/file', 'UploadedFileController@uploadFile')->name('file');
-Route::get('/get_files', 'UploadedFileController@getFiles')->name('get_files');
-Route::get('/get_file/:id', 'UploadedFileController@makeFile')->name('get_file');
-
 Route::middleware('un_login')->group(function () {
     Route::get('/', 'UserController@loginPage')->name('login');
     Route::post('/login', 'UserController@login')->name('Login_post');

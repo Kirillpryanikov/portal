@@ -80,6 +80,7 @@ if($data['param_name'] == 'address_coordinates'){
 } elseif($data['param_name'] == 'status'){
     $label = 'Status of driver';
 }
+
 ?>
 
 <div class="container row">

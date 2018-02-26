@@ -12,4 +12,5 @@ class Driver extends Eloquent
     protected $connection = 'mongodb';
 
     protected $primaryKey='_id';
+
 }

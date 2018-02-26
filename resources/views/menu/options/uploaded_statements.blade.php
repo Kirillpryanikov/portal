@@ -3,13 +3,13 @@
 @section('menu-page-title', 'Statements')
 
 @section('menu_options')
-    {{--<div class="container">--}}
-        {{--<div class="row white">--}}
-            {{--<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">--}}
-                {{--<p class="breadcrumb"><a href="{{route('menu')}}">Drivers Names</a> &gt; <a href="{{route('personal_menu',$driver['_id'])}}">{{$driver['full_name']}}</a> &gt; Statements</p>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
+    <div class="container">
+        <div class="row white">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <p class="breadcrumb"><a href="{{route('menu')}}">Drivers Names</a></p>
+            </div>
+        </div>
+    </div>
 {{----}}
     {{--<div class="container">--}}
 {{----}}

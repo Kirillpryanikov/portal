@@ -21,9 +21,10 @@
 <header class="d-flex flex-column justify-content-center align-items-center">
     <div class="container">
         <div class="row">
-            <div class="col-12 text-white d-flex flex-row flex-nowrap justify-content-between align-items-center">
-                <h4>Bykea Partner Management Portal  (PMP)</h4>
-                <a href="{{url('/get_files')}}"><button type="submit" data-toggle="tooltip" data-placement="bottom" title="Show files" class="btn btn-default text-success"><i class="fa fa-file" aria-hidden="true"></i></button></a>
+            <div class="col-md-7"></div>
+            <div class="col-md-5 text-white d-flex flex-row flex-nowrap justify-content-between align-items-center">
+
+                <a style="color: #292b2c" href="{{url('/get_files')}}">Statement</a>
             @if(isset($driver))
                     <form class="ml-3" action="{{route('Logout_post')}}">
                         {{ csrf_field() }}
