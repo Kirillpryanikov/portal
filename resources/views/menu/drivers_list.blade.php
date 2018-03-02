@@ -66,7 +66,7 @@
                         <h3 class="status font-thin">{{$driver['wallet']}}</h3>
                     </div>
                     <div class="col-3 text-right col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                        <h3 class="status font-thin {{$class_var}}">{{$driver['driver_status']}}</h3>
+                        <h3 class="status font-thin {{$class_var}}">{{ucwords($driver['driver_status'])}}</h3>
                     </div>
                 </div>
             </a>

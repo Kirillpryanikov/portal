@@ -22,10 +22,13 @@ class UploadedFileController extends Controller
                         $name = $file->getClientOriginalName();
                         $name = Carbon::now()->format('Y_m_d_h_m_s') . '_' . $name;
                         Storage::disk('local')->putFileAs('/', new File($file), $name);
-                        $this->getFromFile($name);
+                        $status = $this->getFromFile($name);
+                        if ($status === false){
+                            return redirect("/menu")->with('status', 'Error, please check you headers and try again!');
+                        }
+
                     } else {
                         return redirect("/menu")->with('status', 'Something went wrong, check uploaded file and try again!');
-
                     }
                 }
             }
@@ -49,21 +52,43 @@ class UploadedFileController extends Controller
 
         $i = 0;
         while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+            if ($i == 0) {
+                if (
+                    trim($data[0]) == 'Vendor Code'
+                    && trim($data[1]) == 'Partner Name'
+                    && trim($data[2]) == 'Login ID'
+                    && trim($data[3]) == 'Bonus Date'
+                    && trim($data[4]) == 'Total Rides'
+                    && trim($data[5]) == 'Unverified Rides'
+                    && trim($data[6]) == 'Rating'
+                    && trim($data[7]) == 'Acceptance'
+                    && trim($data[8]) == 'Total Collection'
+                    && trim($data[9]) == 'Total Fare'
+                    && trim($data[10]) == 'Bonus'
+                    && trim($data[11]) == 'Wallet Balance'
+                ) {
+                } else {
+                    $uploaded_file->delete();
+                    Storage::delete($name);
+                    return false;
+                }
+            }
+
             if ($i > 0) {
                 UploadedStatement::create([
                     'uploaded_file_id' => $uploaded_file->id,
-                    'vendor_code' => $data[0]??null,
-                    'partner_name' => $data[1]??null,
-                    'login_id' => $data[2]??null,
-                    'bonus_time' => $data[3]??null,
-                    'total_riders' => $data[4]??null,
-                    'unverified_riders' => $data[5]??null,
-                    'rating' => $data[6]??null,
-                    'acceptance' => $data[7]??null,
-                    'total_collection' => $data[8]??null,
-                    'total_fare' => $data[9]??null,
-                    'bonus' => $data[10]??null,
-                    'wallet_balance' => $data[11]??null
+                    'vendor_code' => $data[0] ?? null,
+                    'partner_name' => $data[1] ?? null,
+                    'login_id' => $data[2] ?? null,
+                    'bonus_time' => $data[3] ?? null,
+                    'total_riders' => $data[4] ?? null,
+                    'unverified_riders' => $data[5] ?? null,
+                    'rating' => $data[6] ?? null,
+                    'acceptance' => $data[7] ?? null,
+                    'total_collection' => $data[8] ?? null,
+                    'total_fare' => $data[9] ?? null,
+                    'bonus' => $data[10] ?? null,
+                    'wallet_balance' => $data[11] ?? null
                 ]);
             } else {
                 $i++;
@@ -71,6 +96,7 @@ class UploadedFileController extends Controller
         }
         fclose($handle);
         Storage::delete($name);
+        return true;
     }
 
     public function getFile($id)
@@ -80,14 +106,14 @@ class UploadedFileController extends Controller
 
         $handle = fopen(storage_path() . '/app/' . $uploaded_file->file_name, "w");
 
-        $header ="Vendor Code,Partner Name,Login ID,Bonus Date,Total Rides,Unverified Rides,Rating,Acceptance,Total Collection,Total Fare,Bonus,Wallet Balance\n";
+        $header = "Vendor Code,Partner Name,Login ID,Bonus Date,Total Rides,Unverified Rides,Rating,Acceptance,Total Collection,Total Fare,Bonus,Wallet Balance\n";
         fwrite($handle, $header);
 
         foreach ($uploaded_file->uploaded_statements as $item) {
             $row = $item->vendor_code . ','
                 . $item->partner_name . ',' . $item->login_id . ','
                 . $item->bonus_time . ',' . $item->total_riders . ','
-                . $item->unverified_riders. ','
+                . $item->unverified_riders . ','
                 . $item->rating . ',' . $item->acceptance . ','
                 . $item->total_collection . ',' . $item->total_fare . ','
                 . $item->bonus . ',' . $item->wallet_balance
@@ -102,15 +128,20 @@ class UploadedFileController extends Controller
             ->deleteFileAfterSend(true);
     }
 
-    public function getFiles(){
-        $uploaded_files = UploadedFile::withCount('uploaded_statements')->get();
+    public function getFiles()
+    {
+        $uploaded_files = UploadedFile::withCount('uploaded_statements')->orderBy('id', 'desc')->get();
 //        dd($uploaded_files);
-        return view('menu.options.uploaded_statements', compact('uploaded_files'));
+        $driver = '';
+        return view('menu.options.uploaded_statements', compact('uploaded_files', 'driver'));
     }
 
-    public function showFile($id){
+    public function showFile($id)
+    {
+        $user_id = session('user_id');
         $uploaded_file = UploadedFile::with('uploaded_statements')->find($id);
-        return view('menu.options.statements_data', compact('uploaded_file'));
+        $driver = '';
+        return view('menu.options.statements_data', compact('uploaded_file', 'driver'));
     }
 
 

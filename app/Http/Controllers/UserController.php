@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Driver;
+use App\User;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Validator;
 
 class UserController extends Controller
 {
-
+    use AuthenticatesUsers;
     public function loginAPI($mail, $password){
         $curl = curl_init();
 	$type='v';
@@ -52,8 +56,27 @@ class UserController extends Controller
         return [$id,$isAdmin];
     }
 
+
+
+    public function loginAdmin(Request $request){
+
+
+        $user = DB::connection('mysql')->table('users')
+            ->where('email', request('username'))
+            ->where('password', request('password'))
+            ->first();
+        if ($user !== null){
+            $request->session()->put('user_id', $user->id);
+                $request->session()->put('admin', 'true');
+            return redirect()->route('menu');
+        }else{
+            return back();
+        }
+
+    }
+
     public function loginPage(){
-        return view('auth.login');
+        return view('auth.login_user');
     }
 
     private function loginValidator(Request $request){
@@ -65,7 +88,7 @@ class UserController extends Controller
         return Validator::make($request->all(), $validate);
     }
 
-    public function login(Request $request){
+    public function loginUser(Request $request){
 //        $request->session()->put('user_id', '58f209827f42836b7199a266');
         $validator = $this->loginValidator($request);
 
@@ -94,9 +117,10 @@ class UserController extends Controller
     }
 
     public function logout(Request $request){
+        Auth::logout();
         $request->session()->forget('user_id');
         $request->session()->forget('admin');
 
-        return redirect()->route('login');
+        return redirect()->route('login_user');
     }
 }

@@ -32,7 +32,7 @@
                                 <h3 class="status status-bookings status-line {{($missed['trip_no']!='')?'green':'orange ml-34'}} mb-1">{{($missed['trip_no']!='')?$missed['trip_no']:''}}</h3>
                             </div>
                             <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                <h3 class="status status-line red pull-right mt-4">{{$missed['status']}}</h3>
+                                <h3 class="status status-line red pull-right mt-4">{{ucwords($missed['status'])}}</h3>
                             </div>
                         </div>
                     </a>

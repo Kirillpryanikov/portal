@@ -8,11 +8,11 @@
             <div class="full-width">
                 <div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <h1 class="text-center heading-1">Admin Login</h1>
+                        <h1 class="text-center heading-1">Investor Portal</h1>
                     </div>
                 </div>
                 <div class="mt-20">
-                    <form id="loginForm" class="full-width" method="POST" action="{{route('login_admin')}}">
+                    <form id="loginForm" class="full-width" method="POST" action="{{route('Login_post')}}">
                         {{ csrf_field() }}
                         <div class="input-group mt-20">
                             <span class="input-group-addon" id="basic-addon3"><i class="fa fa-user text-white"></i></span>

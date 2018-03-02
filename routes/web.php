@@ -11,9 +11,12 @@
 |
 */
 
+Auth::routes();
+Route::post('/login_admin', 'UserController@loginAdmin')->name('login_admin');
 Route::middleware('un_login')->group(function () {
-    Route::get('/', 'UserController@loginPage')->name('login');
-    Route::post('/login', 'UserController@login')->name('Login_post');
+    Route::get('/', 'UserController@loginPage')->name('login_user');
+    Route::post('/login_user', 'UserController@loginUser')->name('Login_post');
+
 });
 
 Route::middleware('is_login')->group(function () {

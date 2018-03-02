@@ -15,17 +15,15 @@
 <body>
 <div id="loader">
     <div id="loading-item">
-
     </div>
 </div>
 <header class="d-flex flex-column justify-content-center align-items-center">
     <div class="container">
         <div class="row">
-            <div class="col-md-7"></div>
+            <div class="col-md-7"><h4>Partner Management</h4></div>
             <div class="col-md-5 text-white d-flex flex-row flex-nowrap justify-content-between align-items-center">
-
-                <a style="color: #292b2c" href="{{url('/get_files')}}">Statement</a>
             @if(isset($driver))
+                    <a style="color: #292b2c" href="{{url('/get_files')}}">Statement</a>
                     <form class="ml-3" action="{{route('Logout_post')}}">
                         {{ csrf_field() }}
                         <button type="submit" data-toggle="tooltip" data-placement="bottom" title="Logout" class="btn btn-default text-danger"><i class="fa fa-sign-out" aria-hidden="true"></i></button>
