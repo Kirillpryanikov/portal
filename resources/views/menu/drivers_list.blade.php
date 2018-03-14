@@ -12,7 +12,7 @@
             <input type="file" accept=".csv" id="files" name="files[]" multiple>
             <button type="submit" formaction="{{url('/file')}}" id="filesBtn" form="upload"
                     class="btn btn-default">
-                <span class="glyphicon glyphicon-upload"></span> Upload New Data
+                <span class="glyphicon glyphicon-upload"></span>Upload
             </button>
         </form>
             @if (session('status'))
@@ -23,6 +23,7 @@
                     {{ session('status') }}
                 </div>
             @endif
+            <div id="formError"></div>
         </div>
     @endif
     <div class="container">
@@ -92,7 +93,32 @@
                 bootpagInit(nav, '/menu/', currentPage, totalPages)
             }
 
+            var form = $('#upload');
+            form.submit(function () {
+                try {
+                    // throw Error because of no files choosen
+                    if (form[0][1].files.length < 1)  throw new Error('No files selected');
 
+                    var files = form[0][1].files;
+                    $.each(files, function (i, value) {
+                        // throw Error because of one or more files have wrong type
+                        if (value.type !== 'text/csv') throw new Error('Wrong file type');
+                    });
+                    console.log('Form submitted successfully');
+                }
+                catch (e){
+                    console.error(e);
+                    $('#formError').html('<div style="margin-top: 5px" class="alert alert-danger alert-dismissible fade show" role="alert">\n' +
+                        '                <button type="button" class="close" data-dismiss="alert" aria-label="Close">\n' +
+                        '                    <span aria-hidden="true">&times;</span>\n' +
+                        '                </button>\n' +
+                        '                <span></span>\n' +
+                        '            </div>')
+                    $('#formError>.alert>span').text(e);
+                    return false;
+                }
+
+            })
         });
 
     </script>
