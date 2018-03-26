@@ -18,15 +18,14 @@ class UploadedFileController extends Controller
             if (!empty($files)) {
                 foreach ($files as $file) {
                     $type = $file->getClientMimeType();
-                    if ($type === 'text/csv') {
-                        $name = $file->getClientOriginalName();
+                    $name = $file->getClientOriginalName();
+                    if ($type === 'text/csv' || strpos('.csv',$name) !== false) {
                         $name = Carbon::now()->format('Y_m_d_h_m_s') . '_' . $name;
                         Storage::disk('local')->putFileAs('/', new File($file), $name);
                         $status = $this->getFromFile($name);
                         if ($status === false){
                             return redirect("/menu")->with('status', 'Error, please check you headers and try again!');
                         }
-
                     } else {
                         return redirect("/menu")->with('status', 'Something went wrong, check uploaded file and try again!');
                     }
