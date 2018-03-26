@@ -20,6 +20,7 @@ class UploadedFileController extends Controller
                     $type = $file->getClientMimeType();
                     $name = $file->getClientOriginalName();
                     if ($type === 'text/csv' || strpos('.csv',$name) !== false) {
+                        dd($name);
                         $name = Carbon::now()->format('Y_m_d_h_m_s') . '_' . $name;
                         Storage::disk('local')->putFileAs('/', new File($file), $name);
                         $status = $this->getFromFile($name);
