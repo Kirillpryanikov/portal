@@ -34,7 +34,7 @@ class UploadedFileController extends Controller
             }
 
         }
-        return redirect("/menu")->with('status', 'File uploaded!');
+        return redirect("/get_files")->with('status', 'File uploaded!');
     }
 
     public function getFromFile($name)

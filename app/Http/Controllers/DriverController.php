@@ -41,16 +41,17 @@ class DriverController extends Controller
      */
     //get drivers list for menu
     public function getDrivers(Request $request){
-        $drivers = Driver::select('_id', 'full_name', 'driver_status', 'vendor_id', 'status', 'wallet')->get();
-        $drivers = $drivers
-            ->where('status', 'active');
-            if (session('user_id') !== 1){
-                $drivers = $drivers->where('vendor_id', session('user_id'));
-            }
-        $drivers = $drivers->sortBy('driver_status')->toArray();
-        $out_drivers = new PaginationArrayController($drivers,20);
-
-        return view('menu.drivers_list', ['drivers'=>$out_drivers->getPageData($request)]);
+//        $drivers = Driver::select('_id', 'full_name', 'driver_status', 'vendor_id', 'status', 'wallet')->get();
+//        $drivers = $drivers
+//            ->where('status', 'active');
+//            if (session('user_id') !== 1){
+//                $drivers = $drivers->where('vendor_id', session('user_id'));
+//            }
+//        $drivers = $drivers->sortBy('driver_status')->toArray();
+//        $out_drivers = new PaginationArrayController($drivers,20);
+//
+//        return view('menu.drivers_list', ['drivers'=>$out_drivers->getPageData($request)]);
+        return view('menu.drivers_list');
     }
 
     /**

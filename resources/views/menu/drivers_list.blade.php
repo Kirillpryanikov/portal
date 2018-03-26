@@ -26,58 +26,58 @@
             <div id="formError"></div>
         </div>
     @endif
-    <div class="container">
+    {{--<div class="container" style="display: none;">--}}
         <!----------------------------------------->
-        <div class="row gray">
-            <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                <h3 class="status">Partner's Name</h3>
-            </div>
-            <div class="col-3 text-right col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                <h3 class="status">Wallet Balance</h3>
-            </div>
-            <div class="col-3 text-right col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                <h3 class="status">Status</h3>
-            </div>
-        </div>
+        {{--<div class="row gray">--}}
+            {{--<div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">--}}
+                {{--<h3 class="status">Partner's Name</h3>--}}
+            {{--</div>--}}
+            {{--<div class="col-3 text-right col-lg-3 col-md-3 col-sm-3 col-xs-3">--}}
+                {{--<h3 class="status">Wallet Balance</h3>--}}
+            {{--</div>--}}
+            {{--<div class="col-3 text-right col-lg-3 col-md-3 col-sm-3 col-xs-3">--}}
+                {{--<h3 class="status">Status</h3>--}}
+            {{--</div>--}}
+        {{--</div>--}}
         <!----------------------------------------->
         <!----------------------------------------->
-        @foreach($drivers['datas'] as $driver)
-            @php
-                $class_var = '';
-                    switch ($driver['driver_status']) {
-                    case 'free':
-                        $class_var = 'orange';
-                        break;
-                    case 'inactive':
-                        $class_var = 'red';
-                        break;
-                    case 'On Pickup':
-                    case 'On Ride':
-                    case 'Invoice':
-                        $class_var = 'green';
-                        break;
-                    }
-            @endphp
-            <a href="{{route('personal_menu',$driver['_id'])}}">
-                <div class="row white">
-                    <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <h3 class="status font-thin">{{$driver['full_name']}}</h3>
-                    </div>
-                    <div class="col-3 text-right col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                        <h3 class="status font-thin">{{$driver['wallet']}}</h3>
-                    </div>
-                    <div class="col-3 text-right col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                        <h3 class="status font-thin {{$class_var}}">{{ucwords($driver['driver_status'])}}</h3>
-                    </div>
-                </div>
-            </a>
-        @endforeach
-        <div class="container d-flex justify-content-center mt-3 mb-3">
-            <nav id="driversPagination" data-pages="{{$drivers['allPage']}}" data-current="{{$drivers['page']}}"></nav>
-        </div>
+        {{--@foreach($drivers['datas'] as $driver)--}}
+            {{--@php--}}
+                {{--$class_var = '';--}}
+                    {{--switch ($driver['driver_status']) {--}}
+                    {{--case 'free':--}}
+                        {{--$class_var = 'orange';--}}
+                        {{--break;--}}
+                    {{--case 'inactive':--}}
+                        {{--$class_var = 'red';--}}
+                        {{--break;--}}
+                    {{--case 'On Pickup':--}}
+                    {{--case 'On Ride':--}}
+                    {{--case 'Invoice':--}}
+                        {{--$class_var = 'green';--}}
+                        {{--break;--}}
+                    {{--}--}}
+            {{--@endphp--}}
+            {{--<a href="{{route('personal_menu',$driver['_id'])}}">--}}
+                {{--<div class="row white">--}}
+                    {{--<div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">--}}
+                        {{--<h3 class="status font-thin">{{$driver['full_name']}}</h3>--}}
+                    {{--</div>--}}
+                    {{--<div class="col-3 text-right col-lg-3 col-md-3 col-sm-3 col-xs-3">--}}
+                        {{--<h3 class="status font-thin">{{$driver['wallet']}}</h3>--}}
+                    {{--</div>--}}
+                    {{--<div class="col-3 text-right col-lg-3 col-md-3 col-sm-3 col-xs-3">--}}
+                        {{--<h3 class="status font-thin {{$class_var}}">{{ucwords($driver['driver_status'])}}</h3>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</a>--}}
+        {{--@endforeach--}}
+        {{--<div class="container d-flex justify-content-center mt-3 mb-3">--}}
+            {{--<nav id="driversPagination" data-pages="{{$drivers['allPage']}}" data-current="{{$drivers['page']}}"></nav>--}}
+        {{--</div>--}}
 
 
-    </div>
+    {{--</div>--}}
 @endsection
 
 @section('scripts')
