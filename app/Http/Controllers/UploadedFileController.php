@@ -19,9 +19,8 @@ class UploadedFileController extends Controller
                 foreach ($files as $file) {
                     $type = $file->getClientMimeType();
                     $name = $file->getClientOriginalName();
-                    var_dump(strpos('.csv',$name));
-                    dd($name);
-                    if ($type === 'text/csv' || strpos('.csv',$name) !== false) {
+                    var_dump(strpos($name,'.csv'));
+                    if ($type === 'text/csv' || strpos($name,'.csv') !== false) {
 
                         $name = Carbon::now()->format('Y_m_d_h_m_s') . '_' . $name;
                         Storage::disk('local')->putFileAs('/', new File($file), $name);
