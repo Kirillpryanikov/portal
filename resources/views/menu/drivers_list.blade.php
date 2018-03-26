@@ -102,9 +102,9 @@
                     var files = form[0][1].files;
                     $.each(files, function (i, value) {
                         // throw Error because of one or more files have wrong type
-                        var type = value.type;
-                        console.log(type);
-                        if (type.indexOf('csv') == -1) throw new Error('Wrong file type');
+                        var type = value.name;
+                     
+                        if (type.indexOf('.csv') == -1) throw new Error('Wrong file type');
                     });
                     console.log('Form submitted successfully');
                 }
