@@ -53,6 +53,10 @@ class UploadedFileController extends Controller
         $i = 0;
         while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
             if ($i == 0) {
+                if(count($data) != 12)
+                {
+                    return false;
+                }
                 if (
                     trim($data[0]) == 'Vendor Code'
                     && trim($data[1]) == 'Partner Name'
