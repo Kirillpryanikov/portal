@@ -89,7 +89,7 @@ class UserController extends Controller
     }
 
     public function loginUser(Request $request){
-        $request->session()->put('user_id', '58f209827f42836b7199a266');
+        //$request->session()->put('user_id', '58f209827f42836b7199a266');
         $validator = $this->loginValidator($request);
 
         if($validator->fails()){
