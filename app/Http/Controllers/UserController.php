@@ -89,7 +89,7 @@ class UserController extends Controller
     }
 
     public function loginUser(Request $request){
-        $request->session()->put('user_id', '58f209827f42836b7199a266');
+        //$request->session()->put('user_id', '58f209827f42836b7199a266');
         $validator = $this->loginValidator($request);
 
         if($validator->fails()){
@@ -101,7 +101,9 @@ class UserController extends Controller
         $id = $this->loginAPI($request['username'], $request['password']);
 
         if ($id[0]){
+
             $request->session()->put('user_id', $id);
+
             if ($id[1] === true){
                 $request->session()->put('admin', 'true');
             }

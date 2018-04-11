@@ -51,7 +51,7 @@ class DriverController extends Controller
             }
             $drivers = $drivers->sortBy('driver_status')->toArray();
             $out_drivers = new PaginationArrayController($drivers,20);
-
+            //dd($out_drivers,session('user_id'));
             return view('menu.drivers_list', ['drivers'=>$out_drivers->getPageData($request)]);
         }else{
             return view('menu.drivers_list');
@@ -311,5 +311,16 @@ class DriverController extends Controller
         Mail::send(new SendMail($data));
 
         return redirect()->route('get_driver_profile', ['id'=>$request['driver_id']]);
+//        $driver = Driver::where('_id', $request['driver_id'])->first();
+//        $dataUpdate[$request['param_name']] = $request['param_value'];
+//        //dd($driver);
+//
+//        if($request->param_name != 'city')
+//        {
+//            $driver->update($dataUpdate);
+//        }
+//
+//        return redirect()->route('get_driver_profile', ['id'=>$request['driver_id']]);
+
     }
 }

@@ -7,7 +7,7 @@ use App\UploadedStatement;
 use Carbon\Carbon;
 use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
-
+use Illuminate\Http\Request;
 class UploadedFileController extends Controller
 {
     public function uploadFile()
@@ -79,6 +79,11 @@ class UploadedFileController extends Controller
             }
 
             if ($i > 0) {
+
+                if($i == 1 && empty($data))
+                {
+                    return false;
+                }
                 UploadedStatement::create([
                     'uploaded_file_id' => $uploaded_file->id,
                     'vendor_code' => $data[0] ?? null,
@@ -94,10 +99,16 @@ class UploadedFileController extends Controller
                     'bonus' => $data[10] ?? null,
                     'wallet_balance' => $data[11] ?? null
                 ]);
-            } else {
-                $i++;
             }
+
+            $i++;
         }
+
+        if($i == 1)
+        {
+            return false;
+        }
+
         fclose($handle);
         Storage::delete($name);
         return true;
@@ -132,12 +143,66 @@ class UploadedFileController extends Controller
             ->deleteFileAfterSend(true);
     }
 
-    public function getFiles()
+    public function getFiles(Request $request)
     {
-        $uploaded_files = UploadedFile::withCount('uploaded_statements')->orderBy('id', 'desc')->get();
-//        dd($uploaded_files);
-        $driver = '';
-        return view('menu.options.uploaded_statements', compact('uploaded_files', 'driver'));
+        if(session('admin'))
+        {
+            $uploaded_files = UploadedFile::withCount('uploaded_statements')->orderBy('id', 'desc')->get()->toArray();
+            $uploaded_files_page = new PaginationArrayController($uploaded_files,10);
+            $driver = '';
+            return view('menu.options.uploaded_statements', ['uploaded_files' => $uploaded_files_page->getPageData($request)]);
+        }else{
+
+            $uploaded_file = UploadedStatement::where('vendor_code',session('user_id'))->get()->toArray();
+
+            $statementData = new PaginationArrayController($uploaded_file,10);
+
+            return view('menu.options.statements_data', ['uploaded_file' => $statementData->getPageData($request)]);
+        }
+    }
+
+    public function getUserStatementInfo()
+    {
+        $filename = storage_path().'/app/'.session('user_id').'_'.time().'.csv';
+        $file = fopen($filename, 'w');
+        $userData = UploadedStatement::where('vendor_code',session('user_id'))->get()->toArray();
+        $headers = [
+            'Vendor Code',
+            'Partner Name',
+            'Login ID',
+            'Bonus Date',
+            'Total Rides',
+            'Unverified Rides',
+            'Rating',
+            'Acceptance',
+            'Total Collection',
+            'Total Fare',
+            'Bonus',
+            'Wallet Balance'
+        ];
+
+        fputcsv($file, $headers, ";");
+
+        $excludedHeaders = ['id','uploaded_file_id','created_at','updated_at'];
+
+
+        foreach ($userData as $fields) {
+
+            foreach($fields as $key => $item)
+            {
+                if(in_array($key,$excludedHeaders))
+                {
+                    unset($fields[$key]);
+                }
+            }
+
+            fputcsv($file, $fields, ";");
+
+        }
+
+        fclose($file);
+        return response()->download($filename)
+                         ->deleteFileAfterSend(true);
     }
 
     public function showFile($id)

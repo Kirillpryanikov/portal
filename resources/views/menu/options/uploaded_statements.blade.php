@@ -27,21 +27,36 @@
             <table class="table">
 
                 <tbody>
-                @foreach($uploaded_files as $item)
+                @foreach($uploaded_files['datas'] as $item)
                 <tr>
-                    <td><a href="/show_file/{{$item->id}}">{{$item->file_name}}</a></td>
-                    <td>{{$item->created_at}}</td>
+                    <td><a href="/show_file/{{$item['id']}}">{{$item['file_name']}}</a></td>
+                    <td>{{$item['created_at']}}</td>
                     <td>
-                        <a style="text-transform: capitalize;font-weight: bold;color: #5f5f5f;" href="{{url('/get_file/'.$item->id)}}">Download</a>
+                        <a style="text-transform: capitalize;font-weight: bold;color: #5f5f5f;" href="{{url('/get_file/'.$item['id'])}}">Download</a>
                     </td>
                 </tr>
                 @endforeach
                 </tbody>
             </table>
+                <div class="container d-flex justify-content-center mt-3 mb-3">
+                    <nav id="statetmentPagination" data-pages="{{$uploaded_files['allPage']}}" data-current="{{$uploaded_files['page']}}"></nav>
+                </div>
         </div>
 
 @endsection
 
 @section('options_scripts')
+    <script src="{{asset('js/bootpag/bootpag.min.js')}}"></script>
+    <script src="{{asset('js/bootpag/bootpag-init.js')}}"></script>
+    <script>
+        $(document).ready(function () {
+            var totalPages = parseInt($('#statetmentPagination').data('pages'));
+            var currentPage = parseInt($('#statetmentPagination').data('current'));
+            var nav = $('#statetmentPagination');
 
+            if (totalPages > 1) {
+                bootpagInit(nav, '/get_files/', currentPage, totalPages)
+            }
+        })
+    </script>
 @endsection

@@ -68,7 +68,13 @@
                         <h3 class="status font-thin">{{$driver['wallet']}}</h3>
                     </div>
                     <div class="col-3 text-right col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                        <h3 class="status font-thin {{$class_var}}">{{ucwords($driver['driver_status'])}}</h3>
+                        <h3 class="status font-thin {{$class_var}}">
+                            @if($driver['status'] == 'active')
+                                <b class="green">{{ucwords($driver['status'])}}</b>/
+                            @else
+                                <b class="text-gray-dark">{{ucwords($driver['status'])}}</b>/
+                            @endif{{ucwords($driver['driver_status'])}}</h3>
+
                     </div>
                 </div>
             </a>

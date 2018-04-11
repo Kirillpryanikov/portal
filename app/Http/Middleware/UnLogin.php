@@ -16,7 +16,7 @@ class UnLogin
     public function handle($request, Closure $next)
     {
         if (session()->has('user_id')){
-            return redirect()->route('get_files');
+            return redirect()->route('menu');
         }
         return $next($request);
     }

@@ -20,6 +20,7 @@ Route::middleware('un_login')->group(function () {
 });
 
 Route::middleware('is_login')->group(function () {
+
     Route::post('/file', 'UploadedFileController@uploadFile')->name('file');
     Route::get('/get_files', 'UploadedFileController@getFiles')->name('get_files');
     Route::get('/get_file/{id}', 'UploadedFileController@getFile')->name('get_file');
@@ -38,6 +39,9 @@ Route::middleware('is_login')->group(function () {
     Route::get('/statements/{id}', 'DriverController@getStatements')->name('get_statements');
     Route::get('/settings-change/{id}', 'DriverController@getMessage')->name('get_message');
     Route::post('/send_message', 'DriverController@sendMessage')->name('post_send_message');
+    Route::get('/user_statement','UploadedFileController@getUserStatementInfo')->name('user_statement');
     Route::get('/{id}', 'DriverController@getDriverMenu')->name('personal_menu');
+
+
 });
 
