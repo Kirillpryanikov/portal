@@ -4,6 +4,14 @@
 
 @section('menu_options')
     <div class="container">
+        @if (session('field'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                {{ 'New value for field:"'.session('field').'", was successfully stored in DB' }}
+            </div>
+        @endif
         <div class="row white">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <p class="breadcrumb"><a href="{{route('menu')}}">Drivers Names</a> &gt; <a href="{{route('personal_menu', $driver['_id'])}}">{{$driver['full_name']}}</a> &gt; Profile</p>

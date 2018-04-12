@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Mail;
 use MongoDB\BSON\ObjectID;
 use Symfony\Component\VarDumper\Dumper\DataDumperInterface;
-
+use App\Store;
 class DriverController extends Controller
 {
     private $data = [];
@@ -304,23 +304,25 @@ class DriverController extends Controller
      * @apiSuccess {back} page Back to send page.
      */
     public function sendMessage(Request $request){
-        $data = $request->all();
-        $data['driver'] = Driver::where('_id', $request['driver_id'])->first()->toArray();
-        $city = City::where('_id', $data['driver']['city'])->first()->toArray();
-        $data['city_data'] = $city;
-        Mail::send(new SendMail($data));
-
-        return redirect()->route('get_driver_profile', ['id'=>$request['driver_id']]);
-//        $driver = Driver::where('_id', $request['driver_id'])->first();
-//        $dataUpdate[$request['param_name']] = $request['param_value'];
-//        //dd($driver);
-//
-//        if($request->param_name != 'city')
-//        {
-//            $driver->update($dataUpdate);
-//        }
+//        $data = $request->all();
+//        $data['driver'] = Driver::where('_id', $request['driver_id'])->first()->toArray();
+//        $city = City::where('_id', $data['driver']['city'])->first()->toArray();
+//        $data['city_data'] = $city;
+//        Mail::send(new SendMail($data));
 //
 //        return redirect()->route('get_driver_profile', ['id'=>$request['driver_id']]);
+//        $driver = Driver::where('_id', $request['driver_id'])->first();
+
+
+
+        Store::create([
+            'user_id' => $request->driver_id,
+            'date_time' =>  Carbon::now(6),
+            'message' => $request['param_value'],
+            'field_name' => $request['param_name']
+        ]);
+
+        return redirect()->route('get_driver_profile', ['id'=>$request['driver_id']])->with(['field' => $request['param_name']]);
 
     }
 }
