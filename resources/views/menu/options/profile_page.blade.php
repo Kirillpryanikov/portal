@@ -9,7 +9,7 @@
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                {{ 'New value for field:"'.session('field').'", was successfully stored in DB' }}
+                {{ 'You requests has been received, we will get back to you' }}
             </div>
         @endif
         <div class="row white">
