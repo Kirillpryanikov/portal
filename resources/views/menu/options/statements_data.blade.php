@@ -14,7 +14,7 @@
     {{--<div class="container">--}}
     {{----}}
 
-    @if(session('user_id'))
+    @if(!session('admin'))
         <h1 class="d-inline-block" style="margin:30px 10px;">User statement data</h1>
         <a href="/user_statement" class="btn btn-primary" style="margin-top: -15px;">Download CSV</a>
         <div class="container-fluid">
@@ -59,6 +59,7 @@
             </div>
         </div>
     @else
+
         <h1>{{$uploaded_file->filename}}</h1>
         <div class="container-fluid">
             <table class="table table-bordered">

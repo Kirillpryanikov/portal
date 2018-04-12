@@ -207,7 +207,7 @@ class UploadedFileController extends Controller
 
     public function showFile($id)
     {
-        $user_id = session('user_id');
+        //$user_id = session('user_id');
         $uploaded_file = UploadedFile::with('uploaded_statements')->find($id);
         $driver = '';
         return view('menu.options.statements_data', compact('uploaded_file', 'driver'));
