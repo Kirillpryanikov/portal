@@ -231,7 +231,7 @@ class DriverController extends Controller
         $wallets_out = new PaginationArrayController($wallets_all,20);
         $this->data['wallets'] = $wallets_out->getPageData($request);
         $this->data['wallets_rs'] = count($wallets_all);
-
+//        dd($this->data);
         return view('menu.options.wallets', $this->data);
     }
 
@@ -317,15 +317,21 @@ class DriverController extends Controller
 //        $driver = Driver::where('_id', $request['driver_id'])->first();
 
 
+        if($request['param_value'] != '')
+        {
+            Store::create([
+                'user_id' => $request->driver_id,
+                'date_time' =>  Carbon::now(6),
+                'message' => $request['param_value'],
+                'field_name' => $request['param_name']
+            ]);
+            return redirect()->route('get_driver_profile', ['id'=>$request['driver_id']])->with(['field' => $request['param_name']]);
+        }else{
+            return redirect()->route('get_driver_profile', ['id'=>$request['driver_id']])->with(['error' => 'This field can not be empty']);
+        }
 
-        Store::create([
-            'user_id' => $request->driver_id,
-            'date_time' =>  Carbon::now(6),
-            'message' => $request['param_value'],
-            'field_name' => $request['param_name']
-        ]);
 
-        return redirect()->route('get_driver_profile', ['id'=>$request['driver_id']])->with(['field' => $request['param_name']]);
+
 
     }
 }

@@ -163,7 +163,14 @@ class UploadedFileController extends Controller
 
     public function getUserStatementInfo()
     {
-        $filename = storage_path().'/app/'.session('user_id').'_'.time().'.csv';
+
+        if(is_array(session('user_id')))
+        {
+            $filename = storage_path().'/app/'.session('user_id')[0].'_'.time().'.csv';
+        }else{
+            $filename = storage_path().'/app/'.session('user_id').'_'.time().'.csv';
+        }
+
         $file = fopen($filename, 'w');
         $userData = UploadedStatement::where('vendor_code',session('user_id'))->get()->toArray();
         $headers = [
@@ -185,20 +192,25 @@ class UploadedFileController extends Controller
 
         $excludedHeaders = ['id','uploaded_file_id','created_at','updated_at'];
 
+        if(!empty($userData))
+        {
+            foreach ($userData as $fields) {
 
-        foreach ($userData as $fields) {
-
-            foreach($fields as $key => $item)
-            {
-                if(in_array($key,$excludedHeaders))
+                foreach($fields as $key => $item)
                 {
-                    unset($fields[$key]);
+                    if(in_array($key,$excludedHeaders))
+                    {
+                        unset($fields[$key]);
+                    }
                 }
+
+                fputcsv($file, $fields, ";");
+
             }
-
-            fputcsv($file, $fields, ";");
-
+        }else{
+            return redirect('/get_files')->with(['error' => 'No data found for this user']);
         }
+
 
         fclose($file);
         return response()->download($filename)

@@ -13,7 +13,14 @@
     {{----}}
     {{--<div class="container">--}}
     {{----}}
-
+    @if (session('error'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            {{ session('error') }}
+        </div>
+    @endif
     @if(!session('admin'))
         <h1 class="d-inline-block" style="margin:30px 10px;">User statement data</h1>
         <a href="/user_statement" class="btn btn-primary" style="margin-top: -15px;">Download CSV</a>

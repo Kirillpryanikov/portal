@@ -57,9 +57,11 @@
             ?>
             <div class="row white">
                 <div class="col-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                    @if(isset($wallet['trip_no']))
                     <p class="fz-10 mt-20 mb-10">{{$wallet['trip_no']}}</p>
                     <h3 class="status m-0 fz-16 p-0">{{$wallet['title']}}</h3>
                     <p class="mb-10 fz-10 mt-10">{{$wallet['comments']}}</p>
+                    @endif
                 </div>
                 <div class="col-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
                     <h3 class="status mt-45 fz-16 p-0 text-center green">{{$wallet['total']}}</h3>

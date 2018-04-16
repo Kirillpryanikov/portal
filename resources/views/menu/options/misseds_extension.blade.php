@@ -19,7 +19,7 @@
         <div class="tab-pane active">
             @if (count($misseds['datas'])!=0)
                 @foreach($misseds['datas'] as $missed)
-                    @if($booking['trip_no'] != '')
+                    @if(isset($booking['trip_no']))
                     <a href="{{route('get_missed_detail', [$missed['trip_no'], $missed['driver_id']])}}" data-row="{{$loop->index+1}}">
                         <div class="row white">
                             <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
