@@ -136,12 +136,7 @@ class UploadedFileController extends Controller
                     . $item->total_collection . ',' . $item->total_fare . ','
                     . $item->bonus . ',' . $item->wallet_balance
                     . "\n";
-            }else{
-                $row = '';
-            }
-
-
-            if(session('admin'))
+            }elseif(session('admin'))
             {
                 $row = $item->vendor_code . ','
                     . $item->partner_name . ',' . $item->login_id . ','
@@ -152,6 +147,12 @@ class UploadedFileController extends Controller
                     . $item->bonus . ',' . $item->wallet_balance
                     . "\n";
             }
+            else{
+                $row = '';
+            }
+
+
+
 
 
             fwrite($handle, $row);
@@ -159,8 +160,15 @@ class UploadedFileController extends Controller
 
         fclose($handle);
 
-        return response()->download(storage_path() . '/app/' . $uploaded_file->file_name)
-            ->deleteFileAfterSend(true);
+        if(!isset($row) || $row == '')
+        {
+            return redirect('/get_files')->with('error','No data in this file for this user');
+        }else{
+            return response()->download(storage_path() . '/app/' . $uploaded_file->file_name)
+                ->deleteFileAfterSend(true);
+        }
+
+
     }
 
     public function getFiles(Request $request)
