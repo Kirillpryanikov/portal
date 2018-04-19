@@ -136,6 +136,8 @@ class UploadedFileController extends Controller
                     . $item->total_collection . ',' . $item->total_fare . ','
                     . $item->bonus . ',' . $item->wallet_balance
                     . "\n";
+            }else{
+                $row = '';
             }
 
 
