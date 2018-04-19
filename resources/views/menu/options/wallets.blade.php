@@ -66,7 +66,7 @@
                 <div class="col-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
                     <h3 class="status mt-45 fz-16 p-0 text-center green">{{$wallet['total']}}</h3>
                 </div>
-                <div class="col-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                <div class="col-3 col-lg-3 col-md-3 col-sm-3 col-xs-3" style="text-align: center;">
                     <p class="fz-10 mt-20 mb-10">{{$dateStr}} {{$timeStr}}</p>
                     <h3 class="status m-0 p-0 fz-16">{{$wallet['transfer']}}</h3>
                     <p class="time fz-10 mt-10">&nbsp;</p>

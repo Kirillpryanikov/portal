@@ -182,7 +182,7 @@
                     {{ csrf_field() }}
                     <input type="hidden" name="driver_id" value="{{$driver['_id']}}">
                     <input type="hidden" name="param_name"  value="address_coordinates">
-                    <textarea placeholder="GPS coordinates" name="param_value" class="modal-text-area" id="gpsModalData"></textarea>
+                    <textarea placeholder="GPS coordinates" required name="param_value" class="modal-text-area" id="gpsModalData"></textarea>
                     <input type="submit" class="modal-submit" data-modal="gpsModal" value="Request For Change">
                 </div>
                 </form>
@@ -208,7 +208,7 @@
                         {{ csrf_field() }}
                         <input type="hidden" name="driver_id" value="{{$driver['_id']}}">
                         <input type="hidden" name="param_name"  value="address">
-                        <textarea  name="param_value" placeholder="Address" class="modal-text-area" id="addressModalData"></textarea>
+                        <textarea  name="param_value" placeholder="Address" required class="modal-text-area" id="addressModalData"></textarea>
                         <input type="submit" class="modal-submit" data-modal="addressModal" value="Request For Change">
                     </div>
                 </form>
@@ -234,7 +234,7 @@
                         {{ csrf_field() }}
                         <input type="hidden" name="driver_id" value="{{$driver['_id']}}">
                         <input type="hidden" name="param_name"  value="city">
-                        <textarea placeholder="City" name="param_value" class="modal-text-area" id="cityModalData"></textarea>
+                        <textarea placeholder="City" name="param_value" required class="modal-text-area" id="cityModalData"></textarea>
                         <input type="submit" class="modal-submit" data-modal="cityModal" value="Request For Change">
                     </div>
                 </form>
@@ -260,7 +260,7 @@
                         {{ csrf_field() }}
                         <input type="hidden" name="driver_id" value="{{$driver['_id']}}">
                         <input type="hidden" name="param_name"  value="driver_license_number">
-                        <textarea placeholder="License number" name="param_value" class="modal-text-area" id="licenseModalData"></textarea>
+                        <textarea placeholder="License number" required name="param_value" class="modal-text-area" id="licenseModalData"></textarea>
                         <input type="submit" class="modal-submit" data-modal="licenseModal" value="Request For Change">
                     </div>
                 </form>
@@ -286,7 +286,7 @@
                         {{ csrf_field() }}
                         <input type="hidden" name="driver_id" value="{{$driver['_id']}}">
                         <input type="hidden" name="param_name"  value="phone">
-                        <textarea placeholder="Phone number(Company provided)" name="param_value" class="modal-text-area" id="phoneModalData"></textarea>
+                        <textarea placeholder="Phone number(Company provided)" required name="param_value" class="modal-text-area" id="phoneModalData"></textarea>
                         <input type="submit" class="modal-submit" data-modal="phoneModal" value="Request For Change">
                     </div>
                 </form>
@@ -312,7 +312,7 @@
                         {{ csrf_field() }}
                         <input type="hidden" name="driver_id" value="{{$driver['_id']}}">
                         <input type="hidden" name="param_name"  value="mobile_1">
-                        <textarea placeholder="Phone number (Personal 1)" name="param_value" class="modal-text-area" id="mobile1ModalData"></textarea>
+                        <textarea placeholder="Phone number (Personal 1)" required name="param_value" class="modal-text-area" id="mobile1ModalData"></textarea>
                         <input type="submit" class="modal-submit" data-modal="mobile1Modal" value="Request For Change">
                     </div>
                 </form>
@@ -338,7 +338,7 @@
                         {{ csrf_field() }}
                         <input type="hidden" name="driver_id" value="{{$driver['_id']}}">
                         <input type="hidden" name="param_name"  value="mobile_2">
-                        <textarea placeholder="Phone number (Personal 2)" name="param_value" class="modal-text-area" id="mobile2ModalData"></textarea>
+                        <textarea placeholder="Phone number (Personal 2)" required name="param_value" class="modal-text-area" id="mobile2ModalData"></textarea>
                         <input type="submit" class="modal-submit" data-modal="mobile2Modal" value="Request For Change">
                     </div>
                 </form>
@@ -364,7 +364,7 @@
                         {{ csrf_field() }}
                         <input type="hidden" name="driver_id" value="{{$driver['_id']}}">
                         <input type="hidden" name="param_name"  value="email">
-                        <textarea placeholder="Enter Email" name="param_value" class="modal-text-area" id="emailModalData"></textarea>
+                        <textarea placeholder="Enter Email" required name="param_value" class="modal-text-area" id="emailModalData"></textarea>
                         <input type="submit" class="modal-submit" data-modal="emailModal" value="Request For Change">
                     </div>
                 </form>
@@ -390,7 +390,7 @@
                         {{ csrf_field() }}
                         <input type="hidden" name="driver_id" value="{{$driver['_id']}}">
                         <input type="hidden" name="param_name"  value="status">
-                        <textarea placeholder="Enter your message" name="param_value" class="modal-text-area" id="activationModalData"></textarea>
+                        <textarea placeholder="Enter your message" required name="param_value" class="modal-text-area" id="activationModalData"></textarea>
                         <input type="submit" class="modal-submit" data-modal="activationModal" value="Request For Change">
                     </div>
                 </form>

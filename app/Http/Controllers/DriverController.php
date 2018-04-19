@@ -43,9 +43,8 @@ class DriverController extends Controller
     public function getDrivers(Request $request){
         if(!session('admin'))
         {
-            $drivers = Driver::select('_id', 'full_name', 'driver_status', 'vendor_id', 'status', 'wallet')->get();
-            $drivers = $drivers
-                ->where('status', 'active');
+            $drivers = Driver::select('_id', 'full_name', 'driver_status', 'vendor_id', 'status', 'wallet','is_available')->get();
+
             if (session('user_id') !== 1){
                 $drivers = $drivers->where('vendor_id', session('user_id')[0]);
             }
@@ -126,7 +125,7 @@ class DriverController extends Controller
 
     public function getMissed(Request $request, $id){
         $time = $this->getTime();
-        $driver_id =new ObjectID($id);
+        $driver_id = new ObjectID($id);
 
         $trip_calls = TripCall::orderBy('created_at', 'desc')
             ->where('created_at', '>=', $time)
@@ -151,7 +150,7 @@ class DriverController extends Controller
 
         $misseds_data = new PaginationArrayController($trip_calls,20);
         $this->data['misseds']  = $misseds_data->getPageData($request);
-
+        //dd($this->data['misseds']);
         return view('menu.options.misseds_extension', $this->data);
     }
 

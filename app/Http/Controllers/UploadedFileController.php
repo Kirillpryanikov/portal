@@ -125,14 +125,32 @@ class UploadedFileController extends Controller
         fwrite($handle, $header);
 
         foreach ($uploaded_file->uploaded_statements as $item) {
-            $row = $item->vendor_code . ','
-                . $item->partner_name . ',' . $item->login_id . ','
-                . $item->bonus_time . ',' . $item->total_riders . ','
-                . $item->unverified_riders . ','
-                . $item->rating . ',' . $item->acceptance . ','
-                . $item->total_collection . ',' . $item->total_fare . ','
-                . $item->bonus . ',' . $item->wallet_balance
-                . "\n";
+
+            if(session('user_id') && $item->vendor_code == session('user_id'))
+            {
+                $row = $item->vendor_code . ','
+                    . $item->partner_name . ',' . $item->login_id . ','
+                    . $item->bonus_time . ',' . $item->total_riders . ','
+                    . $item->unverified_riders . ','
+                    . $item->rating . ',' . $item->acceptance . ','
+                    . $item->total_collection . ',' . $item->total_fare . ','
+                    . $item->bonus . ',' . $item->wallet_balance
+                    . "\n";
+            }
+
+
+            if(session('admin'))
+            {
+                $row = $item->vendor_code . ','
+                    . $item->partner_name . ',' . $item->login_id . ','
+                    . $item->bonus_time . ',' . $item->total_riders . ','
+                    . $item->unverified_riders . ','
+                    . $item->rating . ',' . $item->acceptance . ','
+                    . $item->total_collection . ',' . $item->total_fare . ','
+                    . $item->bonus . ',' . $item->wallet_balance
+                    . "\n";
+            }
+
 
             fwrite($handle, $row);
         }
@@ -145,20 +163,11 @@ class UploadedFileController extends Controller
 
     public function getFiles(Request $request)
     {
-        if(session('admin'))
-        {
+
             $uploaded_files = UploadedFile::withCount('uploaded_statements')->orderBy('id', 'desc')->get()->toArray();
             $uploaded_files_page = new PaginationArrayController($uploaded_files,10);
             $driver = '';
             return view('menu.options.uploaded_statements', ['uploaded_files' => $uploaded_files_page->getPageData($request)]);
-        }else{
-
-            $uploaded_file = UploadedStatement::where('vendor_code',session('user_id'))->get()->toArray();
-
-            $statementData = new PaginationArrayController($uploaded_file,10);
-
-            return view('menu.options.statements_data', ['uploaded_file' => $statementData->getPageData($request)]);
-        }
     }
 
     public function getUserStatementInfo()

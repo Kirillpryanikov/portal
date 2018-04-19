@@ -69,6 +69,11 @@
                     </div>
                     <div class="col-3 text-right col-lg-3 col-md-3 col-sm-3 col-xs-3">
                         <h3 class="status font-thin {{$class_var}}">
+                            @if($driver['is_available'])
+                                Available
+                            @else
+                                Unavailable
+                            @endif
                             @if($driver['status'] == 'active')
                                 <b class="green">{{ucwords($driver['status'])}}</b>/
                             @else
