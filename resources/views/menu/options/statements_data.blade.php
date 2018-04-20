@@ -36,21 +36,29 @@
                 </thead>
                 <tbody>
                 @foreach($uploaded_file->uploaded_statements as $item)
-                    @if(session('user_id') && $item->vendor_code == session('user_id'))
-                        <tr>
-                            <td>{{$item->vendor_code}}</td>
-                            <td>{{$item->partner_name}}</td>
-                            <td>{{$item->login_id}}</td>
-                            <td>{{$item->bonus_time}}</td>
-                            <td>{{$item->total_riders}}</td>
-                            <td>{{$item->unverified_riders}}</td>
-                            <td>{{$item->rating}}</td>
-                            <td>{{$item->acceptance}}</td>
-                            <td>{{$item->total_collection}}</td>
-                            <td>{{$item->total_fare}}</td>
-                            <td>{{$item->bonus}}</td>
-                            <td>{{$item->wallet_balance}}</td>
-                        </tr>
+                    @if(session('user_id'))
+                        @if(is_array(session('user_id')))
+                            @php $user = session('user_id')[0]; @endphp
+                        @else
+                            @php $user = session('user_id'); @endphp
+                        @endif
+
+                        @if($item->vendor_code == $user)
+                            <tr>
+                                <td>{{$item->vendor_code}}</td>
+                                <td>{{$item->partner_name}}</td>
+                                <td>{{$item->login_id}}</td>
+                                <td>{{$item->bonus_time}}</td>
+                                <td>{{$item->total_riders}}</td>
+                                <td>{{$item->unverified_riders}}</td>
+                                <td>{{$item->rating}}</td>
+                                <td>{{$item->acceptance}}</td>
+                                <td>{{$item->total_collection}}</td>
+                                <td>{{$item->total_fare}}</td>
+                                <td>{{$item->bonus}}</td>
+                                <td>{{$item->wallet_balance}}</td>
+                            </tr>
+                        @endif
                     @endif
                     @if(session('admin'))
                         <tr>

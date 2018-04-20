@@ -123,21 +123,33 @@ class UploadedFileController extends Controller
 
         $header = "Vendor Code,Partner Name,Login ID,Bonus Date,Total Rides,Unverified Rides,Rating,Acceptance,Total Collection,Total Fare,Bonus,Wallet Balance\n";
         fwrite($handle, $header);
-
         foreach ($uploaded_file->uploaded_statements as $item) {
 
-            if(session('user_id') && $item->vendor_code == session('user_id'))
+            if(session('user_id'))
             {
-                $row = $item->vendor_code . ','
-                    . $item->partner_name . ',' . $item->login_id . ','
-                    . $item->bonus_time . ',' . $item->total_riders . ','
-                    . $item->unverified_riders . ','
-                    . $item->rating . ',' . $item->acceptance . ','
-                    . $item->total_collection . ',' . $item->total_fare . ','
-                    . $item->bonus . ',' . $item->wallet_balance
-                    . "\n";
+                if(is_array(session('user_id')))
+                {
+                    $user = session('user_id')[0];
+                }else{
+                    $user = session('user_id');
+                }
+
+                if($item->vendor_code == $user)
+                {
+                    $row = $item->vendor_code . ','
+                        . $item->partner_name . ',' . $item->login_id . ','
+                        . $item->bonus_time . ',' . $item->total_riders . ','
+                        . $item->unverified_riders . ','
+                        . $item->rating . ',' . $item->acceptance . ','
+                        . $item->total_collection . ',' . $item->total_fare . ','
+                        . $item->bonus . ',' . $item->wallet_balance
+                        . "\n";
+                    fwrite($handle, $row);
+                }
+
             }elseif(session('admin'))
             {
+                dd('ggasdasd');
                 $row = $item->vendor_code . ','
                     . $item->partner_name . ',' . $item->login_id . ','
                     . $item->bonus_time . ',' . $item->total_riders . ','
@@ -146,16 +158,8 @@ class UploadedFileController extends Controller
                     . $item->total_collection . ',' . $item->total_fare . ','
                     . $item->bonus . ',' . $item->wallet_balance
                     . "\n";
+                fwrite($handle, $row);
             }
-            else{
-                $row = '';
-            }
-
-
-
-
-
-            fwrite($handle, $row);
         }
 
         fclose($handle);
