@@ -142,15 +142,17 @@ class DriverController extends Controller
             $booking = $bookings->where('_id', $trip_call['trip_id'])->first();
 
             if ($booking) {
-                $trip_no = $booking['trip_no'];
+                $trip_calls[$key]['trip_no'] = $booking['trip_no'];
+            }else{
+                unset($trip_calls[$key]);
             }
 
-            $trip_calls[$key]['trip_no'] = $trip_no;
+
         }
 
         $misseds_data = new PaginationArrayController($trip_calls,20);
         $this->data['misseds']  = $misseds_data->getPageData($request);
-        //dd($this->data['misseds']);
+
         return view('menu.options.misseds_extension', $this->data);
     }
 

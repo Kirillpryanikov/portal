@@ -33,7 +33,7 @@
             <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <h3 class="status">Partner's Name</h3>
             </div>
-            <div class="col-3 text-right col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <div class="col-3 text-center col-lg-3 col-md-3 col-sm-3 col-xs-3">
                 <h3 class="status">Wallet Balance</h3>
             </div>
             <div class="col-3 text-right col-lg-3 col-md-3 col-sm-3 col-xs-3">
@@ -64,15 +64,15 @@
                     <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
                         <h3 class="status font-thin">{{$driver['full_name']}}</h3>
                     </div>
-                    <div class="col-3 text-right col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                        <h3 class="status font-thin">{{$driver['wallet']}}</h3>
+                    <div class="col-3 text-center col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                        <h3 class="status font-thin text-center">{{$driver['wallet']}}</h3>
                     </div>
                     <div class="col-3 text-right col-lg-3 col-md-3 col-sm-3 col-xs-3">
                         <h3 class="status font-thin {{$class_var}}">
                             @if($driver['is_available'])
-                                Available
+                                Available /
                             @else
-                                Unavailable
+                                Unavailable /
                             @endif
                             @if($driver['status'] == 'active')
                                 <b class="green">{{ucwords($driver['status'])}}</b>/
